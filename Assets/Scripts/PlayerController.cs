@@ -38,3 +38,4 @@ public class PlayerController : MonoBehaviour
         playerCamera.transform.localRotation = Quaternion.Euler(rotationX, 0f, 0f); // Apply vertical rotation to camera only
     }
 }
+
