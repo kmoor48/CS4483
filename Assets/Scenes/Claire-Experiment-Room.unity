@@ -3761,6 +3761,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   openFolderDisplay: {fileID: 654068143}
   headerText: {fileID: 1267998228}
+  folderContentText: {fileID: 1459769098}
 --- !u!1001 &702291962
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7711,7 +7712,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1459769096}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 2}
+  m_LocalPosition: {x: 0, y: 0, z: 3.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7719,8 +7720,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -36.2, y: -14.4}
-  m_SizeDelta: {x: 540.2, y: 351.1}
+  m_AnchoredPosition: {x: -40.9, y: -23.7}
+  m_SizeDelta: {x: 548, y: 335.3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1459769098
 MonoBehaviour:
