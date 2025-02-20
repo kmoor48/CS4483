@@ -6,6 +6,7 @@ public class ComputerCipherPuzzleScript : MonoBehaviour
     public GameObject openFolderDisplay;
     public TMP_Text headerText;
     public TMP_Text folderContentText;
+    public GameObject LockedFolderInput;
 
     public void OpenFolder(string folderName)
     {
@@ -27,7 +28,10 @@ public class ComputerCipherPuzzleScript : MonoBehaviour
                 "\nWiFi Password: DaRwIn34!" +
                 "\nMother's Name: Lois Konstyl";
         }
-
+        else
+        {
+            LockedFolderInput.SetActive(true);
+        }
 
         openFolderDisplay.SetActive(true);
     }
@@ -36,6 +40,7 @@ public class ComputerCipherPuzzleScript : MonoBehaviour
     {
         folderContentText.text = "";
         headerText.text = "";
+        LockedFolderInput.SetActive(false);
         openFolderDisplay.SetActive(false);
     }
 }
