@@ -6,7 +6,12 @@ public class ComputerCipherPuzzleScript : MonoBehaviour
     public GameObject openFolderDisplay;
     public TMP_Text headerText;
     public TMP_Text folderContentText;
-    public GameObject LockedFolderInput;
+    public GameObject lockedFolderInput;
+    public TMP_InputField folderPasswordInputField;
+    public GameObject incorrectPasswordMsg;
+    public GameObject correctPasswordMsg;
+
+    private string folderPassword = "Konstyl";
 
     public void OpenFolder(string folderName)
     {
@@ -28,9 +33,9 @@ public class ComputerCipherPuzzleScript : MonoBehaviour
                 "\nWiFi Password: DaRwIn34!" +
                 "\nMother's Name: Lois Konstyl";
         }
-        else
+        if (folderName == "Angela Lucy Experiment")
         {
-            LockedFolderInput.SetActive(true);
+            lockedFolderInput.SetActive(true);
         }
 
         openFolderDisplay.SetActive(true);
@@ -40,7 +45,33 @@ public class ComputerCipherPuzzleScript : MonoBehaviour
     {
         folderContentText.text = "";
         headerText.text = "";
-        LockedFolderInput.SetActive(false);
+        lockedFolderInput.SetActive(false);
         openFolderDisplay.SetActive(false);
+    }
+
+    public void CheckFolderPassword()
+    {
+        Debug.Log("Entered Password: "+ folderPasswordInputField.text);
+        if (folderPasswordInputField.text == folderPassword)
+        {
+            lockedFolderInput.SetActive(false);
+            correctPasswordMsg.SetActive(true);
+            Invoke("DeactivateCorrectPasswordMsg", 2f);
+        }
+        else
+        {
+            incorrectPasswordMsg.SetActive(true);
+            Invoke("DeactivateIncorrectPasswordMsg", 2f);
+        }
+    }
+
+    void DeactivateIncorrectPasswordMsg()
+    {
+        incorrectPasswordMsg.SetActive(false);
+    }
+
+    void DeactivateCorrectPasswordMsg()
+    {
+        correctPasswordMsg.SetActive(false);
     }
 }

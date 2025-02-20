@@ -10,6 +10,7 @@ public class LoginPuzzleScript : MonoBehaviour
     public GameObject incorrectPasswordText;
     public GameObject correctPasswordText;
     public GameObject loginPuzzleTextParent;
+    public GameObject computerDesktopScreen;
 
     private string correctValueH = "ippocampus";  // Replace with your expected values
     private string correctValueC = "ortex";
@@ -42,5 +43,6 @@ public class LoginPuzzleScript : MonoBehaviour
     void HideCorrectMsg()
     {
         correctPasswordText.SetActive(false);
+        computerDesktopScreen.SetActive(true);
     }
 }
