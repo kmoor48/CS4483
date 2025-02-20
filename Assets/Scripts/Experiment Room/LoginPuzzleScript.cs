@@ -25,6 +25,7 @@ public class LoginPuzzleScript : MonoBehaviour
         else
         {
             Debug.Log("Incorrect Input!");
+            Debug.Log("H: "+ inputFieldH.text + "C: " + inputFieldC.text + "A: " + inputFieldA.text + "T: " + inputFieldT.text);
         }
     }
 }
