@@ -10,6 +10,7 @@ public class ComputerCipherPuzzleScript : MonoBehaviour
     public TMP_InputField folderPasswordInputField;
     public GameObject incorrectPasswordMsg;
     public GameObject correctPasswordMsg;
+    public GameObject passwordFolder;
 
     private string folderPassword = "Konstyl";
 
@@ -37,6 +38,10 @@ public class ComputerCipherPuzzleScript : MonoBehaviour
         {
             lockedFolderInput.SetActive(true);
         }
+        if (folderName == "Passwords")
+        {
+            folderContentText.text = "Voice Recorder PIN: 49820";
+        }
 
         openFolderDisplay.SetActive(true);
     }
@@ -56,6 +61,7 @@ public class ComputerCipherPuzzleScript : MonoBehaviour
         {
             lockedFolderInput.SetActive(false);
             correctPasswordMsg.SetActive(true);
+            passwordFolder.SetActive(true);
             Invoke("DeactivateCorrectPasswordMsg", 2f);
         }
         else
