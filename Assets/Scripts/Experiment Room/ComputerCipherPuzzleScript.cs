@@ -25,13 +25,13 @@ public class ComputerCipherPuzzleScript : MonoBehaviour
         }
         if (folderName == "Family Info")
         {
-            folderContentText.text = "Date of Birth: September 15th, 1983 " +
-                "\nCity Born in: Columbus Ohio" +
+            folderContentText.text = "Date of Birth: Pbpqembep 15qa, 1983 " +
+                "\nCity Born in: Zlaxytlp Lpkil" +
                 "\nDoctor's Phone Number: 123-583-9013" +
-                "\nDoctor's Address: 580 Cherry Lane" +
-                "\nFather's Name: Jerome Pale " +
-                "\nWiFi Password: DaRwIn34!" +
-                "\nMother's Name: Lois Konstyl";
+                "\nDoctor's Address: 580 Zlooqj Inpk" +
+                "\nFather's Name: Jlomlo Pxbzi " +
+                "\nWiFi Password: AxOqFkp34!" +
+                "\nMother's Name: Iqfp Hplvyqv";
         }
         if (folderName == "Angela Lucy Experiment")
         {
@@ -73,5 +73,15 @@ public class ComputerCipherPuzzleScript : MonoBehaviour
     void DeactivateCorrectPasswordMsg()
     {
         correctPasswordMsg.SetActive(false);
+        folderContentText.text = "Brain_Extraction_Report.pdf" +
+            "\nAngela_PreOp_Notes.txt" +
+            ":\nFailed_Graft_Analysis.docx" +
+            "\nConscious_Transfer_Trial_3.log" +
+            "\nLucy_Final_Words.wav" +
+            "\nNeural_Host_Compatibility.pdf" +
+            "\nCortex_Removal_Procedure.txt" +
+            "\nSubject_042_PostMortem_Report.pdf" +
+            "\nMemory_Wipe_Protocol.docx" +
+            "\nEmergency_Termination_Order.txt";
     }
 }
