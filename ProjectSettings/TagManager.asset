@@ -6,6 +6,7 @@ TagManager:
   tags:
   - ExitDoor
   - EntryDoor
+  - ComputerPuzzleCamera
   layers:
   - Default
   - TransparentFX
