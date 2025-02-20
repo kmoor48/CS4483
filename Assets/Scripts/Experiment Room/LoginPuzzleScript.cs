@@ -8,6 +8,7 @@ public class LoginPuzzleScript : MonoBehaviour
     public TMP_InputField inputFieldA;
     public TMP_InputField inputFieldT;
     public GameObject incorrectPasswordText;
+    public GameObject correctPasswordText;
 
     private string correctValueH = "ippocampus";  // Replace with your expected values
     private string correctValueC = "ortex";
@@ -22,11 +23,11 @@ public class LoginPuzzleScript : MonoBehaviour
             inputFieldT.text == correctValueT)
         {
             Debug.Log("Worked!");
+            correctPasswordText.SetActive(true);
+            Invoke("HideCorrectMsg", 2f);
         }
         else
         {
-            Debug.Log("Incorrect Input!");
-            Debug.Log("H: "+ inputFieldH.text + "C: " + inputFieldC.text + "A: " + inputFieldA.text + "T: " + inputFieldT.text);
             incorrectPasswordText.SetActive(true);
             Invoke("HideIncorrectMsg", 2f);
         }
@@ -35,5 +36,10 @@ public class LoginPuzzleScript : MonoBehaviour
     void HideIncorrectMsg()
     {
         incorrectPasswordText.SetActive(false);
+    }
+
+    void HideCorrectMsg()
+    {
+        correctPasswordText.SetActive(false);
     }
 }
