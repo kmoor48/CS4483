@@ -14,10 +14,10 @@ public class CameraSwitcherPuzzleView : MonoBehaviour
         //puzzleCamera.enabled = false;
 
         //For testing:
-        mainCamera.enabled = false;
-        computerPuzzleCamera.enabled = false;
-        posterPuzzleCamera.enabled = false;
-        recordPlayerPuzzleCamera.enabled = true;
+        //mainCamera.enabled = false;
+        //computerPuzzleCamera.enabled = false;
+        //posterPuzzleCamera.enabled = false;
+        //recordPlayerPuzzleCamera.enabled = true;
     }
 
     public void SwitchToPuzzleCamera(string puzzle)
