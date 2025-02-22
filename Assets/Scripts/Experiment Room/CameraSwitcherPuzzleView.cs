@@ -5,6 +5,7 @@ public class CameraSwitcherPuzzleView : MonoBehaviour
     public Camera mainCamera;
     public Camera computerPuzzleCamera;
     public Camera posterPuzzleCamera;
+    public Camera recordPlayerPuzzleCamera;
 
     void Start()
     {
@@ -13,9 +14,10 @@ public class CameraSwitcherPuzzleView : MonoBehaviour
         //puzzleCamera.enabled = false;
 
         //For testing:
-        //mainCamera.enabled = false;
-        //computerPuzzleCamera.enabled = false;
-        //posterPuzzleCamera.enabled = true;
+        mainCamera.enabled = false;
+        computerPuzzleCamera.enabled = false;
+        posterPuzzleCamera.enabled = false;
+        recordPlayerPuzzleCamera.enabled = true;
     }
 
     public void SwitchToPuzzleCamera(string puzzle)
@@ -26,9 +28,13 @@ public class CameraSwitcherPuzzleView : MonoBehaviour
         {
             computerPuzzleCamera.enabled = true;
         }
-        else
+        if (puzzle == "poster")
         {
             posterPuzzleCamera.enabled = true;
+        }
+        if (puzzle == "record")
+        {
+            recordPlayerPuzzleCamera.enabled = true;
         }
     }
 
@@ -40,9 +46,13 @@ public class CameraSwitcherPuzzleView : MonoBehaviour
         {
             computerPuzzleCamera.enabled = false;
         }
-        else
+        if (puzzle == "poster")
         {
             posterPuzzleCamera.enabled = false;
+        }
+        if (puzzle == "record")
+        {
+            recordPlayerPuzzleCamera.enabled = false;
         }
     }
 }
