@@ -6,6 +6,7 @@ public class PINPuzzleScript : MonoBehaviour
     public GameObject pinPuzzleDisplay;
     public GameObject incorrectPINMsg;
     public GameObject correctPINMsg;
+    public GameObject audioTrackDisplay;
     public TMP_InputField pinInputField;
 
     private string correctPIN = "49820";
@@ -34,5 +35,6 @@ public class PINPuzzleScript : MonoBehaviour
     void DisableCorrectMsg()
     {
         correctPINMsg.SetActive(false);
+        audioTrackDisplay.SetActive(true);
     }
 }
