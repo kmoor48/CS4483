@@ -6,6 +6,7 @@ public class CameraSwitcherPuzzleView : MonoBehaviour
     public Camera computerPuzzleCamera;
     public Camera posterPuzzleCamera;
     public Camera recordPlayerPuzzleCamera;
+    public Camera bloodTestPuzzleCamera;
 
     void Start()
     {
@@ -36,6 +37,10 @@ public class CameraSwitcherPuzzleView : MonoBehaviour
         {
             recordPlayerPuzzleCamera.enabled = true;
         }
+        if (puzzle == "blood")
+        {
+            bloodTestPuzzleCamera.enabled = true;
+        }
     }
 
     public void SwitchToMainCamera(string puzzle)
@@ -53,6 +58,10 @@ public class CameraSwitcherPuzzleView : MonoBehaviour
         if (puzzle == "record")
         {
             recordPlayerPuzzleCamera.enabled = false;
+        }
+        if (puzzle == "blood")
+        {
+            bloodTestPuzzleCamera.enabled = false;
         }
     }
 }
