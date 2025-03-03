@@ -7,6 +7,8 @@ TagManager:
   - ExitDoor
   - EntryDoor
   - ComputerPuzzleCamera
+  - BloodFilledDropper
+  - EmptyDropper
   layers:
   - Default
   - TransparentFX

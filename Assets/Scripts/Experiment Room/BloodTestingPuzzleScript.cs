@@ -2,11 +2,17 @@ using UnityEngine;
 
 public class BloodTestingPuzzleScript : MonoBehaviour
 {
+    // For changing the magnified blood sample display
     public GameObject magnifiedDisplay;
     public GameObject sampleA;
     public GameObject sampleB;
     public GameObject sampleC;
     public GameObject sampleD;
+
+    // For dropper changing
+    public Material bloodMaterial;
+    public Material glassMaterial;
+    public GameObject glassDroper;
 
 
     public void TriggerFunction(string gameObjectName)
