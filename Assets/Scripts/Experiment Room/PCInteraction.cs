@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PCInteraction : MonoBehaviour
 {
-    public float interactionDistance = 3f; // Adjust this based on your scene
+    /*public float interactionDistance = 3f; // Adjust this based on your scene
     public LayerMask interactableLayer;
 
     void Update()
@@ -33,5 +33,5 @@ public class PCInteraction : MonoBehaviour
     {
         Debug.Log("Opening Computer Puzzle...");
         // Add logic to transition to 2D puzzle view
-    }
+    }*/
 }
