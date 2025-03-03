@@ -5,6 +5,7 @@ public class Draggable3D : MonoBehaviour
     private bool isDragging = false;
     private Vector3 offset;
     public Camera dragCamera;
+    public GameObject logicHandler;
 
     void Start()
     {
@@ -42,5 +43,15 @@ public class Draggable3D : MonoBehaviour
         Vector3 mousePos = Input.mousePosition;
         mousePos.z = dragCamera.WorldToScreenPoint(transform.position).z; // Keep depth consistent
         return dragCamera.ScreenToWorldPoint(mousePos);
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.name == "glass")
+        {
+            // Calling the function in the puzzle logic handler script to open up the magnified view
+            BloodTestingPuzzleScript scriptWithFunction = logicHandler.GetComponent<BloodTestingPuzzleScript>();
+            scriptWithFunction.TriggerFunction(gameObject.name);
+        }
     }
 }
