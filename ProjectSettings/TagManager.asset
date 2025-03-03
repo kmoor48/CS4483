@@ -9,6 +9,7 @@ TagManager:
   - ComputerPuzzleCamera
   - BloodFilledDropper
   - EmptyDropper
+  - InventoryBox
   layers:
   - Default
   - TransparentFX
