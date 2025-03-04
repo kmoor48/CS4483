@@ -1,36 +1,46 @@
-//using UnityEngine;
-
-//public class ItemPickup : MonoBehaviour
-//{
-//    public string itemName;
-
-//    void OnTriggerEnter(Collider other)
-//    {
-//        if (other.CompareTag("Player"))
-//        {
-//            Debug.Log("Picked up " + itemName);
-//            InventoryManager.Instance.AddItem(itemName);
-//            Destroy(gameObject);
-//        }
-//    }
-//}
-
 using UnityEngine;
 
 public class PickupItem : MonoBehaviour
 {
-    public string itemName; // Set this to "Foundation Powder" in the Inspector
+    public string itemName; 
+    public GameObject openText; 
+
+    private bool playerInRange = false; 
+
+    void Start()
+    {
+        openText.SetActive(false); 
+    }
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player")) // Ensure the player picks up the item
+        if (other.CompareTag("Player"))
+        {
+            openText.SetActive(true); // Show "Pick up object?" when near
+            playerInRange = true;
+        }
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            openText.SetActive(false); // Hide the text when player moves away
+            playerInRange = false;
+        }
+    }
+
+    void Update()
+    {
+        if (playerInRange && Input.GetKeyDown(KeyCode.E)) // Pickup when pressing "E"
         {
             Debug.Log(itemName + " picked up!");
 
             // Add the item to the inventory
             InventoryManager.Instance.AddItem(itemName);
 
-            // Destroy the item from the scene after pickup
+            // Hide the text and remove the object
+            openText.SetActive(false);
             Destroy(gameObject);
         }
     }

@@ -1,11 +1,14 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class InventoryManager : MonoBehaviour
 {
     public static InventoryManager Instance { get; private set; }
 
     private HashSet<string> inventory = new HashSet<string>();
+
 
     void Awake()
     {
@@ -18,6 +21,7 @@ public class InventoryManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
 
     public void AddItem(string itemName)
     {
