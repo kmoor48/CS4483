@@ -11709,7 +11709,7 @@ Camera:
     m_Bits: 96
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
-  m_TargetDisplay: 0
+  m_TargetDisplay: 4
   m_TargetEye: 3
   m_HDR: 1
   m_AllowMSAA: 1
@@ -29640,7 +29640,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.3472058, y: 0.62525904}
   m_AnchorMax: {x: 0.55981183, y: 0.74200004}
-  m_AnchoredPosition: {x: -5.899994, y: 5.699997}
+  m_AnchoredPosition: {x: -5.899994, y: 5.6999817}
   m_SizeDelta: {x: 13.4, y: 11}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2039692256
