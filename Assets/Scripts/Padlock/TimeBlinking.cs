@@ -1,6 +1,4 @@
-﻿// Script by Marcelli Michele
-
-using UnityEngine;
+﻿using UnityEngine;
 
 public class TimeBlinking : MonoBehaviour
 {
