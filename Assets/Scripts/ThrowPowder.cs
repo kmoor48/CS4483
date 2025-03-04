@@ -18,11 +18,11 @@ public class ThrowPowder : MonoBehaviour
 
             if (distance <= throwDistance)
             {
-                if (InventoryManager.Instance.HasItem("Foundation_Powder"))
+                if (true/*InventoryManager.Instance.HasItem("Foundation_Powder")*/)
                 {
                     Debug.Log("Throwing Powder...");
-                    InventoryManager.Instance.RemoveItem("Foundation_Powder");
-                    InventoryManager.Instance.AddItem("Powder Used");
+                    //InventoryManager.Instance.RemoveItem("Foundation_Powder");
+                    //InventoryManager.Instance.AddItem("Powder Used");
                     messageOnWall.SetActive(true);
                 }
                 else

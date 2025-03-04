@@ -10,6 +10,9 @@ TagManager:
   - BloodFilledDropper
   - EmptyDropper
   - InventoryBox
+  - Interactable
+  - PlayerPromptText
+  - UniversalLogicHandler
   layers:
   - Default
   - TransparentFX
