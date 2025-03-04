@@ -1,11 +1,5 @@
 using System.Collections.Generic;
-<<<<<<< HEAD
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.InputSystem;
-=======
-using UnityEngine;
->>>>>>> 8275135 (add puzzle with foundation and text)
 
 public class InventoryManager : MonoBehaviour
 {
@@ -13,10 +7,6 @@ public class InventoryManager : MonoBehaviour
 
     private HashSet<string> inventory = new HashSet<string>();
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 8275135 (add puzzle with foundation and text)
     void Awake()
     {
         if (Instance == null)
@@ -29,10 +19,6 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 8275135 (add puzzle with foundation and text)
     public void AddItem(string itemName)
     {
         inventory.Add(itemName);
