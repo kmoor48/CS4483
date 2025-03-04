@@ -4,23 +4,26 @@ public class InventoryBar : MonoBehaviour
 {
     public GameObject inventoryBar;
 
-    private GameObject[] inventorySlots; // References to the item slots themselves
+    private GameObject[] inventorySlots;
     private int[] itemCounts; // Item counts corresponding to slots
 
     void Start()
     {
-        inventorySlots = GameObject.FindGameObjectsWithTag("InventoryBox");
-        
-        itemCounts = new int[inventorySlots.Length];
-        for (int i = 0; i < itemCounts.Length; i++)
+        int childCount = inventoryBar.transform.childCount; // Get the number of children
+        inventorySlots = new GameObject[childCount];
+        int i = 0;
+
+        foreach (Transform slot in inventoryBar.transform)
         {
-            itemCounts[i] = 0; // Initialize all slots as empty
+            inventorySlots[i] = slot.gameObject;
+            i++;
         }
     }
 
     public void AddItem()
     {
         Debug.Log("Add an item to the inventory");
+
     }
 
     public void RemoveItem()
