@@ -1,6 +1,7 @@
 using UnityEngine;
 using System;
 using UnityEngine.UI;
+using TMPro;
 
 public class InventoryBar : MonoBehaviour
 {
@@ -26,9 +27,6 @@ public class InventoryBar : MonoBehaviour
 
     public void AddItem(GameObject item, string passedInItemName, Sprite image)
     {
-        Debug.Log("Add an item to the inventory");
-        Debug.Log(item);
-
         // Check to find first open slot
         int index = Array.IndexOf(itemCounts, 0);
 
@@ -39,7 +37,6 @@ public class InventoryBar : MonoBehaviour
         }
         else
         {
-            Debug.Log("Adding at index: " + index);
             GameObject openSlot = inventorySlots[index];
 
             // Ensure the slot has a child (The image component)
@@ -58,6 +55,18 @@ public class InventoryBar : MonoBehaviour
                 currentColor.a = 1.0f; // Set the new alpha value while preserving the current RGB values
                 imageComponent.color = currentColor; // Apply the new color with the modified alpha
 
+                // Update the item's label aka text component 
+                Transform itemLabelContainer = openSlot.transform.GetChild(1); // Retrieve the image child object
+                Transform itemLabelText = itemLabelContainer.transform.GetChild(0);
+                TextMeshProUGUI itemText = itemLabelText.GetComponent<TextMeshProUGUI>(); // Get the TextMeshProUGUI component
+                if (itemText != null)
+                {
+                    itemText.text = passedInItemName; // Change the text
+                }
+                else
+                {
+                    Debug.LogError("TextMeshProUGUI component not found on the item label!");
+                }
             }
             else
             {
