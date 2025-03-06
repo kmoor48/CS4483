@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class CameraSwitcherPuzzleView : MonoBehaviour
 {
-    public Camera mainCamera;
+    public Camera playerCamera;
     public Camera computerPuzzleCamera;
     public Camera posterPuzzleCamera;
     public Camera recordPlayerPuzzleCamera;
@@ -11,11 +11,14 @@ public class CameraSwitcherPuzzleView : MonoBehaviour
     void Start()
     {
         // Ensure only the main camera is active at the start
-        //mainCamera.enabled = true;
-        //puzzleCamera.enabled = false;
+        playerCamera.enabled = true;
+        computerPuzzleCamera.enabled = false;
+        posterPuzzleCamera.enabled = false;
+        recordPlayerPuzzleCamera.enabled = false;
+        bloodTestPuzzleCamera.enabled = false;
 
         //For testing:
-        //mainCamera.enabled = false;
+        //playerCamera.enabled = false;
         //computerPuzzleCamera.enabled = false;
         //posterPuzzleCamera.enabled = false;
         //recordPlayerPuzzleCamera.enabled = true;
@@ -23,7 +26,7 @@ public class CameraSwitcherPuzzleView : MonoBehaviour
 
     public void SwitchToPuzzleCamera(string puzzle)
     {
-        mainCamera.enabled = false;
+        playerCamera.enabled = false;
 
         if (puzzle == "computer")
         {
@@ -45,7 +48,7 @@ public class CameraSwitcherPuzzleView : MonoBehaviour
 
     public void SwitchToMainCamera(string puzzle)
     {
-        mainCamera.enabled = true;
+        playerCamera.enabled = true;
 
         if (puzzle == "computer")
         {
