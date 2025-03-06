@@ -9,15 +9,26 @@ public class PickupItem : MonoBehaviour
 
     void Start()
     {
-        openText.SetActive(false);
+        if (openText != null)
+        {
+            openText.SetActive(false);
+        }
+        else
+        {
+            Debug.LogWarning("openText is not assigned in the Inspector.");
+        }
     }
 
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            openText.SetActive(true);
+            if (openText != null)
+            {
+                openText.SetActive(true);
+            }
             playerInRange = true;
+            Debug.Log("Player entered pickup range of " + itemName);
         }
     }
 
@@ -25,8 +36,12 @@ public class PickupItem : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            openText.SetActive(false);
+            if (openText != null)
+            {
+                openText.SetActive(false);
+            }
             playerInRange = false;
+            Debug.Log("Player left pickup range of " + itemName);
         }
     }
 
@@ -34,13 +49,23 @@ public class PickupItem : MonoBehaviour
     {
         if (playerInRange && Input.GetKeyDown(KeyCode.E))
         {
-            Debug.Log(itemName + " picked up!");
+            Debug.Log("E key pressed! Attempting to pick up: " + itemName);
 
-            InventoryManager.Instance.AddItem(itemName);
+            if (InventoryManager.Instance != null)
+            {
+                InventoryManager.Instance.AddItem(itemName);
+            }
+            else
+            {
+                Debug.LogError("InventoryManager.Instance is NULL! Ensure the InventoryManager is in the scene.");
+            }
 
-            openText.SetActive(false);
+            if (openText != null)
+            {
+                openText.SetActive(false);
+            }
+
             Destroy(gameObject);
         }
     }
 }
-
