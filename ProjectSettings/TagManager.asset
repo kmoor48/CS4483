@@ -13,6 +13,9 @@ TagManager:
   - Interactable
   - PlayerPromptText
   - UniversalLogicHandler
+  - Lock
+  - Drawer
+  - Reach
   layers:
   - Default
   - TransparentFX
@@ -21,6 +24,7 @@ TagManager:
   - Water
   - UI
   - Interactable Elements
+  - Ground
   - 
   - 
   - 
