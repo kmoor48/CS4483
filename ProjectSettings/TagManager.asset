@@ -4,6 +4,15 @@
 TagManager:
   serializedVersion: 3
   tags:
+  - ExitDoor
+  - EntryDoor
+  - ComputerPuzzleCamera
+  - BloodFilledDropper
+  - EmptyDropper
+  - InventoryBox
+  - Interactable
+  - PlayerPromptText
+  - UniversalLogicHandler
   - Lock
   - Drawer
   - Reach
@@ -14,6 +23,7 @@ TagManager:
   - 
   - Water
   - UI
+  - Interactable Elements
   - Ground
   - 
   - 
@@ -43,6 +53,12 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Background Objects
+    uniqueID: 3023381417
+    locked: 0
+  - name: Interactable Elements
+    uniqueID: 2020807655
     locked: 0
   m_RenderingLayers:
   - Default

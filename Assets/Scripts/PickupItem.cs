@@ -2,33 +2,34 @@ using UnityEngine;
 
 public class PickupItem : MonoBehaviour
 {
-    public string itemName;
+    public string itemName; 
     public GameObject openText;
+    public Sprite image; // The associated png image of the object that will be displayed in the inventory bar
 
+    private InventoryBar inventoryScript;
     private bool playerInRange = false;
+    private GameObject universalLogicHandler;
 
     void Start()
     {
-        if (openText != null)
+        openText.SetActive(false);
+        universalLogicHandler = GameObject.FindWithTag("UniversalLogicHandler");
+
+        if (universalLogicHandler == null)
         {
-            openText.SetActive(false);
+            Debug.LogError("No GameObject with tag of UniversalLogicHandler");
         }
-        else
-        {
-            Debug.LogWarning("openText is not assigned in the Inspector.");
-        }
+
+        // Get the inventory bar script from the logic handler game object 
+        inventoryScript = universalLogicHandler.GetComponent<InventoryBar>();
     }
 
     void OnTriggerEnter(Collider other)
-    {
+    { 
         if (other.CompareTag("Player"))
         {
-            if (openText != null)
-            {
-                openText.SetActive(true);
-            }
+            openText.SetActive(true); // Show "Pick up object?" when near
             playerInRange = true;
-            Debug.Log("Player entered pickup range of " + itemName);
         }
     }
 
@@ -36,36 +37,33 @@ public class PickupItem : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            if (openText != null)
-            {
-                openText.SetActive(false);
-            }
+            openText.SetActive(false); // Hide the text when player moves away
             playerInRange = false;
-            Debug.Log("Player left pickup range of " + itemName);
         }
     }
 
     void Update()
     {
-        if (playerInRange && Input.GetKeyDown(KeyCode.E))
+        if (playerInRange && Input.GetKeyDown(KeyCode.E)) // Pickup when pressing "E"
         {
-            Debug.Log("E key pressed! Attempting to pick up: " + itemName);
+            Debug.Log(itemName + " picked up!");
 
-            if (InventoryManager.Instance != null)
+            if (inventoryScript != null)
             {
-                InventoryManager.Instance.AddItem(itemName);
+                // Add the item to the inventory
+                inventoryScript.AddItem(gameObject, itemName, image);
+
+                // Hide the text and remove the object
+                openText.SetActive(false);
+                Destroy(gameObject);
             }
             else
             {
-                Debug.LogError("InventoryManager.Instance is NULL! Ensure the InventoryManager is in the scene.");
+                Debug.LogError("No Inventory Bar script is attached to the main logic handler");
             }
-
-            if (openText != null)
-            {
-                openText.SetActive(false);
-            }
-
-            Destroy(gameObject);
         }
     }
 }
+
+
+
