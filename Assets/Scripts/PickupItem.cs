@@ -16,7 +16,7 @@ public class PickupItem : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            openText.SetActive(true); // Show "Pick up object?" when near
+            openText.SetActive(true); 
             playerInRange = true;
         }
     }
@@ -25,21 +25,19 @@ public class PickupItem : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            openText.SetActive(false); // Hide the text when player moves away
+            openText.SetActive(false); 
             playerInRange = false;
         }
     }
 
     void Update()
     {
-        if (playerInRange && Input.GetKeyDown(KeyCode.E)) // Pickup when pressing "E"
+        if (playerInRange && Input.GetKeyDown(KeyCode.E)) 
         {
             Debug.Log(itemName + " picked up!");
 
-            // Add the item to the inventory
             InventoryManager.Instance.AddItem(itemName);
 
-            // Hide the text and remove the object
             openText.SetActive(false);
             Destroy(gameObject);
         }
