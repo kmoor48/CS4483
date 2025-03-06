@@ -2,21 +2,21 @@ using UnityEngine;
 
 public class PickupItem : MonoBehaviour
 {
-    public string itemName; 
-    public GameObject openText; 
+    public string itemName;
+    public GameObject openText;
 
-    private bool playerInRange = false; 
+    private bool playerInRange = false;
 
     void Start()
     {
-        openText.SetActive(false); 
+        openText.SetActive(false);
     }
 
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            openText.SetActive(true); 
+            openText.SetActive(true);
             playerInRange = true;
         }
     }
@@ -25,14 +25,14 @@ public class PickupItem : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            openText.SetActive(false); 
+            openText.SetActive(false);
             playerInRange = false;
         }
     }
 
     void Update()
     {
-        if (playerInRange && Input.GetKeyDown(KeyCode.E)) 
+        if (playerInRange && Input.GetKeyDown(KeyCode.E))
         {
             Debug.Log(itemName + " picked up!");
 
@@ -43,6 +43,4 @@ public class PickupItem : MonoBehaviour
         }
     }
 }
-
-
 
