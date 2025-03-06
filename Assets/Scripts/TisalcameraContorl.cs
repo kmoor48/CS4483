@@ -1,26 +1,50 @@
 using UnityEngine;
+using UnityEngine.UI;
 
-public class CameraRotation : MonoBehaviour
+public class BookshelfInteraction : MonoBehaviour
 {
-    public float rotationSpeed = 5f; // Speed of camera rotation
-    private float yaw = 0f; // Horizontal rotation
-    private float pitch = 0f; // Vertical rotation
+    public Camera puzzleCamera; // Assign a separate puzzle camera in the Inspector
+    public Camera playerCamera;
+    public GameObject puzzleUI; // UI with book dragging elements
+    private bool isNearBookshelf = false;
 
-    // Update is called once per frame
     void Update()
     {
-        // Get mouse input
-        float mouseX = Input.GetAxis("Mouse X");
-        float mouseY = Input.GetAxis("Mouse Y");
+        if (isNearBookshelf && Input.GetKeyDown(KeyCode.E))
+        {
+            EnterPuzzleMode();
+        }
+    }
 
-        // Adjust yaw and pitch based on mouse movement
-        yaw += mouseX * rotationSpeed;
-        pitch -= mouseY * rotationSpeed;
+    void EnterPuzzleMode()
+    {
+        playerCamera.gameObject.SetActive(false);
+        puzzleCamera.gameObject.SetActive(true);
+        puzzleUI.SetActive(true);
+    }
 
-        // Clamp pitch to prevent excessive rotation (optional)
-        pitch = Mathf.Clamp(pitch, -90f, 90f);
+    void ExitPuzzleMode()
+    {
+        playerCamera.gameObject.SetActive(true);
+        puzzleCamera.gameObject.SetActive(false);
+        puzzleUI.SetActive(false);
+    }
 
-        // Apply the rotation to the camera
-        transform.eulerAngles = new Vector3(pitch, yaw, 0f);
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            isNearBookshelf = true;
+            // Show UI prompt
+        }
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            isNearBookshelf = false;
+            // Hide UI prompt
+        }
     }
 }
