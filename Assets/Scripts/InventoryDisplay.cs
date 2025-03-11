@@ -4,26 +4,25 @@ using TMPro;
 
 public class InventoryDisplay : MonoBehaviour
 {
-    public GameObject inventoryBar; // Reference to the inventory bar UI
-    public GameObject itemDisplayPanel; // Reference to the panel for displaying the selected item
-    public Image itemDisplayImage; // Reference to the Image component for displaying the item's sprite
-    public TextMeshProUGUI itemDisplayText; // Reference to the TextMeshProUGUI for displaying the item's name
-    public Transform playerHand; // Reference to the player's hand transform where the item will be placed
+    public GameObject inventoryBar; 
+    public GameObject itemDisplayPanel; 
+    public Image itemDisplayImage; 
+    public TextMeshProUGUI itemDisplayText; 
+    public Transform playerHand;
 
-    private bool isInventoryOpen = false; // Track whether the inventory is open
-    private int selectedSlotIndex = -1; // Track which slot is selected
+    private bool isInventoryOpen = false;
+    private int selectedSlotIndex = -1;
 
     private void Start()
     {
         if (itemDisplayPanel != null)
         {
-            itemDisplayPanel.SetActive(false); // Ensure the display panel is hidden at the start
+            itemDisplayPanel.SetActive(false);
         }
     }
 
     private void Update()
     {
-        // Check for number key presses (1-9) to select an inventory slot
         for (int i = 0; i < 9; i++)
         {
             if (Input.GetKeyDown(KeyCode.Alpha1 + i))
@@ -32,19 +31,16 @@ public class InventoryDisplay : MonoBehaviour
             }
         }
 
-        // Remove item and add it to player's hand when 'T' is pressed
         if (Input.GetKeyDown(KeyCode.T))
         {
             RemoveItemFromInventory();
         }
 
-        // Hide the display when 'Esc' is pressed
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             HideItemDisplay();
         }
 
-        // Freeze/unfreeze the game based on inventory state
         if (isInventoryOpen)
         {
             FreezeGame();
@@ -55,7 +51,6 @@ public class InventoryDisplay : MonoBehaviour
         }
     }
 
-    // Function to display the selected item
     private void DisplayItem(int slotIndex)
     {
         if (inventoryBar != null && slotIndex >= 0 && slotIndex < inventoryBar.transform.childCount)
@@ -64,8 +59,8 @@ public class InventoryDisplay : MonoBehaviour
 
             if (slot.childCount > 0)
             {
-                Transform imageTransform = slot.GetChild(0); // Get item image
-                Transform textTransform = slot.GetChild(1); // Get item name
+                Transform imageTransform = slot.GetChild(0); 
+                Transform textTransform = slot.GetChild(1); 
 
                 if (imageTransform != null && textTransform != null)
                 {
@@ -90,7 +85,7 @@ public class InventoryDisplay : MonoBehaviour
                             itemDisplayPanel.SetActive(true);
                         }
 
-                        selectedSlotIndex = slotIndex; // Store selected slot index
+                        selectedSlotIndex = slotIndex;
                         isInventoryOpen = true;
                     }
                 }
@@ -101,35 +96,30 @@ public class InventoryDisplay : MonoBehaviour
 
     private void RemoveItemFromInventory()
     {
-        if (selectedSlotIndex == -1) return; // No item selected
+        if (selectedSlotIndex == -1) return; 
 
         Transform selectedSlot = inventoryBar.transform.GetChild(selectedSlotIndex);
 
         if (selectedSlot.childCount > 0)
         {
-            Transform imageTransform = selectedSlot.GetChild(0); // Get item image
-            Transform textTransform = selectedSlot.GetChild(1); // Get item name
+            Transform imageTransform = selectedSlot.GetChild(0);
+            Transform textTransform = selectedSlot.GetChild(1); 
 
             string itemName = textTransform.GetComponentInChildren<TextMeshProUGUI>().text;
             Sprite itemSprite = imageTransform.GetComponent<Image>().sprite;
 
-            // Remove the item from the inventory UI
             Destroy(imageTransform.gameObject);
             Destroy(textTransform.gameObject);
 
-            // Load item prefab from Resources/Items folder
-            GameObject itemPrefab = Resources.Load<GameObject>("Items/" + itemName); // Ensure prefab exists in Resources/Items folder
+            GameObject itemPrefab = Resources.Load<GameObject>("Items/" + itemName);
             if (itemPrefab != null)
             {
-                // Instantiate the item at the player's hand position
                 GameObject newItem = Instantiate(itemPrefab, playerHand.position, Quaternion.identity);
 
-                // Attach to the player's hand
                 newItem.transform.SetParent(playerHand);
 
-                // Adjust the scale based on the hand's scale or set a fixed scale
-                newItem.transform.localScale = playerHand.localScale * 0.2f;  // Scale down if hand is larger
-                Vector3 offset = new Vector3(0.05f, 0.2f, 0.2f);  // Adjust the offset values as needed
+                newItem.transform.localScale = playerHand.localScale * 0.2f; 
+                Vector3 offset = new Vector3(0.005f, 0.2f, 0.2f); 
                 newItem.transform.localPosition += offset;
 
             }
@@ -138,13 +128,12 @@ public class InventoryDisplay : MonoBehaviour
                 Debug.LogError("Item prefab not found in Resources/Items: " + itemName);
             }
 
-            selectedSlotIndex = -1; // Reset selected slot
-            HideItemDisplay(); // Close inventory display
+            selectedSlotIndex = -1;
+            HideItemDisplay();
         }
     }
 
 
-    // Function to hide the item display
     private void HideItemDisplay()
     {
         if (itemDisplayPanel != null)
@@ -166,7 +155,6 @@ public class InventoryDisplay : MonoBehaviour
         isInventoryOpen = false;
     }
 
-    // Function to freeze the game
     private void FreezeGame()
     {
         Time.timeScale = 0;
@@ -177,7 +165,6 @@ public class InventoryDisplay : MonoBehaviour
         }
     }
 
-    // Function to unfreeze the game
     private void UnfreezeGame()
     {
         Time.timeScale = 1;
