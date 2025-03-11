@@ -13,26 +13,25 @@ public class InventoryDisplay : MonoBehaviour
 
     private void Start()
     {
-        // Ensure the display panel is hidden at the start
         if (itemDisplayPanel != null)
         {
-            itemDisplayPanel.SetActive(false);
+            itemDisplayPanel.SetActive(false); // Ensure the display panel is hidden at the start
         }
     }
 
     private void Update()
     {
-        // Check for number key presses (1-9)
+        // Check for number key presses (1-9) to select an inventory slot
         for (int i = 0; i < 9; i++)
         {
-            if (Input.GetKeyDown(KeyCode.Alpha1 + i)) // Alpha1 is the key for '1'
+            if (Input.GetKeyDown(KeyCode.Alpha1 + i))
             {
                 DisplayItem(i);
             }
         }
 
-        // Check for Esc key to hide the display
-        if (Input.GetKeyDown(KeyCode.Escape))
+        // Hide the display when 'Esc' or 'T' is pressed
+        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.T))
         {
             HideItemDisplay();
         }
@@ -51,32 +50,26 @@ public class InventoryDisplay : MonoBehaviour
     // Function to display the selected item
     private void DisplayItem(int slotIndex)
     {
-        // Check if the slot index is valid
         if (inventoryBar != null && slotIndex >= 0 && slotIndex < inventoryBar.transform.childCount)
         {
-            // Get the slot at the specified index
             Transform slot = inventoryBar.transform.GetChild(slotIndex);
 
-            // Check if the slot has an item (has at least one child)
             if (slot.childCount > 0)
             {
-                // Get the item's sprite and name from the slot
-                Transform imageTransform = slot.GetChild(0); // Assuming the image is the first child
-                Transform textTransform = slot.GetChild(1); // Assuming the text is the second child
+                Transform imageTransform = slot.GetChild(0); // Get item image
+                Transform textTransform = slot.GetChild(1); // Get item name
 
                 if (imageTransform != null && textTransform != null)
                 {
-                    // Get the Image and TextMeshProUGUI components
                     Image itemImage = imageTransform.GetComponent<Image>();
                     TextMeshProUGUI itemText = textTransform.GetComponentInChildren<TextMeshProUGUI>();
 
                     if (itemImage != null && itemText != null)
                     {
-                        // Update the display panel with the item's sprite and name
                         if (itemDisplayImage != null)
                         {
-                            itemDisplayImage.sprite = itemImage.sprite; // Set the sprite
-                            itemDisplayImage.enabled = true; // Ensure the image is visible
+                            itemDisplayImage.sprite = itemImage.sprite;
+                            itemDisplayImage.enabled = true;
                         }
 
                         if (itemDisplayText != null)
@@ -84,13 +77,11 @@ public class InventoryDisplay : MonoBehaviour
                             itemDisplayText.text = itemText.text;
                         }
 
-                        // Show the display panel
                         if (itemDisplayPanel != null)
                         {
                             itemDisplayPanel.SetActive(true);
                         }
 
-                        // Set inventory state to open
                         isInventoryOpen = true;
                     }
                 }
@@ -101,13 +92,11 @@ public class InventoryDisplay : MonoBehaviour
     // Function to hide the item display
     private void HideItemDisplay()
     {
-        // Hide the display panel
         if (itemDisplayPanel != null)
         {
             itemDisplayPanel.SetActive(false);
         }
 
-        // Optionally, clear the image and text
         if (itemDisplayImage != null)
         {
             itemDisplayImage.enabled = false;
@@ -118,17 +107,13 @@ public class InventoryDisplay : MonoBehaviour
             itemDisplayText.text = "";
         }
 
-        // Set inventory state to closed
         isInventoryOpen = false;
     }
 
     // Function to freeze the game
     private void FreezeGame()
     {
-        // Stop time (freeze animations, physics, etc.)
         Time.timeScale = 0;
-
-        // Disable player movement (assuming you have a PlayerController script)
         PlayerController playerController = FindObjectOfType<PlayerController>();
         if (playerController != null)
         {
@@ -139,10 +124,7 @@ public class InventoryDisplay : MonoBehaviour
     // Function to unfreeze the game
     private void UnfreezeGame()
     {
-        // Resume time
         Time.timeScale = 1;
-
-        // Enable player movement
         PlayerController playerController = FindObjectOfType<PlayerController>();
         if (playerController != null)
         {
