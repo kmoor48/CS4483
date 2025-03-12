@@ -16,6 +16,7 @@ TagManager:
   - Lock
   - Drawer
   - Reach
+  - Book
   layers:
   - Default
   - TransparentFX
@@ -25,8 +26,7 @@ TagManager:
   - UI
   - Interactable Elements
   - Ground
-  - 
-  - 
+  - Book
   - 
   - 
   - 
