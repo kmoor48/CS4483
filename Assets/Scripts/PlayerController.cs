@@ -51,4 +51,6 @@ public class PlayerController : MonoBehaviour
         rotationX = Mathf.Clamp(rotationX, -90f, 90f); // Limit vertical rotation
         playerCamera.transform.localRotation = Quaternion.Euler(rotationX, 0f, 0f);
     }
+
+
 }
