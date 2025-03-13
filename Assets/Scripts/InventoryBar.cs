@@ -6,9 +6,10 @@ using TMPro;
 public class InventoryBar : MonoBehaviour
 {
     public GameObject inventoryBar;
-    private GameObject[] inventorySlots;
+
+    private GameObject[] inventorySlots; // Array referencing the gameobjects for each slot on the inventory bar
     private string[] itemNames;
-    private int[] itemCounts;
+    private int[] itemCounts; // Tracks what items slots are currently full (=1) and empty (=0)
 
     private int selectedSlot = -1; // Tracks the currently selected slot
 
@@ -38,7 +39,7 @@ public class InventoryBar : MonoBehaviour
 
         GameObject openSlot = inventorySlots[index];
         itemNames[index] = passedInItemName;
-        itemCounts[index] = 1;
+        itemCounts[index] = 1; // Marking the item as full
 
         if (openSlot.transform.childCount > 0)
         {
@@ -93,18 +94,20 @@ public class InventoryBar : MonoBehaviour
         }
 
         // Remove item only if a slot is selected and 'T' is pressed
-        if (selectedSlot != -1 && Input.GetKeyDown(KeyCode.T))
+        /*if (selectedSlot != -1 && Input.GetKeyDown(KeyCode.T))
         {
             if (itemNames[selectedSlot] != null)
             {
+                Debug.Log("clearing inventory");
                 RemoveItem(itemNames[selectedSlot]);
+                itemCounts[selectedSlot] = 0; // Mark the inventory slot as empty again
                 selectedSlot = -1; // Reset selection after removal
             }
             else
             {
                 Debug.Log("No item in the selected slot.");
             }
-        }
+        }*/
     }
 }
 

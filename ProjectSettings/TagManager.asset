@@ -17,6 +17,7 @@ TagManager:
   - Drawer
   - Reach
   - Wall
+  - HUD
   layers:
   - Default
   - TransparentFX
@@ -27,6 +28,7 @@ TagManager:
   - Interactable Elements
   - Ground
   - Book
+  - 
   - 
   - 
   - 
