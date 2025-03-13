@@ -6,110 +6,105 @@ using TMPro;
 public class InventoryBar : MonoBehaviour
 {
     public GameObject inventoryBar;
-
     private GameObject[] inventorySlots;
-    private int[] itemCounts; // Boolean array of whether the slots are filled or not
+    private string[] itemNames;
+    private int[] itemCounts;
+
+    private int selectedSlot = -1; // Tracks the currently selected slot
 
     void Start()
     {
-        int childCount = inventoryBar.transform.childCount; // Get the number of children
+        int childCount = inventoryBar.transform.childCount;
         inventorySlots = new GameObject[childCount];
+        itemNames = new string[childCount];
         itemCounts = new int[childCount];
-        int i = 0;
 
-        foreach (Transform slot in inventoryBar.transform)
+        for (int i = 0; i < childCount; i++)
         {
-            inventorySlots[i] = slot.gameObject;
-            itemCounts[i] = 0; // Setting it's slot to empty
-            i++;
+            inventorySlots[i] = inventoryBar.transform.GetChild(i).gameObject;
+            itemNames[i] = null;
+            itemCounts[i] = 0;
         }
     }
 
     public void AddItem(GameObject item, string passedInItemName, Sprite image)
     {
-        // Check to find the first open slot
         int index = Array.IndexOf(itemCounts, 0);
-
-        // Check to see if inventory is full
         if (index == -1)
         {
             Debug.LogError("Inventory is Full!");
+            return;
         }
-        else
+
+        GameObject openSlot = inventorySlots[index];
+        itemNames[index] = passedInItemName;
+        itemCounts[index] = 1;
+
+        if (openSlot.transform.childCount > 0)
         {
-            GameObject openSlot = inventorySlots[index];
+            Transform imageTransform = openSlot.transform.GetChild(0);
+            Image imageComponent = imageTransform.GetComponent<Image>();
+            imageComponent.sprite = image;
+            imageComponent.color = new Color(1, 1, 1, 1);
 
-            // Ensure the slot is empty (no image or label component)
-            if (openSlot.transform.childCount == 0)
+            Transform textTransform = openSlot.transform.GetChild(1).GetChild(0);
+            TextMeshProUGUI itemText = textTransform.GetComponent<TextMeshProUGUI>();
+            itemText.text = passedInItemName;
+        }
+    }
+
+    public bool HasItem(string itemName)
+    {
+        return Array.Exists(itemNames, item => item == itemName);
+    }
+
+    public void RemoveItem(string itemName)
+    {
+        int index = Array.IndexOf(itemNames, itemName);
+        if (index != -1)
+        {
+            itemNames[index] = null;
+            itemCounts[index] = 0;
+
+            GameObject slot = inventorySlots[index];
+            Transform imageTransform = slot.transform.GetChild(0);
+            Image imageComponent = imageTransform.GetComponent<Image>();
+            imageComponent.sprite = null;
+            imageComponent.color = new Color(1, 1, 1, 0);
+
+            Transform textTransform = slot.transform.GetChild(1).GetChild(0);
+            TextMeshProUGUI itemText = textTransform.GetComponent<TextMeshProUGUI>();
+            itemText.text = "";
+
+            Debug.Log(itemName + " removed from inventory.");
+        }
+    }
+
+    void Update()
+    {
+        // Detect number key press (1-9) to select an inventory slot
+        for (int i = 0; i < 9; i++)
+        {
+            if (Input.GetKeyDown(KeyCode.Alpha1 + i))
             {
-                // Create a new GameObject for the image (child of the slot)
-                GameObject imageObject = new GameObject("ItemImage");
-                imageObject.transform.SetParent(openSlot.transform);
+                selectedSlot = i;
+                Debug.Log("Selected Slot: " + (selectedSlot + 1));
+            }
+        }
 
-                // Add Image component
-                Image imageComponent = imageObject.AddComponent<Image>();
-
-                // Set the sprite for the new image
-                imageComponent.sprite = image;
-
-                // Set transparency
-                Color currentColor = imageComponent.color;
-                currentColor.a = 1.0f; // Full opacity
-                imageComponent.color = currentColor;
-
-                // Create a new label for the item (child of the slot)
-                GameObject itemLabel = new GameObject("ItemLabel");
-                itemLabel.transform.SetParent(openSlot.transform);
-
-                // Add TextMeshProUGUI for the item's name
-                TextMeshProUGUI itemText = itemLabel.AddComponent<TextMeshProUGUI>();
-                itemText.text = passedInItemName;
-
-                // Optionally, set font size, color, alignment, etc.
+        // Remove item only if a slot is selected and 'T' is pressed
+        if (selectedSlot != -1 && Input.GetKeyDown(KeyCode.T))
+        {
+            if (itemNames[selectedSlot] != null)
+            {
+                RemoveItem(itemNames[selectedSlot]);
+                selectedSlot = -1; // Reset selection after removal
             }
             else
             {
-                // If there is already a child (i.e., item exists in the slot), update the existing image and label
-                Transform imageTransform = openSlot.transform.GetChild(0);
-                GameObject imageOfInventorySlot = imageTransform.gameObject;
-                Image imageComponent = imageOfInventorySlot.GetComponent<Image>();
-
-                // Update the sprite for the existing image
-                imageComponent.sprite = image;
-
-                // Set transparency
-                Color currentColor = imageComponent.color;
-                currentColor.a = 1.0f; // Full opacity
-                imageComponent.color = currentColor;
-
-                // Update the item's label (name)
-                Transform itemLabelContainer = openSlot.transform.GetChild(1);
-                Transform itemLabelText = itemLabelContainer.transform.GetChild(0);
-                TextMeshProUGUI itemText = itemLabelText.GetComponent<TextMeshProUGUI>();
-
-                // Change the text
-                if (itemText != null)
-                {
-                    itemText.text = passedInItemName;
-                }
-                else
-                {
-                    Debug.LogError("TextMeshProUGUI component not found on the item label!");
-                }
+                Debug.Log("No item in the selected slot.");
             }
-
-            // Optionally, update item counts or handle other inventory logic
-            itemCounts[index]++;
         }
     }
-
-    public void RemoveItem()
-    {
-        Debug.Log("Remove an item from the inventory");
-    }
-
-    public void ClearInventory()
-    {
-
-    }
 }
+
