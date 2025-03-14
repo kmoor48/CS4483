@@ -1,98 +1,73 @@
 using UnityEngine;
-using TMPro; // For TextMesh Pro
+using UnityEngine.EventSystems; // Required for UI interaction
 
 public class SafeInteraction : MonoBehaviour
 {
-    public GameObject safeCanvas; // Reference to the lock canvas
+    public GameObject safeCanvas; // Safe UI (World Space)
     public Camera playerCamera;
     public Camera safeCamera;
-    public GameObject safePrefab; // The actual lock object prefab
-    public float interactionDistance = 3f; // Distance at which the player can interact with the lock
+    public GameObject safePrefab; // The safe object
+    public float interactionDistance = 3f; // Distance to interact
 
-    public GameObject interactionPrompt; // Interaction prompt (text) to show when near lock
-
+    public GameObject interactionPrompt; // UI prompt
     private bool isInteracting = false;
-    private bool isNearLock = false; // Check if the player is close to the lock
+    private bool isNearSafe = false;
 
     void Start()
     {
-        // Make sure the lock canvas and prompt are disabled at the start
         safeCanvas.SetActive(false);
-        interactionPrompt.SetActive(false); // Hide the interaction prompt initially
+        interactionPrompt.SetActive(false);
     }
 
     void Update()
     {
-        // Check if the player is near the lock
-        float distanceToLock = Vector3.Distance(playerCamera.transform.position, transform.position);
-        if (distanceToLock <= interactionDistance)
+        float distanceToSafe = Vector3.Distance(playerCamera.transform.position, transform.position);
+
+        if (distanceToSafe <= interactionDistance)
         {
-            if (!isNearLock)
+            if (!isNearSafe)
             {
-                isNearLock = true;
-                interactionPrompt.SetActive(true); // Show interaction prompt when near lock
+                isNearSafe = true;
+                interactionPrompt.SetActive(true);
             }
 
-            // Check for P key press to start the interaction
             if (Input.GetKeyDown(KeyCode.P) && !isInteracting)
             {
-                EnterSafe(); // Enter puzzle mode
+                EnterSafe();
             }
         }
         else
         {
-            if (isNearLock)
+            if (isNearSafe)
             {
-                isNearLock = false;
-                interactionPrompt.SetActive(false); // Hide the interaction prompt when moving away
+                isNearSafe = false;
+                interactionPrompt.SetActive(false);
             }
         }
 
-        // If interacting with the lock, allow exiting with Escape key
         if (isInteracting && Input.GetKeyDown(KeyCode.Escape))
         {
-            ExitSafe(); // Exit the puzzle
+            ExitSafe();
         }
     }
 
-    //public void EnterSafe()
-    //{
-    //    isInteracting = true;
-    //    UIInteractionManager.Instance.EnableUIInteraction(); // Enable UI interaction
-
-    //    // Switch to the lock camera and show the canvas
-    //    playerCamera.gameObject.SetActive(false);
-    //    safeCamera.gameObject.SetActive(true);
-    //    safeCanvas.SetActive(true);
-    //    interactionPrompt.SetActive(false); // Hide prompt after starting puzzle mode
-    //}
     public void EnterSafe()
     {
         isInteracting = true;
         UIInteractionManager.Instance.EnableUIInteraction();
 
-        // Unlock and show cursor so player can move sliders
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
+        // Unlock cursor so sliders can be interacted with
+        //Cursor.lockState = CursorLockMode.None;
+        //Cursor.visible = true;
 
-        // Switch to the safe camera and show the canvas
+        // Make sure Unity detects UI inputs
+
+        // Activate UI and switch camera
         playerCamera.gameObject.SetActive(false);
         safeCamera.gameObject.SetActive(true);
         safeCanvas.SetActive(true);
         interactionPrompt.SetActive(false);
     }
-
-
-    //public void ExitSafe()
-    //{
-    //    isInteracting = false;
-    //    UIInteractionManager.Instance.DisableUIInteraction(); // Disable UI interaction
-
-    //    // Switch back to the player camera and hide the canvas
-    //    playerCamera.gameObject.SetActive(true);
-    //    safeCamera.gameObject.SetActive(false);
-    //    safeCanvas.SetActive(false);
-    //}
 
     public void ExitSafe()
     {
@@ -100,14 +75,12 @@ public class SafeInteraction : MonoBehaviour
         UIInteractionManager.Instance.DisableUIInteraction();
 
         // Lock cursor again
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        //Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.visible = false;
 
-        // Switch back to player camera and hide canvas
+        // Hide UI and switch back to the player camera
         playerCamera.gameObject.SetActive(true);
         safeCamera.gameObject.SetActive(false);
         safeCanvas.SetActive(false);
     }
-
-
 }
