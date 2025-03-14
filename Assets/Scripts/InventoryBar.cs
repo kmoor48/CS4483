@@ -13,6 +13,8 @@ public class InventoryBar : MonoBehaviour
 
     private int selectedSlot = -1; // Tracks the currently selected slot
 
+    private GameObject hoveredInventoryItem = null; // Tracks what button is being hovered over for 2D puzzles
+
     void Start()
     {
         int childCount = inventoryBar.transform.childCount;
@@ -108,6 +110,21 @@ public class InventoryBar : MonoBehaviour
                 Debug.Log("No item in the selected slot.");
             }
         }*/
+    }
+
+    public void SetHoverState(GameObject itemLabelText)
+    {
+        hoveredInventoryItem = itemLabelText;
+    }
+
+    public void UnsetHoverState()
+    {
+        hoveredInventoryItem = null;
+    }
+
+    public GameObject CheckHoverState()
+    {
+        return hoveredInventoryItem;
     }
 }
 

@@ -18,6 +18,8 @@ TagManager:
   - Reach
   - Wall
   - HUD
+  - ItemDisplayPanel
+  - RoomLogicHandler
   layers:
   - Default
   - TransparentFX

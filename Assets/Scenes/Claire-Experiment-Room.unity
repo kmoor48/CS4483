@@ -2587,7 +2587,7 @@ GameObject:
   - component: {fileID: 156938421}
   m_Layer: 0
   m_Name: RoomLogicHandler
-  m_TagString: Untagged
+  m_TagString: RoomLogicHandler
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5961,7 +5961,7 @@ GameObject:
   - component: {fileID: 375662384}
   - component: {fileID: 375662386}
   - component: {fileID: 375662385}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: ItemDisplayImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26405,7 +26405,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 962eb04bf1b1e724dbb40dbd73d26af1, type: 3}
       propertyPath: m_Layer
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 962eb04bf1b1e724dbb40dbd73d26af1, type: 3}
       propertyPath: m_IsActive
@@ -26427,7 +26427,7 @@ PrefabInstance:
       addedObject: {fileID: 1708909387}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 962eb04bf1b1e724dbb40dbd73d26af1, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1708909389}
+      addedObject: {fileID: 1708909392}
   m_SourcePrefab: {fileID: 100100000, guid: 962eb04bf1b1e724dbb40dbd73d26af1, type: 3}
 --- !u!4 &1542105697 stripped
 Transform:
@@ -28542,7 +28542,7 @@ GameObject:
   - component: {fileID: 1667733048}
   - component: {fileID: 1667733050}
   - component: {fileID: 1667733049}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: ItemDisplayText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29822,7 +29822,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &1708909389
+--- !u!114 &1708909392
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -31605,9 +31605,9 @@ GameObject:
   - component: {fileID: 1809506126}
   - component: {fileID: 1809506125}
   - component: {fileID: 1809506124}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: ItemDisplayPanel
-  m_TagString: Untagged
+  m_TagString: ItemDisplayPanel
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -33072,7 +33072,7 @@ Camera:
     m_Bits: 96
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
-  m_TargetDisplay: 1
+  m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 1
   m_AllowMSAA: 1

@@ -2,24 +2,55 @@ using UnityEngine;
 
 public class ObjectPickup : MonoBehaviour
 {
+    public Camera puzzleCamera;
+
     private bool isHolding = false;
     private Vector3 originalPosition;
-    public Camera puzzleCamera;
+    private GameObject universalLogicHandler;
+    private InventoryBar inventoryBarScript;
 
     void Start()
     {
         originalPosition = transform.position; // Store the starting position
+
+        universalLogicHandler = GameObject.FindWithTag("UniversalLogicHandler");
+        if (universalLogicHandler == null)
+        {
+            Debug.LogError("UniversalLogicHandler not found");
+        }
+
+        inventoryBarScript = universalLogicHandler.GetComponent<InventoryBar>();
+        if (inventoryBarScript == null)
+        {
+            Debug.LogError("UniversalLogicHandler Inventory Bar script is missing");
+        }
     }
 
     void OnMouseDown()
     {
-        if (!isHolding)
+        // Check if it was a left mouse click (pick up or drop item)
+        if (Input.GetMouseButton(0))
         {
-            PickUp();
+            if (!isHolding)
+            {
+                PickUp();
+            }
+            else
+            {
+                Drop();
+            }
         }
-        else
+    }
+
+    void OnMouseOver()
+    {
+        // Check for right mouse click while the mouse is over the object
+        if (Input.GetMouseButtonDown(1)) // Right mouse button
         {
-            Drop();
+            Debug.Log("Right Click");
+            // Check to see if an inventory item is currently being hovered over
+            GameObject hoverState = inventoryBarScript.CheckHoverState();
+            Debug.Log(hoverState);
         }
     }
 
