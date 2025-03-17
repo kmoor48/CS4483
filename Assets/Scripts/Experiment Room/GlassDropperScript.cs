@@ -1,13 +1,22 @@
 using UnityEngine;
+using TMPro;
 
 public class ObjectPickup : MonoBehaviour
 {
     public Camera puzzleCamera;
+    public Material glassMaterial;
+    public Material bloodMaterial;
 
     private bool isHolding = false;
     private Vector3 originalPosition;
     private GameObject universalLogicHandler;
     private InventoryBar inventoryBarScript;
+
+    // For material switching
+    private MeshRenderer meshRenderer;
+    private Material[] materials;
+    private bool isHoveringOverSampleGlass = false;
+    private bool isFilledWithBlood = false;
 
     void Start()
     {
@@ -23,6 +32,20 @@ public class ObjectPickup : MonoBehaviour
         if (inventoryBarScript == null)
         {
             Debug.LogError("UniversalLogicHandler Inventory Bar script is missing");
+        }
+
+        meshRenderer = GetComponent<MeshRenderer>();
+        if (meshRenderer != null && meshRenderer.materials.Length > 1)
+        {
+            materials = meshRenderer.materials; // Get the material array
+            if (materials == null)
+            {
+                Debug.LogError("No materials found on Glass Dropper");
+            }
+        }
+        else 
+        {
+            Debug.LogError("Incorrect mesh render found on glass dropper game object");
         }
     }
 
@@ -50,7 +73,18 @@ public class ObjectPickup : MonoBehaviour
             Debug.Log("Right Click");
             // Check to see if an inventory item is currently being hovered over
             GameObject hoverState = inventoryBarScript.CheckHoverState();
-            Debug.Log(hoverState);
+            if (hoverState != null) 
+            {
+                TextMeshProUGUI itemText = hoverState.GetComponentInChildren<TextMeshProUGUI>();
+
+                // If Missing Poster is right clicked, change the dropper to material that mimics filled with blood
+                if (itemText.text == "Missing Poster")
+                {
+                    materials[1] = bloodMaterial; // Change Element 1
+                    meshRenderer.materials = materials; // Apply the updated array
+                    isFilledWithBlood = true;
+                }
+            }
         }
     }
 
@@ -81,5 +115,17 @@ public class ObjectPickup : MonoBehaviour
             // Update only x and z position, keeping y fixed at original
             transform.position = new Vector3(worldPosition.x, originalPosition.y, worldPosition.z);
         }
+    }
+
+    public void OnGlassSampleHoverEnter()
+    {
+        Debug.Log("Hovering over glass sample");
+        isHoveringOverSampleGlass = true;
+    }
+
+    public void OnGlassSampleHoverExit()
+    {
+        Debug.Log("Hovering not over glass sample");
+        isHoveringOverSampleGlass = false;
     }
 }

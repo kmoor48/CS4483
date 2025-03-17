@@ -1059,13 +1059,13 @@ GameObject:
   m_Component:
   - component: {fileID: 41294649}
   - component: {fileID: 41294650}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Sample Glass
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &41294649
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1074,7 +1074,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 41294648}
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0.7071068, w: 0}
-  m_LocalPosition: {x: 0, y: 0, z: -5.884}
+  m_LocalPosition: {x: 0, y: 0, z: -5.95}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1083,7 +1083,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 90, y: 180, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -14.089, y: 0.475}
+  m_AnchoredPosition: {x: -14.1, y: 0.475}
   m_SizeDelta: {x: 0.281, y: 0.3184}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!23 &41294650
@@ -10001,6 +10001,11 @@ Transform:
   - {fileID: 1357965866}
   m_Father: {fileID: 868759125}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &613932728 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 64697bdc6c9d4c340b65bc835aa723a3, type: 3}
+  m_PrefabInstance: {fileID: 972620459}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &619631513 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1240376027092810, guid: 2f603782a54272140bd490519349fd88, type: 3}
@@ -15358,18 +15363,66 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 64697bdc6c9d4c340b65bc835aa723a3, type: 3}
       propertyPath: m_Layer
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 64697bdc6c9d4c340b65bc835aa723a3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 972620463}
   m_SourcePrefab: {fileID: 100100000, guid: 64697bdc6c9d4c340b65bc835aa723a3, type: 3}
 --- !u!4 &972620460 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 64697bdc6c9d4c340b65bc835aa723a3, type: 3}
   m_PrefabInstance: {fileID: 972620459}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &972620463
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 613932728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1708909392}
+          m_TargetAssemblyTypeName: ObjectPickup, Assembly-CSharp
+          m_MethodName: OnGlassSampleHoverEnter
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1708909392}
+          m_TargetAssemblyTypeName: ObjectPickup, Assembly-CSharp
+          m_MethodName: OnGlassSampleHoverExit
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &982931237
 GameObject:
   m_ObjectHideFlags: 0
@@ -29835,6 +29888,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   puzzleCamera: {fileID: 1874261277}
+  glassMaterial: {fileID: 2100000, guid: 62dad06c47d1d1a448901a67f077f0b6, type: 2}
+  bloodMaterial: {fileID: 2100000, guid: 65529ac748f009d4dbdee8d40e2e6402, type: 2}
 --- !u!1 &1712417857
 GameObject:
   m_ObjectHideFlags: 0
