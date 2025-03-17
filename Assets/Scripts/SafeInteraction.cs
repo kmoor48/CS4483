@@ -1,15 +1,15 @@
 using UnityEngine;
-using UnityEngine.EventSystems; // Required for UI interaction
+using UnityEngine.EventSystems;
 
 public class SafeInteraction : MonoBehaviour
 {
-    public GameObject safeCanvas; // Safe UI (World Space)
+    public GameObject safeCanvas; 
     public Camera playerCamera;
     public Camera safeCamera;
-    public GameObject safePrefab; // The safe object
-    public float interactionDistance = 3f; // Distance to interact
+    public GameObject safePrefab; 
+    public float interactionDistance = 3f;
 
-    public GameObject interactionPrompt; // UI prompt
+    public GameObject interactionPrompt; 
     private bool isInteracting = false;
     private bool isNearSafe = false;
 
@@ -56,12 +56,6 @@ public class SafeInteraction : MonoBehaviour
         isInteracting = true;
         UIInteractionManager.Instance.EnableUIInteraction();
 
-        // Unlock cursor so sliders can be interacted with
-        //Cursor.lockState = CursorLockMode.None;
-        //Cursor.visible = true;
-
-        // Make sure Unity detects UI inputs
-
         // Activate UI and switch camera
         playerCamera.gameObject.SetActive(false);
         safeCamera.gameObject.SetActive(true);
@@ -73,10 +67,6 @@ public class SafeInteraction : MonoBehaviour
     {
         isInteracting = false;
         UIInteractionManager.Instance.DisableUIInteraction();
-
-        // Lock cursor again
-        //Cursor.lockState = CursorLockMode.Locked;
-        //Cursor.visible = false;
 
         // Hide UI and switch back to the player camera
         playerCamera.gameObject.SetActive(true);

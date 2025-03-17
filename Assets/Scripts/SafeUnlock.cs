@@ -3,6 +3,8 @@ using UnityEngine.UI;
 
 public class SafeUnlock : MonoBehaviour
 {
+    public Camera playerCamera;
+    public Camera safeCamera;
     public Slider slider1, slider2, slider3, slider4, slider5; // UI sliders
     public GameObject successMessage;
     public GameObject safeDoor;
@@ -91,12 +93,27 @@ public class SafeUnlock : MonoBehaviour
     }
 
 
+    //void UnlockSafe()
+    //{
+    //    safeCanvas.SetActive(false);
+    //    successMessage.SetActive(false);
+    //    safeDoor.SetActive(false); // Open the safe
+    //    Debug.Log("Safe Unlocked!");
+    //}
+
     void UnlockSafe()
     {
         safeCanvas.SetActive(false);
         successMessage.SetActive(false);
         safeDoor.SetActive(false); // Open the safe
-        Debug.Log("Safe Unlocked!");
+
+        // Switch cameras back to the player view
+        playerCamera.gameObject.SetActive(true);
+        safeCamera.gameObject.SetActive(false);
+
+        Debug.Log("Safe Unlocked! Returning to player camera.");
     }
+
+
 }
 

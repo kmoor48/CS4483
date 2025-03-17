@@ -3,47 +3,44 @@ using TMPro; // For TextMesh Pro
 
 public class LockInteraction : MonoBehaviour
 {
-    public GameObject lockCanvas; // Reference to the lock canvas
+    public GameObject lockCanvas; 
     public Camera playerCamera;
     public Camera lockCamera;
-    public GameObject lockPrefab; // The actual lock object prefab
-    public GameObject successMessage; // Success message to be displayed when unlocked
+    public GameObject lockPrefab;
+    public GameObject successMessage; 
     public GameObject closetDoorRight;
     public GameObject closetDoorLeft;
-    public TMP_Text displayText; // UI text for displaying entered numbers
-    public string correctCode = "8401"; // The correct code to unlock the lock
-    public float interactionDistance = 3f; // Distance at which the player can interact with the lock
+    public TMP_Text displayText; 
+    public string correctCode = "8401"; 
+    public float interactionDistance = 3f; 
 
-    public GameObject interactionPrompt; // Interaction prompt (text) to show when near lock
+    public GameObject interactionPrompt; 
 
-    private string enteredCode = ""; // Stores player's input
+    private string enteredCode = ""; 
     private bool isInteracting = false;
-    private bool isNearLock = false; // Check if the player is close to the lock
+    private bool isNearLock = false; 
 
     void Start()
     {
-        // Make sure the lock canvas and prompt are disabled at the start
         lockCanvas.SetActive(false);
-        successMessage.SetActive(false); // Hide success message initially
-        interactionPrompt.SetActive(false); // Hide the interaction prompt initially
+        successMessage.SetActive(false); 
+        interactionPrompt.SetActive(false); 
     }
 
     void Update()
     {
-        // Check if the player is near the lock
         float distanceToLock = Vector3.Distance(playerCamera.transform.position, transform.position);
         if (distanceToLock <= interactionDistance)
         {
             if (!isNearLock)
             {
                 isNearLock = true;
-                interactionPrompt.SetActive(true); // Show interaction prompt when near lock
+                interactionPrompt.SetActive(true); 
             }
 
-            // Check for P key press to start the interaction
             if (Input.GetKeyDown(KeyCode.P) && !isInteracting)
             {
-                EnterLock(); // Enter puzzle mode
+                EnterLock(); 
             }
         }
         else
@@ -51,41 +48,37 @@ public class LockInteraction : MonoBehaviour
             if (isNearLock)
             {
                 isNearLock = false;
-                interactionPrompt.SetActive(false); // Hide the interaction prompt when moving away
+                interactionPrompt.SetActive(false); 
             }
         }
 
-        // If interacting with the lock, allow exiting with Escape key
         if (isInteracting && Input.GetKeyDown(KeyCode.Escape))
         {
-            ExitLock(); // Exit the puzzle
+            ExitLock(); 
         }
     }
 
     public void EnterLock()
     {
         isInteracting = true;
-        UIInteractionManager.Instance.EnableUIInteraction(); // Enable UI interaction
+        UIInteractionManager.Instance.EnableUIInteraction(); 
 
-        // Switch to the lock camera and show the canvas
         playerCamera.gameObject.SetActive(false);
         lockCamera.gameObject.SetActive(true);
         lockCanvas.SetActive(true);
-        interactionPrompt.SetActive(false); // Hide prompt after starting puzzle mode
+        interactionPrompt.SetActive(false);
     }
 
     public void ExitLock()
     {
         isInteracting = false;
-        UIInteractionManager.Instance.DisableUIInteraction(); // Disable UI interaction
-
-        // Switch back to the player camera and hide the canvas
+        UIInteractionManager.Instance.DisableUIInteraction(); 
         playerCamera.gameObject.SetActive(true);
         lockCamera.gameObject.SetActive(false);
         lockCanvas.SetActive(false);
-        successMessage.SetActive(false); // Hide success message when exiting
-        enteredCode = ""; // Reset the code when exiting
-        displayText.text = ""; // Clear the display text
+        successMessage.SetActive(false); 
+        enteredCode = ""; 
+        displayText.text = ""; 
     }
 
     public void AddDigit(string digit)
@@ -93,7 +86,7 @@ public class LockInteraction : MonoBehaviour
         if (enteredCode.Length < 4)
         {
             enteredCode += digit;
-            displayText.text = enteredCode; // Display the entered code
+            displayText.text = enteredCode;
         }
     }
 
@@ -101,28 +94,28 @@ public class LockInteraction : MonoBehaviour
     {
         if (enteredCode == correctCode)
         {
-            successMessage.SetActive(true); // Show success message
-            Invoke("UnlockLock", 2f); // Show success message for 2 seconds before unlocking
+            successMessage.SetActive(true); 
+            Invoke("UnlockLock", 2f); 
         }
         else
         {
-            enteredCode = ""; // Reset input
-            displayText.text = "Incorrect"; // Show error message
-            Invoke("ClearDisplay", 1.5f); // Reset display after 1.5 seconds
+            enteredCode = ""; 
+            displayText.text = "Incorrect"; 
+            Invoke("ClearDisplay", 1.5f);
         }
     }
 
     void UnlockLock()
     {
-        successMessage.SetActive(false); // Hide success message
-        ExitLock(); // Exit the puzzle mode
-        lockPrefab.SetActive(false); // Disable the lock object (unlock the door)
+        successMessage.SetActive(false); 
+        ExitLock(); 
+        lockPrefab.SetActive(false); 
         closetDoorLeft.SetActive(false);
         closetDoorRight.SetActive(false);
     }
 
     void ClearDisplay()
     {
-        displayText.text = ""; // Clear the display text
+        displayText.text = ""; 
     }
 }
