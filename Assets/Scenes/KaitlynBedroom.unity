@@ -15829,7 +15829,7 @@ Transform:
   m_GameObject: {fileID: 1726343250}
   serializedVersion: 2
   m_LocalRotation: {x: -0.008656754, y: -0.38266662, z: 0.0035857137, w: -0.92383903}
-  m_LocalPosition: {x: 21.75, y: 21.49, z: -64.18}
+  m_LocalPosition: {x: 21.86, y: 21.49, z: -64.07}
   m_LocalScale: {x: 4.934615, y: 4.934617, z: 4.934615}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -15902,7 +15902,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: jim_note
   openText: {fileID: 929973860}
-  image: {fileID: 21300000, guid: fef0afa939a69fd468171c7c5a16659f, type: 3}
+  image: {fileID: 21300000, guid: 5a2468bffa8ae4c45b8ab3335a23abda, type: 3}
 --- !u!65 &1726343255
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -15922,7 +15922,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.5}
+  m_Size: {x: 0.5, y: 0.5, z: 0.7}
   m_Center: {x: 0.0000009536885, y: 0.00050895376, z: 0.0000004768381}
 --- !u!1 &1728861833
 GameObject:
