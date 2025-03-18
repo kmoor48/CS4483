@@ -9,6 +9,7 @@ public class InventoryDisplay : MonoBehaviour
     public Image itemDisplayImage; 
     public TextMeshProUGUI itemDisplayText; 
     public Transform playerHand;
+    public GameObject itemInstructionsText;
 
     private bool isInventoryOpen = false;
     private int selectedSlotIndex = -1;
@@ -124,8 +125,15 @@ public class InventoryDisplay : MonoBehaviour
                 // Placing the object in the hand
                 if (itemName == "Flashlight"){
                     newItem.transform.localScale = playerHand.localScale * 6f; 
-                    Vector3 offset = new Vector3(0.005f, 0.6f, 0.2f); 
+                    Vector3 offset = new Vector3(-0.2f, 0.4f, 0.2f); 
                     newItem.transform.localPosition += offset;
+
+                    // Set the rotation with a custom value (for example, 90 degrees on the Y-axis)
+                    Quaternion customRotation = Quaternion.Euler(-20, 6, 44.2f);  // Rotate 90 degrees around the Y-axis
+                    newItem.transform.localRotation = customRotation;
+
+                    newItem.AddComponent<Flashlight>();
+                    itemInstructionsText.SetActive(true);
                 }
                 else {
                     newItem.transform.localScale = playerHand.localScale * 0.2f; 

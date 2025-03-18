@@ -9,10 +9,11 @@ public class PINPuzzleScript : MonoBehaviour
     public GameObject audioTrackDisplay;
     public TMP_InputField pinInputField;
 
-    private string correctPIN = "49820";
+    private string correctPIN = "brain";
 
     public void CheckPIN()
     {
+        Debug.Log("here");
         Debug.Log(pinInputField.text);
         if (pinInputField.text == correctPIN )
         {

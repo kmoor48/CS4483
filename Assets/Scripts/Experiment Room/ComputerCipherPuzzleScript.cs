@@ -40,7 +40,7 @@ public class ComputerCipherPuzzleScript : MonoBehaviour
         }
         if (folderName == "Passwords")
         {
-            folderContentText.text = "Record Player PIN: 49820";
+            folderContentText.text = "Record Player PIN: brain";
         }
 
         openFolderDisplay.SetActive(true);
