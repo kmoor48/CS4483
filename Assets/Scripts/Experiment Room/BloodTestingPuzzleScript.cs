@@ -19,9 +19,9 @@ public class BloodTestingPuzzleScript : MonoBehaviour
     {
         magnifiedDisplay.SetActive(true);
 
-        if (gameObjectName == "Blood Sample A")
+        if (gameObjectName == "Blood Sample D")
         {
-            sampleA.SetActive(true);
+            sampleD.SetActive(true);
         }
         else if (gameObjectName == "Blood Sample B")
         {
@@ -33,7 +33,7 @@ public class BloodTestingPuzzleScript : MonoBehaviour
         }
         else
         {
-            sampleD.SetActive(true);
+            sampleA.SetActive(true);
         }
     }
 

@@ -81,8 +81,6 @@ public class ObjectPickup : MonoBehaviour
         // Check for right mouse click while the mouse is over the object
         if (Input.GetMouseButtonDown(1)) // Right mouse button
         {
-            Debug.Log("Right Click");
-
             // Check to see if an inventory item is currently being hovered over
             GameObject hoverState = inventoryBarScript.CheckHoverState();
             if (hoverState != null) 
