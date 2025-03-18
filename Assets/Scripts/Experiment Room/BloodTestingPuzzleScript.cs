@@ -8,16 +8,20 @@ public class BloodTestingPuzzleScript : MonoBehaviour
     public GameObject sampleB;
     public GameObject sampleC;
     public GameObject sampleD;
+    
+    // For Sample Glass
+    public GameObject glassDropper;
+    private GlassDropperScript glassDropperScript;
 
-    // For dropper changing
-    public Material bloodMaterial;
-    public Material glassMaterial;
-    public GameObject glassDroper;
-
+    void Start()
+    {
+        glassDropperScript = glassDropper.GetComponent<GlassDropperScript>();
+    }
 
     public void TriggerFunction(string gameObjectName)
     {
         magnifiedDisplay.SetActive(true);
+        bool isBloodDisplayedOnSampleGlass = glassDropperScript.IsBloodOnSample();
 
         if (gameObjectName == "Blood Sample D")
         {
@@ -31,7 +35,11 @@ public class BloodTestingPuzzleScript : MonoBehaviour
         {
             sampleC.SetActive(true);
         }
-        else
+        else if (gameObjectName == "Blood Sample A")
+        {
+            sampleA.SetActive(true);
+        }
+        else if (gameObjectName == "Sample Glass" && isBloodDisplayedOnSampleGlass)
         {
             sampleA.SetActive(true);
         }

@@ -2,13 +2,14 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.EventSystems;
 
-public class ObjectPickup : MonoBehaviour
+public class GlassDropperScript : MonoBehaviour
 {
     public Camera puzzleCamera;
     public Material glassMaterial;
     public Material bloodMaterial;
     public GameObject sampleGlass;
     public GameObject bloodOnSampleGlass;
+    public GameObject dropperInstructionsText;
 
     private bool isHolding = false;
     private Vector3 originalPosition;
@@ -20,6 +21,7 @@ public class ObjectPickup : MonoBehaviour
     private MeshRenderer meshRenderer;
     private Material[] materials;
     private bool isFilledWithBlood = false;
+    private bool isBloodDisplayed = false;
 
     void Start()
     {
@@ -106,6 +108,7 @@ public class ObjectPickup : MonoBehaviour
         
                 // Display blood on sample
                 bloodOnSampleGlass.SetActive(true);
+                isBloodDisplayed = true;
 
                 isFilledWithBlood = false;
             }
@@ -115,12 +118,14 @@ public class ObjectPickup : MonoBehaviour
     void PickUp()
     {
         isHolding = true;
+        dropperInstructionsText.SetActive(true);
     }
 
     void Drop()
     {
         isHolding = false;
         transform.position = originalPosition; // Place it back on the table
+        dropperInstructionsText.SetActive(false);
     }
 
     void Update()
@@ -139,5 +144,10 @@ public class ObjectPickup : MonoBehaviour
             // Update only x and z position, keeping y fixed at original
             transform.position = new Vector3(worldPosition.x, originalPosition.y, worldPosition.z);
         }
+    }
+
+    public bool IsBloodOnSample()
+    {
+        return isBloodDisplayed;
     }
 }
