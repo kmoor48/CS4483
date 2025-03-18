@@ -6,6 +6,7 @@ public class Flashlight : MonoBehaviour
     private TextMeshProUGUI itemInstructionsText;
     private GameObject spotLight;
     private bool isOn = false;
+    private int layerMask;
 
     void Start()
     {
@@ -25,13 +26,14 @@ public class Flashlight : MonoBehaviour
         {
             Debug.LogError("No SpotLight object found on flashlight");
         }
+
+        layerMask = LayerMask.GetMask("Interactable Elements"); // Convert layer name to LayerMask
     }
 
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.O)) 
         {
-            Debug.Log("O key was pressed");
             if (isOn)
             {
                 spotLight.SetActive(false);
@@ -41,6 +43,20 @@ public class Flashlight : MonoBehaviour
             {
                 spotLight.SetActive(true);
                 isOn = true;
+            }
+        }
+
+        if (spotLight.activeSelf)  // Only check when flashlight is on
+        {
+            RaycastHit hit;
+            if (Physics.Raycast(spotLight.transform.position, spotLight.transform.forward, out hit, 2, layerMask))
+            {
+                // Checking to see if light hit the Poster
+                if (hit.collider.gameObject.name == "Poster")
+                {
+                    Debug.Log("Light hit the target object!");
+                    // Call any function here (e.g., activate something)
+                }
             }
         }
     }

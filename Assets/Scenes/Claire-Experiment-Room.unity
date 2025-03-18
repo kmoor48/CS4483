@@ -6328,7 +6328,7 @@ GameObject:
   - component: {fileID: 390673518}
   - component: {fileID: 390673517}
   - component: {fileID: 390673516}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Side1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6678,7 +6678,7 @@ GameObject:
   - component: {fileID: 409072447}
   - component: {fileID: 409072446}
   - component: {fileID: 409072445}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Side2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8377,7 +8377,7 @@ GameObject:
   - component: {fileID: 506201858}
   - component: {fileID: 506201857}
   - component: {fileID: 506201856}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Side3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8558,7 +8558,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 514775591}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Picture Frame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16796,7 +16796,7 @@ GameObject:
   - component: {fileID: 1006409789}
   - component: {fileID: 1006409791}
   - component: {fileID: 1006409790}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Poster
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19417,7 +19417,7 @@ GameObject:
   - component: {fileID: 1159427413}
   - component: {fileID: 1159427412}
   - component: {fileID: 1159427411}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Unrevealed Poster Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27253,7 +27253,7 @@ GameObject:
   - component: {fileID: 1564007170}
   - component: {fileID: 1564007169}
   - component: {fileID: 1564007168}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Side4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36244,7 +36244,7 @@ GameObject:
   - component: {fileID: 2024024641}
   - component: {fileID: 2024024640}
   - component: {fileID: 2024024639}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}

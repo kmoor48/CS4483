@@ -21,6 +21,7 @@ TagManager:
   - ItemDisplayPanel
   - RoomLogicHandler
   - ItemInstructionsText
+  - PosterPanel
   layers:
   - Default
   - TransparentFX

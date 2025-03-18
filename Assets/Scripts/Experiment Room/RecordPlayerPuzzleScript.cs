@@ -13,7 +13,6 @@ public class PINPuzzleScript : MonoBehaviour
 
     public void CheckPIN()
     {
-        Debug.Log("here");
         Debug.Log(pinInputField.text);
         if (pinInputField.text == correctPIN )
         {
