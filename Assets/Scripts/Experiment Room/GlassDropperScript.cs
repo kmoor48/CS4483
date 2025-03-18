@@ -1,21 +1,24 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.EventSystems;
 
 public class ObjectPickup : MonoBehaviour
 {
     public Camera puzzleCamera;
     public Material glassMaterial;
     public Material bloodMaterial;
+    public GameObject sampleGlass;
+    public GameObject bloodOnSampleGlass;
 
     private bool isHolding = false;
     private Vector3 originalPosition;
     private GameObject universalLogicHandler;
     private InventoryBar inventoryBarScript;
+    private SampleGlassCollisionDetection sampleGlassCollisionDetectionScript;
 
     // For material switching
     private MeshRenderer meshRenderer;
     private Material[] materials;
-    private bool isHoveringOverSampleGlass = false;
     private bool isFilledWithBlood = false;
 
     void Start()
@@ -47,6 +50,14 @@ public class ObjectPickup : MonoBehaviour
         {
             Debug.LogError("Incorrect mesh render found on glass dropper game object");
         }
+
+        sampleGlassCollisionDetectionScript = sampleGlass.GetComponent<SampleGlassCollisionDetection>();
+        if (sampleGlassCollisionDetectionScript == null)
+        {
+            Debug.LogError("Collision detection script not found on sample glass");
+        }
+
+        bloodOnSampleGlass.SetActive(false);
     }
 
     void OnMouseDown()
@@ -71,6 +82,7 @@ public class ObjectPickup : MonoBehaviour
         if (Input.GetMouseButtonDown(1)) // Right mouse button
         {
             Debug.Log("Right Click");
+
             // Check to see if an inventory item is currently being hovered over
             GameObject hoverState = inventoryBarScript.CheckHoverState();
             if (hoverState != null) 
@@ -84,6 +96,20 @@ public class ObjectPickup : MonoBehaviour
                     meshRenderer.materials = materials; // Apply the updated array
                     isFilledWithBlood = true;
                 }
+            }
+
+            // Checking if it was over the sample glass
+            bool isHoveringOverSampleGlass = sampleGlassCollisionDetectionScript.IsSampleGlassHoveredOver();
+            if (isHoveringOverSampleGlass && isFilledWithBlood)
+            {
+                // Transfer the blood to the sample glass
+                materials[1] = glassMaterial;
+                meshRenderer.materials = materials;
+        
+                // Display blood on sample
+                bloodOnSampleGlass.SetActive(true);
+
+                isFilledWithBlood = false;
             }
         }
     }
@@ -115,17 +141,5 @@ public class ObjectPickup : MonoBehaviour
             // Update only x and z position, keeping y fixed at original
             transform.position = new Vector3(worldPosition.x, originalPosition.y, worldPosition.z);
         }
-    }
-
-    public void OnGlassSampleHoverEnter()
-    {
-        Debug.Log("Hovering over glass sample");
-        isHoveringOverSampleGlass = true;
-    }
-
-    public void OnGlassSampleHoverExit()
-    {
-        Debug.Log("Hovering not over glass sample");
-        isHoveringOverSampleGlass = false;
     }
 }
