@@ -4,11 +4,12 @@ using TMPro;
 
 public class InventoryDisplay : MonoBehaviour
 {
-    public GameObject inventoryBar; 
+    public GameObject inventoryBar;
     public GameObject itemDisplayPanel; 
     public Image itemDisplayImage; 
     public TextMeshProUGUI itemDisplayText; 
     public Transform playerHand;
+    public GameObject itemInstructionsText;
 
     private bool isInventoryOpen = false;
     private int selectedSlotIndex = -1;
@@ -103,25 +104,45 @@ public class InventoryDisplay : MonoBehaviour
         if (selectedSlot.childCount > 0)
         {
             Transform imageTransform = selectedSlot.GetChild(0);
-            Transform textTransform = selectedSlot.GetChild(1); 
+            Transform textTransform = selectedSlot.GetChild(1);
 
+            TextMeshProUGUI temp = textTransform.GetComponentInChildren<TextMeshProUGUI>();
             string itemName = textTransform.GetComponentInChildren<TextMeshProUGUI>().text;
+
             Sprite itemSprite = imageTransform.GetComponent<Image>().sprite;
 
-            Destroy(imageTransform.gameObject);
-            Destroy(textTransform.gameObject);
+            // Clearing the inventory bar of the item
+            GameObject universalLogicHandler = GameObject.FindWithTag("UniversalLogicHandler");
+            InventoryBar inventoryBarScript = universalLogicHandler.GetComponent<InventoryBar>();
+            inventoryBarScript.RemoveItem(itemName);
 
             GameObject itemPrefab = Resources.Load<GameObject>("Items/" + itemName);
             if (itemPrefab != null)
             {
                 GameObject newItem = Instantiate(itemPrefab, playerHand.position, Quaternion.identity);
-
                 newItem.transform.SetParent(playerHand);
+                
+                // Placing the object in the hand
+                if (itemName == "Flashlight"){
+                    newItem.transform.localScale = playerHand.localScale * 6f; 
+                    Vector3 offset = new Vector3(-0.2f, 0.4f, 0.2f); 
+                    newItem.transform.localPosition += offset;
 
-                newItem.transform.localScale = playerHand.localScale * 0.2f; 
-                Vector3 offset = new Vector3(0.005f, 0.2f, 0.2f); 
-                newItem.transform.localPosition += offset;
+                    // Set the rotation with a custom value (for example, 90 degrees on the Y-axis)
+                    Quaternion customRotation = Quaternion.Euler(-20, 6, 44.2f);  // Rotate 90 degrees around the Y-axis
+                    newItem.transform.localRotation = customRotation;
 
+                    newItem.AddComponent<Flashlight>();
+                    itemInstructionsText.SetActive(true);
+                }
+                else {
+                    newItem.transform.localScale = playerHand.localScale * 0.2f; 
+                    Vector3 offset = new Vector3(0.005f, 0.2f, 0.2f); 
+                    newItem.transform.localPosition += offset;
+                }
+
+                // Removing the pickup item script from the item in the hand
+                Destroy(newItem.GetComponent<PickupItem>());
             }
             else
             {

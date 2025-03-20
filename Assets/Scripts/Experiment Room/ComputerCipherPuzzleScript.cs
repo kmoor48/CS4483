@@ -26,13 +26,13 @@ public class ComputerCipherPuzzleScript : MonoBehaviour
         }
         if (folderName == "Family Info")
         {
-            folderContentText.text = "Date of Birth: Pbpqembep 15qa, 1983 " +
-                "\nCity Born in: Zlaxytlp Lpkil" +
+            folderContentText.text = "Date of Birth: PQBQLAJBO 15QE, 1983" +
+                "\nCity Born in: ZFLJKYLU VLKLF" +
                 "\nDoctor's Phone Number: 123-583-9013" +
-                "\nDoctor's Address: 580 Zlooqj Inpk" +
-                "\nFather's Name: Jlomlo Pxbzi " +
-                "\nWiFi Password: AxOqFkp34!" +
-                "\nMother's Name: Iqfp Hplvyqv";
+                "\nDoctor's Address: 580 ZLOIIZ NIXPB" +
+                "\nFather's Name: MCQLOBK OXIB" +
+                "\nWiFi Password: XTLOVRF34!" +
+                "\nMother's Name: OXZEBI HLKPQV";
         }
         if (folderName == "Angela Lucy Experiment")
         {
@@ -40,7 +40,7 @@ public class ComputerCipherPuzzleScript : MonoBehaviour
         }
         if (folderName == "Passwords")
         {
-            folderContentText.text = "Record Player PIN: 49820";
+            folderContentText.text = "Record Player PIN: brain";
         }
 
         openFolderDisplay.SetActive(true);
