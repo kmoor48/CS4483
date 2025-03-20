@@ -12,9 +12,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Kerem-Level2.unity
     guid: 2e0bd33cae2a44c5490f53a12d26bba7
   - enabled: 1
-    path: Assets/Scenes/Tisals-Room.unity
-    guid: ed19447b60d4ca2428c9e4188837bd14
-  - enabled: 1
     path: Assets/Scenes/Claire-Experiment-Room.unity
     guid: a03c334445a24ff4483d7b1f92411402
   - enabled: 1
