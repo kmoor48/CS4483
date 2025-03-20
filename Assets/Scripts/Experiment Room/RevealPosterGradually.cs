@@ -6,6 +6,7 @@ public class RevealPosterGradually : MonoBehaviour
 {
     public GameObject otherPannel;
     public TextMeshPro originalPanelText;
+    public GameObject computerPowerOnText;
 
     private float elapsedTime = 0f;
     private float fadeDuration = 5f; // Time in seconds
@@ -31,6 +32,12 @@ public class RevealPosterGradually : MonoBehaviour
 
         // Start with full transparency
         planeMaterialToReveal.color = new Color(originalColorToReveal.r, originalColorToReveal.g, originalColorToReveal.b, 0f);
+        foreach (Renderer childRenderer in GetComponentsInChildren<Renderer>())
+        {
+            Color childColor = childRenderer.material.color;
+            childRenderer.material.color = new Color(childColor.r, childColor.g, childColor.b, 0f);
+        }
+
 
         // Start with full opacity
         planeMaterialOG.color = new Color(originalColorOG.r, originalColorOG.g, originalColorOG.b, 1f);
@@ -52,6 +59,13 @@ public class RevealPosterGradually : MonoBehaviour
             float alphaOriginalPanel = Mathf.Lerp(1f, 0f, elapsedTime / fadeDuration);
 
             planeMaterialToReveal.color = new Color(originalColorToReveal.r, originalColorToReveal.g, originalColorToReveal.b, alphaNewPanel); // fade in new plane
+            // Fade all children materials
+            foreach (Renderer childRenderer in GetComponentsInChildren<Renderer>())
+            {
+                Color childColor = childRenderer.material.color;
+                childRenderer.material.color = new Color(childColor.r, childColor.g, childColor.b, alphaNewPanel);
+            }
+    
             planeMaterialOG.color = new Color(originalColorOG.r, originalColorOG.g, originalColorOG.b, alphaOriginalPanel); // fade out old plane
             originalPanelText.color = new Color(originalTextColor.r, originalTextColor.g, originalTextColor.b, alphaOriginalPanel);
 
@@ -63,6 +77,14 @@ public class RevealPosterGradually : MonoBehaviour
         planeMaterialToReveal.color = new Color(originalColorToReveal.r, originalColorToReveal.g, originalColorToReveal.b, 1f);
         planeMaterialOG.color = new Color(originalColorOG.r, originalColorOG.g, originalColorOG.b, 0f);
         originalPanelText.color = new Color(originalTextColor.r, originalTextColor.g, originalTextColor.b, 0f);
+        foreach (Renderer childRenderer in GetComponentsInChildren<Renderer>())
+        {
+            Color childColor = childRenderer.material.color;
+            childRenderer.material.color = new Color(childColor.r, childColor.g, childColor.b, 1f);
+        }
+
+        // Set the computer screen text on
+        computerPowerOnText.SetActive(true);
     }
 
     public void StartFadeIn()
