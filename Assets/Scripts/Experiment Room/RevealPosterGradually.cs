@@ -1,9 +1,11 @@
 using UnityEngine;
 using System.Collections;
+using TMPro;
 
 public class RevealPosterGradually : MonoBehaviour
 {
     public GameObject otherPannel;
+    public TextMeshPro originalPanelText;
 
     private float elapsedTime = 0f;
     private float fadeDuration = 5f; // Time in seconds
@@ -11,6 +13,7 @@ public class RevealPosterGradually : MonoBehaviour
     private Color originalColorToReveal;
     private Material planeMaterialOG; // Material of the 3D plane
     private Color originalColorOG;
+    private Color originalTextColor;
     private bool isPaused = false;
 
     void Start()
@@ -23,11 +26,15 @@ public class RevealPosterGradually : MonoBehaviour
         planeMaterialOG = otherPannel.GetComponent<Renderer>().material;
         originalColorOG = planeMaterialOG.color; // Store the original color
 
+        // For the existing plane text
+        originalTextColor = originalPanelText.color;
+
         // Start with full transparency
         planeMaterialToReveal.color = new Color(originalColorToReveal.r, originalColorToReveal.g, originalColorToReveal.b, 0f);
 
         // Start with full opacity
         planeMaterialOG.color = new Color(originalColorOG.r, originalColorOG.g, originalColorOG.b, 1f);
+        originalPanelText.color = new Color(originalTextColor.r, originalTextColor.g, originalTextColor.b, 1f);
     }
 
     IEnumerator FadeInPlane()
@@ -46,6 +53,7 @@ public class RevealPosterGradually : MonoBehaviour
 
             planeMaterialToReveal.color = new Color(originalColorToReveal.r, originalColorToReveal.g, originalColorToReveal.b, alphaNewPanel); // fade in new plane
             planeMaterialOG.color = new Color(originalColorOG.r, originalColorOG.g, originalColorOG.b, alphaOriginalPanel); // fade out old plane
+            originalPanelText.color = new Color(originalTextColor.r, originalTextColor.g, originalTextColor.b, alphaOriginalPanel);
 
             elapsedTime += Time.deltaTime;
             yield return null; // Wait for the next frame
@@ -54,6 +62,7 @@ public class RevealPosterGradually : MonoBehaviour
         // Ensure full visibility at the end
         planeMaterialToReveal.color = new Color(originalColorToReveal.r, originalColorToReveal.g, originalColorToReveal.b, 1f);
         planeMaterialOG.color = new Color(originalColorOG.r, originalColorOG.g, originalColorOG.b, 0f);
+        originalPanelText.color = new Color(originalTextColor.r, originalTextColor.g, originalTextColor.b, 0f);
     }
 
     public void StartFadeIn()

@@ -16817,8 +16817,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2024024638}
-  - {fileID: 514775591}
   - {fileID: 1159427413}
+  - {fileID: 514775591}
   - {fileID: 2061493963}
   m_Father: {fileID: 903316994}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -36945,6 +36945,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   otherPannel: {fileID: 2024024637}
+  originalPanelText: {fileID: 1159427411}
 --- !u!1 &2082455551
 GameObject:
   m_ObjectHideFlags: 0
