@@ -4,7 +4,6 @@ using UnityEngine;
 public class ShowJimNote : MonoBehaviour
 {
     public TextMeshProUGUI noteText;   
-    public GameObject noteTextPrompt; 
     public Transform playerHand;  
     public GameObject pannel;
 
@@ -31,8 +30,8 @@ public class ShowJimNote : MonoBehaviour
         {
             isPlayerInTrigger = false;
             isHoldingNote = false;
+            noteText.gameObject.SetActive(false);
             pannel.SetActive(false);
-            noteTextPrompt.SetActive(false); 
         }
     }
 
@@ -43,14 +42,10 @@ public class ShowJimNote : MonoBehaviour
             CheckIfHoldingNote(); 
         }
 
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            Debug.Log("R key pressed"); 
-        }
         if (isPlayerInTrigger && isHoldingNote)
         {
             Debug.Log("R pressed with note in hand");
-            noteTextPrompt.SetActive(false); 
+            noteText.gameObject.SetActive(true);
             pannel.SetActive(true);
         }
     }
@@ -63,13 +58,11 @@ public class ShowJimNote : MonoBehaviour
             if (heldItem.CompareTag("jim_note")) 
             {
                 isHoldingNote = true;
-                noteTextPrompt.SetActive(true); 
                 return;
             }
         }
 
         isHoldingNote = false;
-        noteTextPrompt.SetActive(false); 
     }
 }
 
