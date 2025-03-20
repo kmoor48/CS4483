@@ -10080,7 +10080,8 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[1]'
       value: 
       objectReference: {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3551056803046506368, guid: de73a68374813224d9a0717c5b75fc05, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -12309,6 +12310,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5e55d90a151d174bac6bd74851c9369, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hoverHeight: 0.1
+  hoverSpeed: 1
+  specialBookColor: {r: 1, g: 0.5, b: 0, a: 1}
+  glowEffectPrefab: {fileID: 0}
 --- !u!1001 &634138642
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13876,7 +13881,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 3181305448590249258, guid: 0b7451c289c0d9547a21ba7eb3340776, type: 3}
+      propertyPath: itemName
+      value: Paper (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 3181305448590249258, guid: 0b7451c289c0d9547a21ba7eb3340776, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -19830,7 +19840,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 3181305448590249258, guid: 0b7451c289c0d9547a21ba7eb3340776, type: 3}
+      propertyPath: itemName
+      value: Paper
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 3181305448590249258, guid: 0b7451c289c0d9547a21ba7eb3340776, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -27514,6 +27529,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5e55d90a151d174bac6bd74851c9369, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hoverHeight: 0.1
+  hoverSpeed: 1
+  specialBookColor: {r: 1, g: 0.5, b: 0, a: 1}
+  glowEffectPrefab: {fileID: 0}
 --- !u!1 &1655485807
 GameObject:
   m_ObjectHideFlags: 0
@@ -30830,7 +30849,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 3181305448590249258, guid: 0b7451c289c0d9547a21ba7eb3340776, type: 3}
+      propertyPath: itemName
+      value: Paper (2)
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 3181305448590249258, guid: 0b7451c289c0d9547a21ba7eb3340776, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -31366,6 +31390,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5e55d90a151d174bac6bd74851c9369, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hoverHeight: 0.1
+  hoverSpeed: 1
+  specialBookColor: {r: 1, g: 0.5, b: 0, a: 1}
+  glowEffectPrefab: {fileID: 0}
 --- !u!1 &1824162899
 GameObject:
   m_ObjectHideFlags: 0
@@ -33291,7 +33319,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 812273544301697754, guid: 0a304947e269c4d4baf50f19725555aa, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -33423,6 +33452,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5e55d90a151d174bac6bd74851c9369, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hoverHeight: 0.1
+  hoverSpeed: 1
+  specialBookColor: {r: 1, g: 0.5, b: 0, a: 1}
+  glowEffectPrefab: {fileID: 0}
 --- !u!1 &1994217646
 GameObject:
   m_ObjectHideFlags: 0
@@ -34554,6 +34587,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5e55d90a151d174bac6bd74851c9369, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hoverHeight: 0.1
+  hoverSpeed: 1
+  specialBookColor: {r: 1, g: 0.5, b: 0, a: 1}
+  glowEffectPrefab: {fileID: 0}
 --- !u!1 &2087216009
 GameObject:
   m_ObjectHideFlags: 0
@@ -35341,6 +35378,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5e55d90a151d174bac6bd74851c9369, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hoverHeight: 0.1
+  hoverSpeed: 1
+  specialBookColor: {r: 1, g: 0.5, b: 0, a: 1}
+  glowEffectPrefab: {fileID: 0}
 --- !u!1 &2126831714
 GameObject:
   m_ObjectHideFlags: 0
