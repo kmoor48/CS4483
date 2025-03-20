@@ -36,23 +36,23 @@ public class SafeUnlock : MonoBehaviour
 
         // Listen for slider movement
         slider1.onValueChanged.AddListener(delegate {
-            Debug.Log("Slider 1 Value Changed");
+     
             CheckCombination();
         });
         slider2.onValueChanged.AddListener(delegate {
-            Debug.Log("Slider 2 Value Changed");
+       
             CheckCombination();
         });
         slider3.onValueChanged.AddListener(delegate {
-            Debug.Log("Slider 3 Value Changed");
+        
             CheckCombination();
         });
         slider4.onValueChanged.AddListener(delegate {
-            Debug.Log("Slider 4 Value Changed");
+          
             CheckCombination();
         });
         slider5.onValueChanged.AddListener(delegate {
-            Debug.Log("Slider 5 Value Changed");
+         
             CheckCombination();
         });
 
@@ -61,14 +61,13 @@ public class SafeUnlock : MonoBehaviour
   
     void Update()
     {
-        Debug.Log("Update called");
+     
         CheckCombination();
     }
 
     void CheckCombination()
     {
-        // Debugging: Print raw slider values (before rounding)
-        Debug.Log($"Raw Slider Values: {slider1.value}, {slider2.value}, {slider3.value}, {slider4.value}, {slider5.value}");
+       
 
         // Read integer values from sliders (round to nearest integer)
         int s1 = Mathf.RoundToInt(slider1.value);
@@ -77,8 +76,6 @@ public class SafeUnlock : MonoBehaviour
         int s4 = Mathf.RoundToInt(slider4.value);
         int s5 = Mathf.RoundToInt(slider5.value);
 
-        // Debugging: Print the integer slider values
-        Debug.Log($"Sliders: {s1}, {s2}, {s3}, {s4}, {s5}");
 
         // Check if the combination is correct
         if (s1 == correctCombination[0] &&
@@ -92,14 +89,6 @@ public class SafeUnlock : MonoBehaviour
         }
     }
 
-
-    //void UnlockSafe()
-    //{
-    //    safeCanvas.SetActive(false);
-    //    successMessage.SetActive(false);
-    //    safeDoor.SetActive(false); // Open the safe
-    //    Debug.Log("Safe Unlocked!");
-    //}
 
     void UnlockSafe()
     {
