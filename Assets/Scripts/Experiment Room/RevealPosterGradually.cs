@@ -78,9 +78,22 @@ public class RevealPosterGradually : MonoBehaviour
         planeMaterialOG.color = new Color(originalColorOG.r, originalColorOG.g, originalColorOG.b, 0f);
         originalPanelText.color = new Color(originalTextColor.r, originalTextColor.g, originalTextColor.b, 0f);
         foreach (Renderer childRenderer in GetComponentsInChildren<Renderer>())
-        {
-            Color childColor = childRenderer.material.color;
-            childRenderer.material.color = new Color(childColor.r, childColor.g, childColor.b, 1f);
+        {   
+            Material childMat = childRenderer.material;
+            Color childColor = childMat.color;
+            childMat.color = new Color(childColor.r, childColor.g, childColor.b, 1f);
+            childMat.SetFloat("_Surface", 0); // 0 = Opaque, 1 = Transparent
+            childMat.SetFloat("_AlphaClip", 1.0f);
+            childMat.SetFloat("_Cutoff", 0.5f);
+            // Make sure these blend modes are correctly set for Opaque
+            childMat.SetFloat("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.One);
+            childMat.SetFloat("_DstBlend", (int)UnityEngine.Rendering.BlendMode.Zero);
+
+            // Enable ZWrite for opaque materials
+            childMat.SetFloat("_ZWrite", 1);
+
+            // Update render queue to default for opaque materials
+            childMat.renderQueue = -1;
         }
 
         // Set the computer screen text on
