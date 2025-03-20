@@ -197,7 +197,7 @@ GameObject:
   m_Component:
   - component: {fileID: 62406370}
   m_Layer: 5
-  m_Name: OpenText
+  m_Name: DrawerText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4746,18 +4746,6 @@ PrefabInstance:
       value: Poster
       objectReference: {fileID: 0}
     - target: {fileID: 4811584749951484, guid: de73a68374813224d9a0717c5b75fc05, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 2.476054
-      objectReference: {fileID: 0}
-    - target: {fileID: 4811584749951484, guid: de73a68374813224d9a0717c5b75fc05, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 3.4858475
-      objectReference: {fileID: 0}
-    - target: {fileID: 4811584749951484, guid: de73a68374813224d9a0717c5b75fc05, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 3.614358
-      objectReference: {fileID: 0}
-    - target: {fileID: 4811584749951484, guid: de73a68374813224d9a0717c5b75fc05, type: 3}
       propertyPath: m_LocalPosition.x
       value: 54.1
       objectReference: {fileID: 0}
@@ -4796,34 +4784,6 @@ PrefabInstance:
     - target: {fileID: 4811584749951484, guid: de73a68374813224d9a0717c5b75fc05, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3551056803046506368, guid: de73a68374813224d9a0717c5b75fc05, type: 3}
-      propertyPath: openText
-      value: 
-      objectReference: {fileID: 1713199406}
-    - target: {fileID: 7408104653197781002, guid: de73a68374813224d9a0717c5b75fc05, type: 3}
-      propertyPath: m_Size.x
-      value: 2.1401176
-      objectReference: {fileID: 0}
-    - target: {fileID: 7408104653197781002, guid: de73a68374813224d9a0717c5b75fc05, type: 3}
-      propertyPath: m_Size.y
-      value: 1.7913216
-      objectReference: {fileID: 0}
-    - target: {fileID: 7408104653197781002, guid: de73a68374813224d9a0717c5b75fc05, type: 3}
-      propertyPath: m_Size.z
-      value: 0.5696998
-      objectReference: {fileID: 0}
-    - target: {fileID: 7408104653197781002, guid: de73a68374813224d9a0717c5b75fc05, type: 3}
-      propertyPath: m_Center.x
-      value: 0.007195845
-      objectReference: {fileID: 0}
-    - target: {fileID: 7408104653197781002, guid: de73a68374813224d9a0717c5b75fc05, type: 3}
-      propertyPath: m_Center.y
-      value: 1.2876009
-      objectReference: {fileID: 0}
-    - target: {fileID: 7408104653197781002, guid: de73a68374813224d9a0717c5b75fc05, type: 3}
-      propertyPath: m_Center.z
-      value: -0.25896585
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7765,6 +7725,8 @@ MonoBehaviour:
   itemDisplayPanel: {fileID: 1713172270}
   itemDisplayImage: {fileID: 224912133}
   itemDisplayText: {fileID: 1280018282}
+  playerHand: {fileID: 0}
+  itemInstructionsText: {fileID: 0}
 --- !u!1 &1277773534
 GameObject:
   m_ObjectHideFlags: 0
@@ -9873,7 +9835,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1713199407}
   m_Layer: 5
-  m_Name: InteractText
+  m_Name: OpenText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9914,7 +9876,7 @@ GameObject:
   - component: {fileID: 1735659393}
   m_Layer: 5
   m_Name: HUD
-  m_TagString: Untagged
+  m_TagString: HUD
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9994,11 +9956,11 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1713199407}
   - {fileID: 1062901934}
   - {fileID: 62406370}
   - {fileID: 1277773535}
   - {fileID: 352542484}
-  - {fileID: 1713199407}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -11904,18 +11866,6 @@ PrefabInstance:
       value: Clipboard
       objectReference: {fileID: 0}
     - target: {fileID: 4795266759639050, guid: 72653085a6b827f48b10b434c7972f1c, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.015842067
-      objectReference: {fileID: 0}
-    - target: {fileID: 4795266759639050, guid: 72653085a6b827f48b10b434c7972f1c, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.01584207
-      objectReference: {fileID: 0}
-    - target: {fileID: 4795266759639050, guid: 72653085a6b827f48b10b434c7972f1c, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.015842069
-      objectReference: {fileID: 0}
-    - target: {fileID: 4795266759639050, guid: 72653085a6b827f48b10b434c7972f1c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.0104
       objectReference: {fileID: 0}
@@ -11955,14 +11905,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 3.6920013
       objectReference: {fileID: 0}
-    - target: {fileID: 9096978671388084808, guid: 72653085a6b827f48b10b434c7972f1c, type: 3}
-      propertyPath: itemName
-      value: LucyRecord1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9096978671388084808, guid: 72653085a6b827f48b10b434c7972f1c, type: 3}
-      propertyPath: openText
-      value: 
-      objectReference: {fileID: 1713199406}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -12044,6 +11986,10 @@ PrefabInstance:
       propertyPath: closedText
       value: 
       objectReference: {fileID: 1277773534}
+    - target: {fileID: 6737989628191910984, guid: ff54c1fd4f4f84272917ac03b7c8c60e, type: 3}
+      propertyPath: drawerText
+      value: 
+      objectReference: {fileID: 62406369}
     - target: {fileID: 6737989628191910984, guid: ff54c1fd4f4f84272917ac03b7c8c60e, type: 3}
       propertyPath: lockCamera
       value: 
