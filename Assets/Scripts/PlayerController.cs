@@ -13,8 +13,8 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         controller = GetComponent<CharacterController>();
-        Cursor.lockState = CursorLockMode.Locked; // Lock and hide the cursor
-        Cursor.visible = false;
+        //Cursor.lockState = CursorLockMode.Locked; // Lock and hide the cursor
+        //Cursor.visible = false;
 
         // Adjust the camera's local position (set Y value to desired height)
         playerCamera.transform.localPosition = new Vector3(0f, 1.5f, 0f);
@@ -51,4 +51,6 @@ public class PlayerController : MonoBehaviour
         rotationX = Mathf.Clamp(rotationX, -90f, 90f); // Limit vertical rotation
         playerCamera.transform.localRotation = Quaternion.Euler(rotationX, 0f, 0f);
     }
+
+
 }

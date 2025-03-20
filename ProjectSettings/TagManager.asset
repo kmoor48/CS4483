@@ -16,6 +16,12 @@ TagManager:
   - Lock
   - Drawer
   - Reach
+  - Wall
+  - HUD
+  - ItemDisplayPanel
+  - RoomLogicHandler
+  - ItemInstructionsText
+  - PosterPanel
   layers:
   - Default
   - TransparentFX
@@ -25,8 +31,7 @@ TagManager:
   - UI
   - Interactable Elements
   - Ground
-  - 
-  - 
+  - Book
   - 
   - 
   - 

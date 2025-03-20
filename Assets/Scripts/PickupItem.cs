@@ -3,16 +3,22 @@ using UnityEngine;
 public class PickupItem : MonoBehaviour
 {
     public string itemName; 
-    public GameObject openText;
     public Sprite image; // The associated png image of the object that will be displayed in the inventory bar
 
     private InventoryBar inventoryScript;
     private bool playerInRange = false;
     private GameObject universalLogicHandler;
+    private GameObject openText; // Display text for "Press [E] to PickUp"
 
     void Start()
     {
+        GameObject HUD = GameObject.FindWithTag("HUD");
+        openText = HUD.transform.GetChild(0).gameObject;
+        if (openText == null){
+            Debug.LogError("OpenText not found in hierarchy");
+        }
         openText.SetActive(false);
+
         universalLogicHandler = GameObject.FindWithTag("UniversalLogicHandler");
 
         if (universalLogicHandler == null)

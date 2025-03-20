@@ -4,16 +4,18 @@ using TMPro;
 
 public class InventoryDisplay : MonoBehaviour
 {
-    public GameObject inventoryBar; // Reference to the inventory bar UI
-    public GameObject itemDisplayPanel; // Reference to the panel for displaying the selected item
-    public Image itemDisplayImage; // Reference to the Image component for displaying the item's sprite
-    public TextMeshProUGUI itemDisplayText; // Reference to the TextMeshProUGUI for displaying the item's name
+    public GameObject inventoryBar;
+    public GameObject itemDisplayPanel; 
+    public Image itemDisplayImage; 
+    public TextMeshProUGUI itemDisplayText; 
+    public Transform playerHand;
+    public GameObject itemInstructionsText;
 
-    private bool isInventoryOpen = false; // Track whether the inventory is open
+    private bool isInventoryOpen = false;
+    private int selectedSlotIndex = -1;
 
     private void Start()
     {
-        // Ensure the display panel is hidden at the start
         if (itemDisplayPanel != null)
         {
             itemDisplayPanel.SetActive(false);
@@ -22,22 +24,24 @@ public class InventoryDisplay : MonoBehaviour
 
     private void Update()
     {
-        // Check for number key presses (1-9)
         for (int i = 0; i < 9; i++)
         {
-            if (Input.GetKeyDown(KeyCode.Alpha1 + i)) // Alpha1 is the key for '1'
+            if (Input.GetKeyDown(KeyCode.Alpha1 + i))
             {
                 DisplayItem(i);
             }
         }
 
-        // Check for Esc key to hide the display
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            RemoveItemFromInventory();
+        }
+
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             HideItemDisplay();
         }
 
-        // Freeze/unfreeze the game based on inventory state
         if (isInventoryOpen)
         {
             FreezeGame();
@@ -48,35 +52,28 @@ public class InventoryDisplay : MonoBehaviour
         }
     }
 
-    // Function to display the selected item
     private void DisplayItem(int slotIndex)
     {
-        // Check if the slot index is valid
         if (inventoryBar != null && slotIndex >= 0 && slotIndex < inventoryBar.transform.childCount)
         {
-            // Get the slot at the specified index
             Transform slot = inventoryBar.transform.GetChild(slotIndex);
 
-            // Check if the slot has an item (has at least one child)
             if (slot.childCount > 0)
             {
-                // Get the item's sprite and name from the slot
-                Transform imageTransform = slot.GetChild(0); // Assuming the image is the first child
-                Transform textTransform = slot.GetChild(1); // Assuming the text is the second child
+                Transform imageTransform = slot.GetChild(0); 
+                Transform textTransform = slot.GetChild(1); 
 
                 if (imageTransform != null && textTransform != null)
                 {
-                    // Get the Image and TextMeshProUGUI components
                     Image itemImage = imageTransform.GetComponent<Image>();
                     TextMeshProUGUI itemText = textTransform.GetComponentInChildren<TextMeshProUGUI>();
 
                     if (itemImage != null && itemText != null)
                     {
-                        // Update the display panel with the item's sprite and name
                         if (itemDisplayImage != null)
                         {
-                            itemDisplayImage.sprite = itemImage.sprite; // Set the sprite
-                            itemDisplayImage.enabled = true; // Ensure the image is visible
+                            itemDisplayImage.sprite = itemImage.sprite;
+                            itemDisplayImage.enabled = true;
                         }
 
                         if (itemDisplayText != null)
@@ -84,13 +81,12 @@ public class InventoryDisplay : MonoBehaviour
                             itemDisplayText.text = itemText.text;
                         }
 
-                        // Show the display panel
                         if (itemDisplayPanel != null)
                         {
                             itemDisplayPanel.SetActive(true);
                         }
 
-                        // Set inventory state to open
+                        selectedSlotIndex = slotIndex;
                         isInventoryOpen = true;
                     }
                 }
@@ -98,16 +94,74 @@ public class InventoryDisplay : MonoBehaviour
         }
     }
 
-    // Function to hide the item display
+
+    private void RemoveItemFromInventory()
+    {
+        if (selectedSlotIndex == -1) return; 
+
+        Transform selectedSlot = inventoryBar.transform.GetChild(selectedSlotIndex);
+
+        if (selectedSlot.childCount > 0)
+        {
+            Transform imageTransform = selectedSlot.GetChild(0);
+            Transform textTransform = selectedSlot.GetChild(1);
+
+            TextMeshProUGUI temp = textTransform.GetComponentInChildren<TextMeshProUGUI>();
+            string itemName = textTransform.GetComponentInChildren<TextMeshProUGUI>().text;
+
+            Sprite itemSprite = imageTransform.GetComponent<Image>().sprite;
+
+            // Clearing the inventory bar of the item
+            GameObject universalLogicHandler = GameObject.FindWithTag("UniversalLogicHandler");
+            InventoryBar inventoryBarScript = universalLogicHandler.GetComponent<InventoryBar>();
+            inventoryBarScript.RemoveItem(itemName);
+
+            GameObject itemPrefab = Resources.Load<GameObject>("Items/" + itemName);
+            if (itemPrefab != null)
+            {
+                GameObject newItem = Instantiate(itemPrefab, playerHand.position, Quaternion.identity);
+                newItem.transform.SetParent(playerHand);
+                
+                // Placing the object in the hand
+                if (itemName == "Flashlight"){
+                    newItem.transform.localScale = playerHand.localScale * 6f; 
+                    Vector3 offset = new Vector3(-0.2f, 0.4f, 0.2f); 
+                    newItem.transform.localPosition += offset;
+
+                    // Set the rotation with a custom value (for example, 90 degrees on the Y-axis)
+                    Quaternion customRotation = Quaternion.Euler(-20, 6, 44.2f);  // Rotate 90 degrees around the Y-axis
+                    newItem.transform.localRotation = customRotation;
+
+                    newItem.AddComponent<Flashlight>();
+                    itemInstructionsText.SetActive(true);
+                }
+                else {
+                    newItem.transform.localScale = playerHand.localScale * 0.2f; 
+                    Vector3 offset = new Vector3(0.005f, 0.2f, 0.2f); 
+                    newItem.transform.localPosition += offset;
+                }
+
+                // Removing the pickup item script from the item in the hand
+                Destroy(newItem.GetComponent<PickupItem>());
+            }
+            else
+            {
+                Debug.LogError("Item prefab not found in Resources/Items: " + itemName);
+            }
+
+            selectedSlotIndex = -1;
+            HideItemDisplay();
+        }
+    }
+
+
     private void HideItemDisplay()
     {
-        // Hide the display panel
         if (itemDisplayPanel != null)
         {
             itemDisplayPanel.SetActive(false);
         }
 
-        // Optionally, clear the image and text
         if (itemDisplayImage != null)
         {
             itemDisplayImage.enabled = false;
@@ -118,17 +172,13 @@ public class InventoryDisplay : MonoBehaviour
             itemDisplayText.text = "";
         }
 
-        // Set inventory state to closed
+        selectedSlotIndex = -1;
         isInventoryOpen = false;
     }
 
-    // Function to freeze the game
     private void FreezeGame()
     {
-        // Stop time (freeze animations, physics, etc.)
         Time.timeScale = 0;
-
-        // Disable player movement (assuming you have a PlayerController script)
         PlayerController playerController = FindObjectOfType<PlayerController>();
         if (playerController != null)
         {
@@ -136,13 +186,9 @@ public class InventoryDisplay : MonoBehaviour
         }
     }
 
-    // Function to unfreeze the game
     private void UnfreezeGame()
     {
-        // Resume time
         Time.timeScale = 1;
-
-        // Enable player movement
         PlayerController playerController = FindObjectOfType<PlayerController>();
         if (playerController != null)
         {
@@ -150,3 +196,4 @@ public class InventoryDisplay : MonoBehaviour
         }
     }
 }
+
