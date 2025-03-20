@@ -7,7 +7,6 @@ public class InventoryButtonHover : MonoBehaviour
 
     void Start()
     {
-        // Retrieve the child object (assumed to be at index 1, for example)
         Transform itemLabelTransform = transform.GetChild(1);
         itemLabelText = itemLabelTransform.gameObject;
 
