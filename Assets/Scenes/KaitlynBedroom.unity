@@ -806,7 +806,7 @@ GameObject:
   - component: {fileID: 100606652}
   m_Layer: 5
   m_Name: HUD
-  m_TagString: Untagged
+  m_TagString: HUD
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1165,6 +1165,7 @@ MonoBehaviour:
   itemDisplayImage: {fileID: 1589380288}
   itemDisplayText: {fileID: 2102497675}
   playerHand: {fileID: 204868940}
+  itemInstructionsText: {fileID: 0}
 --- !u!4 &121015799
 Transform:
   m_ObjectHideFlags: 0
@@ -15901,7 +15902,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemName: jim_note
-  openText: {fileID: 929973860}
   image: {fileID: 21300000, guid: 5a2468bffa8ae4c45b8ab3335a23abda, type: 3}
 --- !u!65 &1726343255
 BoxCollider:
