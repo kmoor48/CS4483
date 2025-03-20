@@ -10,6 +10,10 @@ public class PlayerController : MonoBehaviour
     private float rotationX = 0f;
     private CharacterController controller;
 
+    // For loading the next scene
+    private GameObject universalLogicHandler;
+    private UniversalLogicHandler universalLogicHandlerScript;
+
     void Start()
     {
         controller = GetComponent<CharacterController>();
@@ -18,6 +22,10 @@ public class PlayerController : MonoBehaviour
 
         // Adjust the camera's local position (set Y value to desired height)
         playerCamera.transform.localPosition = new Vector3(0f, 1.5f, 0f);
+
+        // For loading the next scene
+        universalLogicHandler = GameObject.FindWithTag("UniversalLogicHandler");
+        universalLogicHandlerScript = universalLogicHandler.GetComponent<UniversalLogicHandler>();
     }
 
     void Update()
@@ -50,6 +58,16 @@ public class PlayerController : MonoBehaviour
         rotationX -= mouseY;
         rotationX = Mathf.Clamp(rotationX, -90f, 90f); // Limit vertical rotation
         playerCamera.transform.localRotation = Quaternion.Euler(rotationX, 0f, 0f);
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        // Check if the collider's tag matches the trigger tag
+        if (other.CompareTag("ExitDoor"))
+        {
+            // Load the next scene
+            universalLogicHandlerScript.LoadNextScene();
+        }
     }
 
 

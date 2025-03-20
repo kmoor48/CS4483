@@ -30,7 +30,7 @@ public class UniversalLogicHandler : MonoBehaviour
         nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
     }
 
-    void LoadNextScene()
+    public void LoadNextScene()
     {
         // Check if the next scene index is valid
         if (nextSceneIndex < SceneManager.sceneCountInBuildSettings)
