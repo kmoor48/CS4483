@@ -21,6 +21,7 @@ public class InventoryDisplay : MonoBehaviour
         itemInstructionsText = GameObject.FindWithTag("ItemUseInstructions");
         itemDisplayPanel = GameObject.FindWithTag("ItemDisplayPanel");
         playerHand = GameObject.FindWithTag("PlayerRightHandTarget").transform;
+        Debug.Log(itemDisplayPanel);
         GameObject itemDisplayImageGO = itemDisplayPanel.transform.GetChild(0).gameObject;
         GameObject itemDisplayTextGO = itemDisplayPanel.transform.GetChild(1).gameObject;
         itemDisplayImage = itemDisplayImageGO.GetComponent<Image>();
