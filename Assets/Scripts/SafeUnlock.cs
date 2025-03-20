@@ -5,18 +5,17 @@ public class SafeUnlock : MonoBehaviour
 {
     public Camera playerCamera;
     public Camera safeCamera;
-    public Slider slider1, slider2, slider3, slider4, slider5; // UI sliders
+    public Slider slider1, slider2, slider3, slider4, slider5;
     public GameObject successMessage;
     public GameObject safeDoor;
-    public GameObject safeCanvas;// Safe door to unlock
+    public GameObject safeCanvas;
 
-    private int[] correctCombination = { 2, 1, 3, 5, 4 }; // Correct slider positionss
+    private int[] correctCombination = { 2, 1, 3, 5, 4 }; 
 
 
     void Start()
     {
 
-        // Ensure sliders move correctly & check combination on change
         slider1.wholeNumbers = true;
         slider2.wholeNumbers = true;
         slider3.wholeNumbers = true;
@@ -34,7 +33,6 @@ public class SafeUnlock : MonoBehaviour
         slider5.minValue = 1;
         slider5.maxValue = 5;
 
-        // Listen for slider movement
         slider1.onValueChanged.AddListener(delegate {
      
             CheckCombination();
@@ -68,8 +66,6 @@ public class SafeUnlock : MonoBehaviour
     void CheckCombination()
     {
        
-
-        // Read integer values from sliders (round to nearest integer)
         int s1 = Mathf.RoundToInt(slider1.value);
         int s2 = Mathf.RoundToInt(slider2.value);
         int s3 = Mathf.RoundToInt(slider3.value);
@@ -77,7 +73,6 @@ public class SafeUnlock : MonoBehaviour
         int s5 = Mathf.RoundToInt(slider5.value);
 
 
-        // Check if the combination is correct
         if (s1 == correctCombination[0] &&
             s2 == correctCombination[1] &&
             s3 == correctCombination[2] &&
@@ -94,9 +89,8 @@ public class SafeUnlock : MonoBehaviour
     {
         safeCanvas.SetActive(false);
         successMessage.SetActive(false);
-        safeDoor.SetActive(false); // Open the safe
+        safeDoor.SetActive(false); 
 
-        // Switch cameras back to the player view
         playerCamera.gameObject.SetActive(true);
         safeCamera.gameObject.SetActive(false);
     }
