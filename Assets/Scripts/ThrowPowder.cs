@@ -5,10 +5,13 @@ public class ThrowPowder : MonoBehaviour
     public GameObject messageOnWall;
     public Transform player;
     public Transform wallPosition;
+    public Transform playerHand;
+    public GameObject throwText;
     public float throwDistance = 2.0f;
-    public GameObject throwText; 
+    public float throwForce = 5f;
 
     private bool isNearWall = false;
+    private GameObject heldItem;
 
     void Update()
     {
@@ -16,9 +19,9 @@ public class ThrowPowder : MonoBehaviour
 
         if (distance <= throwDistance)
         {
-            if (!isNearWall) 
+            if (!isNearWall)
             {
-                throwText.gameObject.SetActive(true);
+                throwText.SetActive(true);
                 isNearWall = true;
             }
         }
@@ -26,27 +29,69 @@ public class ThrowPowder : MonoBehaviour
         {
             if (isNearWall)
             {
-                throwText.gameObject.SetActive(false);
+                throwText.SetActive(false);
                 isNearWall = false;
             }
         }
 
-        if (isNearWall && Input.GetKeyDown(KeyCode.T))
+        // Press R to throw the item
+        if (Input.GetKeyDown(KeyCode.R))
         {
-            Debug.Log("T was pressed!");
+            ThrowItem();
+            throwText.SetActive(false);
+        }
+    }
 
-            if (InventoryManager.Instance.HasItem("Foundation_Powder"))
+    void ThrowItem()
+    {
+        if (playerHand.childCount > 0)
+        {
+            heldItem = playerHand.GetChild(0).gameObject;
+            heldItem.transform.SetParent(null);
+
+            Rigidbody rb = heldItem.GetComponent<Rigidbody>();
+            if (rb == null)
             {
-                Debug.Log("Throwing Powder...");
-                InventoryManager.Instance.RemoveItem("Foundation_Powder");
-                InventoryManager.Instance.AddItem("Powder Used");
-                messageOnWall.SetActive(true);
-                throwText.gameObject.SetActive(false); 
+                rb = heldItem.AddComponent<Rigidbody>();
             }
-            else
+
+            rb.isKinematic = false;
+            rb.useGravity = true;
+            rb.AddForce(player.forward * throwForce, ForceMode.Impulse);
+
+            Collider col = heldItem.GetComponent<Collider>();
+            if (col == null)
             {
-                Debug.Log("You don't have the foundation powder!");
+                col = heldItem.AddComponent<BoxCollider>();
             }
+
+            heldItem.AddComponent<ThrowPowderCollision>().Setup(messageOnWall);
+
+            heldItem = null;
+        }
+        else
+        {
+            Debug.Log("No item in hand to throw.");
+        }
+    }
+}
+
+public class ThrowPowderCollision : MonoBehaviour
+{
+    private GameObject messageOnWall;
+
+    public void Setup(GameObject message)
+    {
+        messageOnWall = message;
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Wall")) 
+        {
+            Debug.Log("Powder hit the wall!");
+            messageOnWall.SetActive(true); 
+            Destroy(gameObject, 0.5f);
         }
     }
 }
