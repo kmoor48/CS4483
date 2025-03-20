@@ -7,6 +7,9 @@ public class Flashlight : MonoBehaviour
     private GameObject spotLight;
     private bool isOn = false;
     private int layerMask;
+    private GameObject hiddenPosterPlane;
+    private RevealPosterGradually revealPosterScript;
+    private bool hasHitPosterYet = false;
 
     void Start()
     {
@@ -28,6 +31,10 @@ public class Flashlight : MonoBehaviour
         }
 
         layerMask = LayerMask.GetMask("Interactable Elements"); // Convert layer name to LayerMask
+
+        hiddenPosterPlane = GameObject.FindWithTag("PosterPanel");
+        revealPosterScript = hiddenPosterPlane.GetComponent<RevealPosterGradually>();
+
     }
 
     void Update()
@@ -54,9 +61,19 @@ public class Flashlight : MonoBehaviour
                 // Checking to see if light hit the Poster
                 if (hit.collider.gameObject.name == "Poster")
                 {
-                    Debug.Log("Light hit the target object!");
-                    // Call any function here (e.g., activate something)
+                    if (!hasHitPosterYet)
+                    {
+                        revealPosterScript.StartFadeIn();
+                        hasHitPosterYet = true;
+                    }
+                    else {
+                        revealPosterScript.UnPauseFadeIn();
+                    }
                 }
+            }
+            else
+            {
+                revealPosterScript.PauseFadeIn();
             }
         }
     }
