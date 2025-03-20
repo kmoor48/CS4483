@@ -5,7 +5,7 @@ using UnityEngine;
 public class OpenDrawer : MonoBehaviour
 {
     public Animator ANI;
-    public GameObject openText;
+    public GameObject drawerText;
     public GameObject closedText;
     public GameObject lockText; // UI text for locked state
     public GameObject padlock; // Reference to the lock GameObject (not the script)
@@ -20,7 +20,7 @@ public class OpenDrawer : MonoBehaviour
 
     void Start()
     {
-        openText.SetActive(false);
+        drawerText.SetActive(false);
         closedText.SetActive(false);
         lockText.SetActive(false); // Ensure the lock text is hidden initially
 
@@ -40,7 +40,7 @@ public class OpenDrawer : MonoBehaviour
 
             if (!open && !isLocked)
             {
-                openText.SetActive(true);
+                drawerText.SetActive(true);
             }
             else if (open && !isLocked)
             {
@@ -48,7 +48,7 @@ public class OpenDrawer : MonoBehaviour
             }
             else if (isLocked)
             {
-                openText.SetActive(false);
+                drawerText.SetActive(false);
                 closedText.SetActive(false);
                 lockText.SetActive(true); // Show lockText when in reach and locked
             }
@@ -60,7 +60,7 @@ public class OpenDrawer : MonoBehaviour
         if (other.gameObject.tag == "Reach")
         {
             inReach = false;
-            openText.SetActive(false);
+            drawerText.SetActive(false);
             closedText.SetActive(false);
             lockText.SetActive(false); // Hide lockText when out of range
         }
@@ -79,7 +79,7 @@ public class OpenDrawer : MonoBehaviour
                 ANI.SetBool("open", true);
                 ANI.SetBool("close", false);
                 open = true;
-                openText.SetActive(false);
+                drawerText.SetActive(false);
             }
             else
             {
