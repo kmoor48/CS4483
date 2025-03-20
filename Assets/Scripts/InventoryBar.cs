@@ -5,7 +5,7 @@ using TMPro;
 
 public class InventoryBar : MonoBehaviour
 {
-    public GameObject inventoryBar;
+    private GameObject inventoryBar;
 
     private GameObject[] inventorySlots; // Array referencing the gameobjects for each slot on the inventory bar
     private string[] itemNames;
@@ -17,6 +17,12 @@ public class InventoryBar : MonoBehaviour
 
     void Start()
     {
+        inventoryBar = GameObject.FindWithTag("InventoryBar");
+        if (inventoryBar == null)
+        {
+            Debug.LogError("Cannot find inventory bar");
+        }
+
         int childCount = inventoryBar.transform.childCount;
         inventorySlots = new GameObject[childCount];
         itemNames = new string[childCount];

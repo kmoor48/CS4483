@@ -4,21 +4,35 @@ using TMPro;
 
 public class InventoryDisplay : MonoBehaviour
 {
-    public GameObject inventoryBar;
-    public GameObject itemDisplayPanel; 
-    public Image itemDisplayImage; 
-    public TextMeshProUGUI itemDisplayText; 
-    public Transform playerHand;
-    public GameObject itemInstructionsText;
+    private GameObject inventoryBar;
+    private GameObject itemDisplayPanel; 
+    private Image itemDisplayImage; 
+    private TextMeshProUGUI itemDisplayText; 
+    private Transform playerHand;
+    private GameObject itemInstructionsText;
 
     private bool isInventoryOpen = false;
     private int selectedSlotIndex = -1;
 
     private void Start()
     {
+        // Getting all objects through Tags
+        inventoryBar = GameObject.FindWithTag("InventoryBar");
+        itemInstructionsText = GameObject.FindWithTag("ItemUseInstructions");
+        itemDisplayPanel = GameObject.FindWithTag("ItemDisplayPanel");
+        playerHand = GameObject.FindWithTag("PlayerRightHandTarget").transform;
+        GameObject itemDisplayImageGO = itemDisplayPanel.transform.GetChild(0).gameObject;
+        GameObject itemDisplayTextGO = itemDisplayPanel.transform.GetChild(1).gameObject;
+        itemDisplayImage = itemDisplayImageGO.GetComponent<Image>();
+        itemDisplayText = itemDisplayTextGO.GetComponent<TextMeshProUGUI>();
+
         if (itemDisplayPanel != null)
         {
             itemDisplayPanel.SetActive(false);
+        }
+        if (itemInstructionsText != null)
+        {
+            itemInstructionsText.SetActive(false);
         }
     }
 
