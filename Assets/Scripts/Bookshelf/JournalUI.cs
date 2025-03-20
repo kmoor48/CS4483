@@ -14,10 +14,12 @@ public class JournalUI : MonoBehaviour
     {
         "BP Cover - Dr. Pale's Research Journal",
         "September 10th, 2006:\r\nThey think I'm too obsessed. Too fixated on Lucy's case. But how could I not be? She’s the key to everything — her condition is unlike anything I've ever seen. My peers are too blind to see the potential here. They want to take her away from me, pull me off the case, and for what? To preserve their precious reputations? They say it’s “unethical” to focus so much on one patient, but they don't understand. She is the breakthrough. She could be the one who changes everything — and I will not let her slip through my fingers.",
-        "June 23rd, 2006: I write to you from the Alberta Rockies.",
-        "July 10th, 2006: This heat in Ontario is unbearable.",
-        "August 2nd, 2006: Finally made it to the Pacific Ocean, BC is stunning.",
-        "September 5th, 2006: They’ll regret taking Lucy from me. I will prove them wrong."
+        "May 23rd, 2006: I write to you from the lowlands of Novascotia.",
+        "June 10th, 2006: This heat in Ontario is unbearable.",
+        "July 23rd, 2006: I write to you from the Alberta Rockies.",
+        "August 2nd, 2006: Trapped in the endless days of Yellowknifr",
+        "September 8th, 2006: Finally made it to the Pacific Ocean, BC is stunning.",
+        "October 5th, 2006: They’ll regret taking Lucy from me. I will prove them wrong."
     };
 
     private int currentPage = 0;
