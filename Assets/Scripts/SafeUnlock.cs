@@ -99,8 +99,6 @@ public class SafeUnlock : MonoBehaviour
         // Switch cameras back to the player view
         playerCamera.gameObject.SetActive(true);
         safeCamera.gameObject.SetActive(false);
-
-        Debug.Log("Safe Unlocked! Returning to player camera.");
     }
 
 
