@@ -32,10 +32,12 @@ public class UniversalLogicHandler : MonoBehaviour
 
     public void LoadNextScene()
     {
+        Debug.Log(nextSceneIndex);
         // Check if the next scene index is valid
         if (nextSceneIndex < SceneManager.sceneCountInBuildSettings)
         {
             SceneManager.LoadScene(nextSceneIndex);
+            nextSceneIndex += 1;
         }
         else
         {
