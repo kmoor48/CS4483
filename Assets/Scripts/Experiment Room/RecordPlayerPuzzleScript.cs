@@ -11,9 +11,13 @@ public class PINPuzzleScript : MonoBehaviour
 
     private string correctPIN = "brain";
 
-    public void CheckPIN()
+    void Start()
     {
-        Debug.Log(pinInputField.text);
+        pinInputField.onSubmit.AddListener(OnSubmit);
+    }
+
+    void OnSubmit(string text)
+    {
         if (pinInputField.text == correctPIN )
         {
             pinPuzzleDisplay.SetActive(false);

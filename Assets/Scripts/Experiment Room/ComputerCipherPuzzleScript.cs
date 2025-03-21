@@ -12,11 +12,10 @@ public class ComputerCipherPuzzleScript : MonoBehaviour
     public GameObject correctPasswordMsg;
     public GameObject passwordFolder;
 
-    private string folderPassword = "Konstyl";
+    private string folderPassword = "konstyl";
 
     public void OpenFolder(string folderName)
     {
-        Debug.Log(folderName);
         headerText.text = folderName;
 
         // Populating file content
@@ -56,8 +55,7 @@ public class ComputerCipherPuzzleScript : MonoBehaviour
 
     public void CheckFolderPassword()
     {
-        Debug.Log("Entered Password: "+ folderPasswordInputField.text);
-        if (folderPasswordInputField.text == folderPassword)
+        if (folderPasswordInputField.text.ToLower() == folderPassword)
         {
             lockedFolderInput.SetActive(false);
             correctPasswordMsg.SetActive(true);
