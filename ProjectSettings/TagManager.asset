@@ -26,6 +26,7 @@ TagManager:
   - InventoryBar
   - PlayerRightHandTarget
   - ItemUseInstructions
+  - powerOnComputerText
   layers:
   - Default
   - TransparentFX

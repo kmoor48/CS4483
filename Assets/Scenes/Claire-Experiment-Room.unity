@@ -1193,6 +1193,7 @@ MonoBehaviour:
   roomLogicHandler: {fileID: 156938419}
   enterPuzzleText: {fileID: 1373704882}
   puzzleToSwitchTo: door
+  tagOfGOPuzzleDependsOn: 
 --- !u!65 &27160924
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11358,6 +11359,7 @@ MonoBehaviour:
   roomLogicHandler: {fileID: 156938419}
   enterPuzzleText: {fileID: 1373704882}
   puzzleToSwitchTo: blood
+  tagOfGOPuzzleDependsOn: 
 --- !u!65 &639014349
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12848,11 +12850,11 @@ GameObject:
   - component: {fileID: 707069220}
   m_Layer: 0
   m_Name: Power On Text
-  m_TagString: Untagged
+  m_TagString: powerOnComputerText
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &707069220
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17440,6 +17442,7 @@ MonoBehaviour:
   roomLogicHandler: {fileID: 156938419}
   enterPuzzleText: {fileID: 1373704882}
   puzzleToSwitchTo: record
+  tagOfGOPuzzleDependsOn: 
 --- !u!65 &1017419460
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -25355,6 +25358,7 @@ MonoBehaviour:
   roomLogicHandler: {fileID: 156938419}
   enterPuzzleText: {fileID: 1373704882}
   puzzleToSwitchTo: computer
+  tagOfGOPuzzleDependsOn: powerOnComputerText
 --- !u!1 &1400645429
 GameObject:
   m_ObjectHideFlags: 0
@@ -28399,6 +28403,7 @@ MonoBehaviour:
   roomLogicHandler: {fileID: 156938419}
   enterPuzzleText: {fileID: 1373704882}
   puzzleToSwitchTo: door
+  tagOfGOPuzzleDependsOn: 
 --- !u!1001 &1623214650
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -32970,8 +32975,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.2214878, y: 1.6386154, z: 1.3696423}
-  m_Center: {x: -0.007568836, y: 0.9415642, z: 0.5931382}
+  m_Size: {x: 0.9659722, y: 1.6386154, z: 1.3696423}
+  m_Center: {x: -0.13532662, y: 0.9415642, z: 0.5931382}
 --- !u!1 &1867529982
 GameObject:
   m_ObjectHideFlags: 0
