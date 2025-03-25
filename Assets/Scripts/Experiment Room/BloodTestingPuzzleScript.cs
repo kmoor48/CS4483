@@ -15,9 +15,12 @@ public class BloodTestingPuzzleScript : MonoBehaviour
     public GameObject glassDropper;
     private GlassDropperScript glassDropperScript;
 
+    private GameObject universalLogicHandler;
+
     void Start()
     {
         glassDropperScript = glassDropper.GetComponent<GlassDropperScript>();
+        universalLogicHandler = GameObject.FindWithTag("UniversalLogicHandler");
     }
 
     public void TriggerFunction(GameObject sampleGO)
@@ -47,6 +50,11 @@ public class BloodTestingPuzzleScript : MonoBehaviour
         else if (gameObjectName == "Sample Glass" && isBloodDisplayedOnSampleGlass)
         {
             sampleA.SetActive(true);
+
+            Debug.Log("here");
+            // Mark the puzzle as complete
+            LevelClueAndProgressionManager clueScript = universalLogicHandler.GetComponent<LevelClueAndProgressionManager>();
+            clueScript.IncrementPuzzleCounter();
         }
     }
 

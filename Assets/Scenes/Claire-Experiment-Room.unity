@@ -12227,7 +12227,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &679182568
 RectTransform:
   m_ObjectHideFlags: 0
@@ -36728,7 +36728,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2128693365
 RectTransform:
   m_ObjectHideFlags: 0
@@ -37109,6 +37109,14 @@ PrefabInstance:
     - target: {fileID: 376100800575862333, guid: a60cd3619df27884ebb6f416050124c1, type: 3}
       propertyPath: m_TagString
       value: InventoryBar
+      objectReference: {fileID: 0}
+    - target: {fileID: 579152375775702675, guid: a60cd3619df27884ebb6f416050124c1, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.000034332275
+      objectReference: {fileID: 0}
+    - target: {fileID: 579152375775702675, guid: a60cd3619df27884ebb6f416050124c1, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.000011444092
       objectReference: {fileID: 0}
     - target: {fileID: 1338851479831742791, guid: a60cd3619df27884ebb6f416050124c1, type: 3}
       propertyPath: m_Pivot.x

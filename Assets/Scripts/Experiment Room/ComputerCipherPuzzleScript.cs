@@ -13,6 +13,12 @@ public class ComputerCipherPuzzleScript : MonoBehaviour
     public GameObject passwordFolder;
 
     private string folderPassword = "konstyl";
+    private GameObject universalLogicHandler;
+
+    void Start()
+    {
+        universalLogicHandler = GameObject.FindWithTag("UniversalLogicHandler");
+    }
 
     public void OpenFolder(string folderName)
     {
@@ -87,5 +93,9 @@ public class ComputerCipherPuzzleScript : MonoBehaviour
             "\nSubject_042_PostMortem_Report.pdf" +
             "\nMemory_Wipe_Protocol.docx" +
             "\nEmergency_Termination_Order.txt";
+
+        // Mark the puzzle as complete
+        LevelClueAndProgressionManager clueScript = universalLogicHandler.GetComponent<LevelClueAndProgressionManager>();
+        clueScript.IncrementPuzzleCounter();
     }
 }

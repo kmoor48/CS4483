@@ -17,6 +17,13 @@ public class LoginPuzzleScript : MonoBehaviour
     private string correctValueA = "mygdala";
     private string correctValueT = "halamus";
 
+    private GameObject universalLogicHandler;
+
+    void Start()
+    {
+        universalLogicHandler = GameObject.FindWithTag("UniversalLogicHandler");
+    }
+
     public void CheckInputs()
     {
         if (inputFieldH.text == correctValueH &&
@@ -44,5 +51,9 @@ public class LoginPuzzleScript : MonoBehaviour
     {
         correctPasswordText.SetActive(false);
         computerDesktopScreen.SetActive(true);
+
+        // Mark the puzzle as complete
+        LevelClueAndProgressionManager clueScript = universalLogicHandler.GetComponent<LevelClueAndProgressionManager>();
+        clueScript.IncrementPuzzleCounter();
     }
 }

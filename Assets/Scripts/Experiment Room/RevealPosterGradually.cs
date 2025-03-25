@@ -17,8 +17,12 @@ public class RevealPosterGradually : MonoBehaviour
     private Color originalTextColor;
     private bool isPaused = false;
 
+    private GameObject universalLogicHandler;
+
     void Start()
     {
+        universalLogicHandler = GameObject.FindWithTag("UniversalLogicHandler");
+
         // Get the material of the 3D plane
         planeMaterialToReveal = GetComponent<Renderer>().material;
         originalColorToReveal = planeMaterialToReveal.color; // Store the original color
@@ -98,6 +102,10 @@ public class RevealPosterGradually : MonoBehaviour
 
         // Set the computer screen text on
         computerPowerOnText.SetActive(true);
+
+        // Mark the puzzle as complete
+        LevelClueAndProgressionManager clueScript = universalLogicHandler.GetComponent<LevelClueAndProgressionManager>();
+        clueScript.IncrementPuzzleCounter();
     }
 
     public void StartFadeIn()

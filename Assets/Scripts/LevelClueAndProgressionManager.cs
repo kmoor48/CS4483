@@ -24,7 +24,7 @@ public class LevelClueAndProgressionManager : MonoBehaviour
         // Clue display manager
         clueDisplay = GameObject.FindWithTag("ClueDisplayPanel");
         clueTextField = clueDisplay.transform.GetChild(2).GetComponent<TextMeshProUGUI>();
-        clueTextField.text = "No clue requested yet";
+        clueTextField.text = "Click the button below to request a clue!";
         clueNumTextField = clueDisplay.transform.GetChild(3).GetChild(1).GetComponent<TextMeshProUGUI>();
 
         if (clueDisplay != null)
@@ -116,12 +116,19 @@ public class LevelClueAndProgressionManager : MonoBehaviour
     {
         currentLevelInt = i; // Update new level
         currentPuzzleInt = 0; // Reset which puzzle player is on bc new room
+        clueNum = 0;
     }
 
     public void IncrementPuzzleCounter()
     {
+        Debug.Log("inside increment puzzle counter. Prev puzzle counter: "+ currentPuzzleInt);
         currentPuzzleInt += 1; // Update new puzzle
         clueNum = 0; // Reset the clue number the player is on for the new puzzle
+        Debug.Log("New puzzle int: "+ currentPuzzleInt + " clue number: "+clueNum);
+
+        // Reset display text
+        clueTextField.text = "Click the button below to request a clue for the next puzzle!";
+        clueNumTextField.text = "";
     }
 
     public void IncrementClueNumber()
@@ -135,11 +142,11 @@ public class LevelClueAndProgressionManager : MonoBehaviour
         if (clueNum < MAX_NUMBER_OF_CLUES)
         {
             string clueToDisplay = cluesForLevel[currentLevelInt][currentPuzzleInt][clueNum];
-            IncrementClueNumber();
 
             clueTextField.text = clueToDisplay;
-            clueNumTextField.text = (clueNum).ToString() + "/3";
+            clueNumTextField.text = (clueNum + 1).ToString() + "/3";
 
+            IncrementClueNumber();
             OpenClueDisplay();
         }
     }
