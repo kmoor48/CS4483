@@ -27,6 +27,7 @@ TagManager:
   - PlayerRightHandTarget
   - ItemUseInstructions
   - powerOnComputerText
+  - ClueDisplayPanel
   layers:
   - Default
   - TransparentFX
