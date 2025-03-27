@@ -32,17 +32,18 @@ public class UniversalLogicHandler : MonoBehaviour
         nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
 
         clueLevelManagerScript = gameObject.GetComponent<LevelClueAndProgressionManager>();
-        // testing purposes
+        /* testing purposes */
         clueLevelManagerScript.SetCurrentLevel(3);
     }
 
     public void LoadNextScene()
     {
-        Debug.Log(nextSceneIndex);
         // Check if the next scene index is valid
         if (nextSceneIndex < SceneManager.sceneCountInBuildSettings)
         {
             SceneManager.LoadScene(nextSceneIndex);
+            /* Uncommend the line below for continuity between scenes*/
+            // clueLevelManagerScript.SetCurrentLevel(nextSceneIndex);
             nextSceneIndex += 1;
         }
         else

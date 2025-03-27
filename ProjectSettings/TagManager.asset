@@ -28,6 +28,7 @@ TagManager:
   - ItemUseInstructions
   - powerOnComputerText
   - ClueDisplayPanel
+  - ProgressionBar
   layers:
   - Default
   - TransparentFX

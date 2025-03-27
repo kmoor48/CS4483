@@ -51,7 +51,6 @@ public class BloodTestingPuzzleScript : MonoBehaviour
         {
             sampleA.SetActive(true);
 
-            Debug.Log("here");
             // Mark the puzzle as complete
             LevelClueAndProgressionManager clueScript = universalLogicHandler.GetComponent<LevelClueAndProgressionManager>();
             clueScript.IncrementPuzzleCounter();

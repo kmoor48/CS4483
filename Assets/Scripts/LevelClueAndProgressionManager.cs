@@ -12,8 +12,13 @@ public class LevelClueAndProgressionManager : MonoBehaviour
     private TextMeshProUGUI clueTextField;
     private TextMeshProUGUI clueNumTextField;
 
+    // Progression bar
+    private GameObject progressionBar;
+    private ProgressBar progressionBarScript;
+
     // Tracking number of puzzles per level. index 0 -> level 1, index 1 -> level 2, index 2 -> level 3...etc.
-    private int[] numOfPuzzlesPerLevel = {2, 2, 3, 4, 2};
+    private int[] numOfPuzzlesPerLevel = {1, 1, 3, 5, 4};
+    private int numOfPuzzlesInCurrentLevel;
     private int currentLevelInt = 0;
     private int currentPuzzleInt = 0;
     private int clueNum = 0;
@@ -117,18 +122,24 @@ public class LevelClueAndProgressionManager : MonoBehaviour
         currentLevelInt = i; // Update new level
         currentPuzzleInt = 0; // Reset which puzzle player is on bc new room
         clueNum = 0;
+        numOfPuzzlesInCurrentLevel = numOfPuzzlesPerLevel[i];
+
+        // Reset the progression bar for the level
+        progressionBar = GameObject.FindWithTag("ProgressionBar");
+        progressionBarScript = progressionBar.GetComponent<ProgressBar>();
+        progressionBarScript.ResetProgressBar(numOfPuzzlesInCurrentLevel);
     }
 
     public void IncrementPuzzleCounter()
     {
-        Debug.Log("inside increment puzzle counter. Prev puzzle counter: "+ currentPuzzleInt);
         currentPuzzleInt += 1; // Update new puzzle
         clueNum = 0; // Reset the clue number the player is on for the new puzzle
-        Debug.Log("New puzzle int: "+ currentPuzzleInt + " clue number: "+clueNum);
 
         // Reset display text
         clueTextField.text = "Click the button below to request a clue for the next puzzle!";
         clueNumTextField.text = "";
+
+        progressionBarScript.IncrementProgressBar();
     }
 
     public void IncrementClueNumber()
