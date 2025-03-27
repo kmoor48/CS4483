@@ -123,7 +123,7 @@ public class InventoryDisplay : MonoBehaviour
         }
 
         Transform itemInHand = playerHand.GetChild(0);
-        itemInHand.GetComponent<PickupItem>().enabled = true;
+        //itemInHand.GetComponent<PickupItem>().enabled = true;
         PickupItem pickupItem = itemInHand.GetComponent<PickupItem>();
 
         if (pickupItem == null)
@@ -131,9 +131,10 @@ public class InventoryDisplay : MonoBehaviour
             Debug.LogError("Item in hand does not have a PickupItem component!");
             return;
         }
-
+        pickupItem.enabled = true;
         string itemName = pickupItem.itemName; 
-        Sprite itemSprite = pickupItem.image; 
+        Sprite itemSprite = pickupItem.image;
+        
 
         if (itemSprite == null)
         {
@@ -202,7 +203,12 @@ public class InventoryDisplay : MonoBehaviour
 
                 // Removing the pickup item script from the item in the hand
                 //Destroy(newItem.GetComponent<PickupItem>());
-            newItem.GetComponent<PickupItem>().enabled = false;
+                PickupItem pickupItemScript = newItem.GetComponent<PickupItem>();
+                if (pickupItemScript != null)
+                {
+                    pickupItemScript.enabled = false; // Disable so it doesn't interact again
+                    pickupItemScript.SetOpenTextFalse();
+                }
             }
             else
             {
