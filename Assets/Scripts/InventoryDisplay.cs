@@ -13,6 +13,11 @@ public class InventoryDisplay : MonoBehaviour
 
     private bool isInventoryOpen = false;
     private int selectedSlotIndex = -1;
+    private bool isClockInteracting = false; // Track clock interaction state
+
+
+    public ClockInteraction clockInteraction; // Reference to ClockInteraction script
+
 
     private void Start()
     {
@@ -39,6 +44,17 @@ public class InventoryDisplay : MonoBehaviour
 
     private void Update()
     {
+
+        if (clockInteraction != null)
+        {
+            isClockInteracting = clockInteraction.IsEditingClock();
+        }
+
+        if (isClockInteracting)
+        {
+            return; // Block inventory actions if clock is being interacted with
+        }
+
         for (int i = 0; i < 9; i++)
         {
             if (Input.GetKeyDown(KeyCode.Alpha1 + i))
