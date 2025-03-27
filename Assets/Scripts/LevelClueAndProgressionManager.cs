@@ -48,14 +48,47 @@ public class LevelClueAndProgressionManager : MonoBehaviour
 
         /* Clues for Level 1 */
         Dictionary<int, string[]> level1Clues = new Dictionary<int, string[]>();
+        string[] level1Puzzle1Clues = {
+            "FILL IN - Clue 1 for Level 1 Puzzle 1",
+            "FILL IN - Clue 2 for Level 1 Puzzle 1",
+            "FILL IN - Clue 3 for Level 1 Puzzle 1",
+        };
+        level1Clues[0] = level1Puzzle1Clues;
         cluesForLevel[0] = level1Clues;
 
         /* Clues for Level 2 */
         Dictionary<int, string[]> level2Clues = new Dictionary<int, string[]>();
+        string[] level2Puzzle1Clues = {
+            "FILL IN - Clue 1 for Level 2 Puzzle 1",
+            "FILL IN - Clue 2 for Level 2 Puzzle 1",
+            "FILL IN - Clue 3 for Level 2 Puzzle 1",
+        };
+        level2Clues[0] = level2Puzzle1Clues;
         cluesForLevel[1] = level2Clues;
 
         /* Clues for Level 3 */
         Dictionary<int, string[]> level3Clues = new Dictionary<int, string[]>();
+        string[] level3Puzzle1Clues = {
+            "FILL IN - Clue 1 for Level 3 Puzzle 1",
+            "FILL IN - Clue 2 for Level 3 Puzzle 1",
+            "FILL IN - Clue 3 for Level 3 Puzzle 1",
+        };
+        level3Clues[0] = level3Puzzle1Clues;
+
+        string[] level3Puzzle2Clues = {
+            "FILL IN - Clue 1 for Level 3 Puzzle 2",
+            "FILL IN - Clue 2 for Level 3 Puzzle 2",
+            "FILL IN - Clue 3 for Level 3 Puzzle 2",
+        };
+        level3Clues[1] = level3Puzzle2Clues;
+
+        string[] level3Puzzle3Clues = {
+            "FILL IN - Clue 1 for Level 3 Puzzle 3",
+            "FILL IN - Clue 2 for Level 3 Puzzle 3",
+            "FILL IN - Clue 3 for Level 3 Puzzle 3",
+        };
+        level3Clues[2] = level3Puzzle3Clues;
+
         cluesForLevel[2] = level3Clues;
 
         /* Clues for Level 4 */
@@ -115,6 +148,39 @@ public class LevelClueAndProgressionManager : MonoBehaviour
         level4Clues[5] = level4Puzzle5Clues;
 
         cluesForLevel[3] = level4Clues;
+
+
+        /* Clues for Level 5 */
+        Dictionary<int, string[]> level5Clues = new Dictionary<int, string[]>();
+        string[] level5Puzzle1Clues = {
+            "FILL IN - Clue 1 for Level 5 Puzzle 1",
+            "FILL IN - Clue 2 for Level 5 Puzzle 1",
+            "FILL IN - Clue 3 for Level 5 Puzzle 1",
+        };
+        level5Clues[0] = level5Puzzle1Clues;
+
+        string[] level5Puzzle2Clues = {
+            "FILL IN - Clue 1 for Level 5 Puzzle 2",
+            "FILL IN - Clue 2 for Level 5 Puzzle 2",
+            "FILL IN - Clue 3 for Level 5 Puzzle 2",
+        };
+        level5Clues[1] = level5Puzzle2Clues;
+
+        string[] level5Puzzle3Clues = {
+            "FILL IN - Clue 1 for Level 5 Puzzle 3",
+            "FILL IN - Clue 2 for Level 5 Puzzle 3",
+            "FILL IN - Clue 3 for Level 5 Puzzle 3",
+        };
+        level5Clues[2] = level5Puzzle3Clues;
+
+        string[] level5Puzzle4Clues = {
+            "FILL IN - Clue 1 for Level 5 Puzzle 4",
+            "FILL IN - Clue 2 for Level 5 Puzzle 4",
+            "FILL IN - Clue 3 for Level 5 Puzzle 4",
+        };
+        level5Clues[2] = level5Puzzle4Clues;
+
+        cluesForLevel[4] = level5Clues;
     }
 
     public void SetCurrentLevel(int i)
