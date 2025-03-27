@@ -10,25 +10,60 @@ public class PickupItem : MonoBehaviour
     private GameObject universalLogicHandler;
     private GameObject openText; // Display text for "Press [E] to PickUp"
 
+    //void Start()
+    //{
+    //    GameObject HUD = GameObject.FindWithTag("HUD");
+    //    openText = HUD.transform.GetChild(0).gameObject;
+    //    if (openText == null){
+    //        Debug.LogError("OpenText not found in hierarchy");
+    //    }
+    //    openText.SetActive(false);
+
+    //    universalLogicHandler = GameObject.FindWithTag("UniversalLogicHandler");
+
+    //    if (universalLogicHandler == null)
+    //    {
+    //        Debug.LogError("No GameObject with tag of UniversalLogicHandler");
+    //    }
+
+    //    // Get the inventory bar script from the logic handler game object 
+    //    inventoryScript = universalLogicHandler.GetComponent<InventoryBar>();
+    //}
+
     void Start()
     {
         GameObject HUD = GameObject.FindWithTag("HUD");
-        openText = HUD.transform.GetChild(0).gameObject;
-        if (openText == null){
-            Debug.LogError("OpenText not found in hierarchy");
+
+        if (HUD != null)
+        {
+            openText = HUD.transform.GetChild(0).gameObject;
         }
-        openText.SetActive(false);
+        else
+        {
+            Debug.LogError("HUD object not found! Check that your HUD has the correct tag.");
+        }
+
+        if (openText == null)
+        {
+            Debug.LogError("OpenText is not assigned in PickupItem!");
+        }
+        else
+        {
+            openText.SetActive(false);
+        }
 
         universalLogicHandler = GameObject.FindWithTag("UniversalLogicHandler");
 
         if (universalLogicHandler == null)
         {
-            Debug.LogError("No GameObject with tag of UniversalLogicHandler");
+            Debug.LogError("No GameObject with tag UniversalLogicHandler found.");
         }
-
-        // Get the inventory bar script from the logic handler game object 
-        inventoryScript = universalLogicHandler.GetComponent<InventoryBar>();
+        else
+        {
+            inventoryScript = universalLogicHandler.GetComponent<InventoryBar>();
+        }
     }
+
 
     void OnTriggerEnter(Collider other)
     { 

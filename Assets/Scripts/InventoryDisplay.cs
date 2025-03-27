@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Unity.VisualScripting;
+using UnityEditorInternal.Profiling.Memory.Experimental;
 
 public class InventoryDisplay : MonoBehaviour
 {
@@ -56,6 +58,11 @@ public class InventoryDisplay : MonoBehaviour
             HideItemDisplay();
         }
 
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            ReturnToInventory();
+        }
+
         if (isInventoryOpen)
         {
             FreezeGame();
@@ -108,6 +115,43 @@ public class InventoryDisplay : MonoBehaviour
         }
     }
 
+    private void ReturnToInventory()
+    {
+        if (playerHand.childCount == 0)
+        {
+            return;
+        }
+
+        Transform itemInHand = playerHand.GetChild(0);
+        itemInHand.GetComponent<PickupItem>().enabled = true;
+        PickupItem pickupItem = itemInHand.GetComponent<PickupItem>();
+
+        if (pickupItem == null)
+        {
+            Debug.LogError("Item in hand does not have a PickupItem component!");
+            return;
+        }
+
+        string itemName = pickupItem.itemName; 
+        Sprite itemSprite = pickupItem.image; 
+
+        if (itemSprite == null)
+        {
+            Debug.LogError("Item does not have a valid sprite!");
+            return;
+        }
+
+        GameObject universalLogicHandler = GameObject.FindWithTag("UniversalLogicHandler");
+        InventoryBar inventoryBarScript = universalLogicHandler.GetComponent<InventoryBar>();
+
+        inventoryBarScript.AddItem(itemInHand.gameObject, itemName, itemSprite);
+
+        Destroy(itemInHand.gameObject); 
+
+        HideItemDisplay();
+    }
+
+
 
     private void RemoveItemFromInventory()
     {
@@ -157,7 +201,8 @@ public class InventoryDisplay : MonoBehaviour
                 }
 
                 // Removing the pickup item script from the item in the hand
-               Destroy(newItem.GetComponent<PickupItem>());
+                //Destroy(newItem.GetComponent<PickupItem>());
+            newItem.GetComponent<PickupItem>().enabled = false;
             }
             else
             {
