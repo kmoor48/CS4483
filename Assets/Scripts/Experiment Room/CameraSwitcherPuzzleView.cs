@@ -4,7 +4,6 @@ public class CameraSwitcherPuzzleView : MonoBehaviour
 {
     public Camera playerCamera;
     public Camera computerPuzzleCamera;
-    public Camera posterPuzzleCamera;
     public Camera recordPlayerPuzzleCamera;
     public Camera bloodTestPuzzleCamera;
 
@@ -13,14 +12,12 @@ public class CameraSwitcherPuzzleView : MonoBehaviour
         // Ensure only the main camera is active at the start
         playerCamera.enabled = true;
         computerPuzzleCamera.enabled = false;
-        posterPuzzleCamera.enabled = false;
         recordPlayerPuzzleCamera.enabled = false;
         bloodTestPuzzleCamera.enabled = false;
 
         //For testing:
         //playerCamera.enabled = false;
         //computerPuzzleCamera.enabled = false;
-        //posterPuzzleCamera.enabled = false;
         //recordPlayerPuzzleCamera.enabled = true;
     }
 
@@ -31,10 +28,6 @@ public class CameraSwitcherPuzzleView : MonoBehaviour
         if (puzzle == "computer")
         {
             computerPuzzleCamera.enabled = true;
-        }
-        if (puzzle == "poster")
-        {
-            posterPuzzleCamera.enabled = true;
         }
         if (puzzle == "record")
         {
@@ -53,10 +46,6 @@ public class CameraSwitcherPuzzleView : MonoBehaviour
         if (puzzle == "computer")
         {
             computerPuzzleCamera.enabled = false;
-        }
-        if (puzzle == "poster")
-        {
-            posterPuzzleCamera.enabled = false;
         }
         if (puzzle == "record")
         {
