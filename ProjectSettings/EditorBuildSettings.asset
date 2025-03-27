@@ -6,8 +6,17 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/KaitlynScene.unity
-    guid: 99c9720ab356a0642a771bea13969a05
+    path: Assets/Scenes/Kerem-Level1.unity
+    guid: 94e7ea3fc22bc4bf4bf245b499b9eaed
+  - enabled: 1
+    path: Assets/Scenes/Kerem-Level2.unity
+    guid: 2e0bd33cae2a44c5490f53a12d26bba7
+  - enabled: 1
+    path: Assets/Scenes/Claire-Experiment-Room.unity
+    guid: a03c334445a24ff4483d7b1f92411402
+  - enabled: 1
+    path: Assets/Scenes/KaitlynBedroom.unity
+    guid: cababa6a0a685f94b9cff166f54d9042
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0

@@ -22,6 +22,10 @@ TagManager:
   - RoomLogicHandler
   - ItemInstructionsText
   - PosterPanel
+  - Book
+  - InventoryBar
+  - PlayerRightHandTarget
+  - ItemUseInstructions
   layers:
   - Default
   - TransparentFX
