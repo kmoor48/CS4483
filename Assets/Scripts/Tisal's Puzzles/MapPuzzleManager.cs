@@ -214,47 +214,97 @@ public class MapPuzzleManager : MonoBehaviour
 
     private System.Collections.IEnumerator RevealSafe()
     {
-        // Show completion text
-        completionText.SetActive(true);
+        // Exit puzzle view to ensure player is in main view
+        ExitPuzzleView();
 
-        // Play success sound if you have one
-        // if (successSound != null)
-        //     successSound.Play();
+        // Temporarily disable player movement
+        DisablePlayerMovement();
 
+        // Force player to look at the painting
+        RotatePlayerToFacePainting();
+
+        // Wait a moment to let the player focus
         yield return new WaitForSeconds(1.5f);
 
-        // Animate the painting moving up
+        // Hide the painting
         if (paintingObject != null)
         {
-            // Define the target position (move up)
-            Vector3 startPosition = paintingObject.position;
-            Vector3 endPosition = startPosition + Vector3.up * 2f; // Adjust the 2f to control how far up it moves
-
-            // Simple smooth movement
-            float duration = 1.0f;
-            float elapsed = 0;
-
-            while (elapsed < duration)
-            {
-                paintingObject.position = Vector3.Lerp(startPosition, endPosition, elapsed / duration);
-                elapsed += Time.deltaTime;
-                yield return null;
-            }
-
-            // Ensure it reaches the exact end position
-            paintingObject.position = endPosition;
+            paintingObject.gameObject.SetActive(false);
         }
 
         // Make safe visible
-        if (paintingObject != null)
+        if (safeObject != null)
         {
             safeObject.gameObject.SetActive(true);
         }
 
+        // Wait a moment to let the player see the revealed safe
         yield return new WaitForSeconds(1.0f);
 
-        // Return to main view
-        ExitPuzzleView();
+        // Re-enable player movement
+        EnablePlayerMovement();
+    }
+
+    // You'll need to implement these methods based on your specific player and camera setup
+    private void DisablePlayerMovement()
+    {
+        // Find player and disable movement components
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        if (player != null)
+        {
+            // Disable character controller or first-person controller
+            var characterController = player.GetComponent<CharacterController>();
+            if (characterController != null)
+                characterController.enabled = false;
+
+            // Add any other movement-related component disabling here
+        }
+    }
+
+    private void EnablePlayerMovement()
+    {
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        if (player != null)
+        {
+            var characterController = player.GetComponent<CharacterController>();
+            if (characterController != null)
+                characterController.enabled = true;
+
+            // Re-enable any other movement-related components
+        }
+    }
+
+    private void RotatePlayerToFacePainting()
+    {
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        if (player != null && paintingObject != null)
+        {
+            // Calculate direction from player to painting
+            Vector3 directionToPainting = (paintingObject.position - player.transform.position).normalized;
+
+            // Only rotate around Y axis
+            directionToPainting.y = 0;
+
+            // Create a rotation that looks at the painting
+            Quaternion lookRotation = Quaternion.LookRotation(directionToPainting);
+
+            // Smoothly rotate the player
+            player.transform.rotation = lookRotation;
+        }
+    }
+
+    private void LockPlayerCamera()
+    {
+        // Implement camera locking logic
+        // This might involve:
+        // - Disabling camera rotation
+        // - Freezing the camera's current rotation
+    }
+
+    private void UnlockPlayerCamera()
+    {
+        // Implement camera unlocking logic
+        // Reverse the effects of LockPlayerCamera()
     }
 
     public void ResetPuzzle()
@@ -325,39 +375,5 @@ public class MapPuzzleManager : MonoBehaviour
         
     }
 
-    //private void DisablePlayerMovement()
-    //{
-    //    // Find player and disable movement components
-    //    GameObject player = GameObject.FindGameObjectWithTag("Player");
-    //    if (player != null)
-    //    {
-    //        // Adjust these based on your specific character controller setup
-    //        var characterController = player.GetComponent<CharacterController>();
-    //        if (characterController != null)
-    //            characterController.enabled = false;
 
-    //        // First person controller (if using Standard Assets)
-    //        var fpsController = player.GetComponent<UnityStandardAssets.Characters.FirstPerson.FirstPersonController>();
-    //        if (fpsController != null)
-    //            fpsController.enabled = false;
-    //    }
-    //}
-
-    //private void EnablePlayerMovement()
-    //{
-    //    // Find player and enable movement components
-    //    GameObject player = GameObject.FindGameObjectWithTag("Player");
-    //    if (player != null)
-    //    {
-    //        // Re-enable character controller
-    //        var characterController = player.GetComponent<CharacterController>();
-    //        if (characterController != null)
-    //            characterController.enabled = true;
-
-    //        // First person controller
-    //        var fpsController = player.GetComponent<UnityStandardAssets.Characters.FirstPerson.FirstPersonController>();
-    //        if (fpsController != null)
-    //            fpsController.enabled = true;
-    //    }
-    //}
 }
