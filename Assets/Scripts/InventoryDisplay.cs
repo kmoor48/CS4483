@@ -149,7 +149,21 @@ public class InventoryDisplay : MonoBehaviour
                     newItem.AddComponent<Flashlight>();
                     itemInstructionsText.SetActive(true);
                 }
-                else {
+                else if (itemName == "Foundation_Powder")
+                {
+                    // Set scale, position, and rotation for proper hand placement
+                    newItem.transform.localScale = new Vector3(1f, 1f, 1f); // Adjust scale as needed
+                    newItem.transform.localPosition = new Vector3(0f, 0f, 0f); // Adjust offset if needed
+                    newItem.transform.localRotation = Quaternion.Euler(-20, 6, 44.2f); // Adjust rotation if needed
+
+                    // Ensure instructions appear
+                    itemInstructionsText.SetActive(true);
+
+                    Debug.Log("Foundation_Powder added to player's hand.");
+                }
+
+                else
+                {
                     newItem.transform.localScale = playerHand.localScale * 0.2f; 
                     Vector3 offset = new Vector3(0.005f, 0.2f, 0.2f); 
                     newItem.transform.localPosition += offset;
