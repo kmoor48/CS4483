@@ -135,7 +135,6 @@ public class InventoryDisplay : MonoBehaviour
             {
                 GameObject newItem = Instantiate(itemPrefab, playerHand.position, Quaternion.identity);
                 newItem.transform.SetParent(playerHand);
-                
                 // Placing the object in the hand
                 if (itemName == "Flashlight"){
                     newItem.transform.localScale = playerHand.localScale * 6f; 
@@ -149,18 +148,6 @@ public class InventoryDisplay : MonoBehaviour
                     newItem.AddComponent<Flashlight>();
                     itemInstructionsText.SetActive(true);
                 }
-                else if (itemName == "Foundation_Powder")
-                {
-                    // Set scale, position, and rotation for proper hand placement
-                    newItem.transform.localScale = new Vector3(1f, 1f, 1f); // Adjust scale as needed
-                    newItem.transform.localPosition = new Vector3(0f, 0f, 0f); // Adjust offset if needed
-                    newItem.transform.localRotation = Quaternion.Euler(-20, 6, 44.2f); // Adjust rotation if needed
-
-                    // Ensure instructions appear
-                    itemInstructionsText.SetActive(true);
-
-                    Debug.Log("Foundation_Powder added to player's hand.");
-                }
 
                 else
                 {
@@ -170,7 +157,7 @@ public class InventoryDisplay : MonoBehaviour
                 }
 
                 // Removing the pickup item script from the item in the hand
-                Destroy(newItem.GetComponent<PickupItem>());
+               Destroy(newItem.GetComponent<PickupItem>());
             }
             else
             {
