@@ -26,6 +26,9 @@ TagManager:
   - InventoryBar
   - PlayerRightHandTarget
   - ItemUseInstructions
+  - powerOnComputerText
+  - ClueDisplayPanel
+  - ProgressionBar
   layers:
   - Default
   - TransparentFX

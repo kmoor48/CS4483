@@ -6,6 +6,7 @@ public class CameraSwitcherPuzzleView : MonoBehaviour
     public Camera computerPuzzleCamera;
     public Camera recordPlayerPuzzleCamera;
     public Camera bloodTestPuzzleCamera;
+    public Camera doorCodeCamera;
 
     void Start()
     {
@@ -14,11 +15,7 @@ public class CameraSwitcherPuzzleView : MonoBehaviour
         computerPuzzleCamera.enabled = false;
         recordPlayerPuzzleCamera.enabled = false;
         bloodTestPuzzleCamera.enabled = false;
-
-        //For testing:
-        //playerCamera.enabled = false;
-        //computerPuzzleCamera.enabled = false;
-        //recordPlayerPuzzleCamera.enabled = true;
+        doorCodeCamera.enabled = false;
     }
 
     public void SwitchToPuzzleCamera(string puzzle)
@@ -37,6 +34,10 @@ public class CameraSwitcherPuzzleView : MonoBehaviour
         {
             bloodTestPuzzleCamera.enabled = true;
         }
+        if (puzzle == "door")
+        {
+            doorCodeCamera.enabled = true;
+        }
     }
 
     public void SwitchToMainCamera(string puzzle)
@@ -54,6 +55,10 @@ public class CameraSwitcherPuzzleView : MonoBehaviour
         if (puzzle == "blood")
         {
             bloodTestPuzzleCamera.enabled = false;
+        }
+        if (puzzle == "door")
+        {
+            doorCodeCamera.enabled = false;
         }
     }
 }

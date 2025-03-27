@@ -4,6 +4,7 @@ public class Draggable3D : MonoBehaviour
 {
     private bool isDragging = false;
     private Vector3 offset;
+    private Vector3 originalPosition;
     public Camera dragCamera;
     public GameObject logicHandler;
 
@@ -13,6 +14,8 @@ public class Draggable3D : MonoBehaviour
         {
             Debug.LogError("No camera assigned to Draggable3D! Assign a camera in the Inspector.");
         }
+
+        originalPosition = transform.position;
     }
 
     void OnMouseDown()
@@ -51,7 +54,12 @@ public class Draggable3D : MonoBehaviour
         {
             // Calling the function in the puzzle logic handler script to open up the magnified view
             BloodTestingPuzzleScript scriptWithFunction = logicHandler.GetComponent<BloodTestingPuzzleScript>();
-            scriptWithFunction.TriggerFunction(gameObject.name);
+            scriptWithFunction.TriggerFunction(gameObject);
         }
+    }
+
+    public void ReturnToOriginalPosition()
+    {
+        transform.position = originalPosition;
     }
 }

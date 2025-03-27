@@ -9,19 +9,27 @@ public class BloodTestingPuzzleScript : MonoBehaviour
     public GameObject sampleC;
     public GameObject sampleD;
     
+    private  GameObject currentlyDisplayedSample;
+
     // For Sample Glass
     public GameObject glassDropper;
     private GlassDropperScript glassDropperScript;
 
+    private GameObject universalLogicHandler;
+
     void Start()
     {
         glassDropperScript = glassDropper.GetComponent<GlassDropperScript>();
+        universalLogicHandler = GameObject.FindWithTag("UniversalLogicHandler");
     }
 
-    public void TriggerFunction(string gameObjectName)
+    public void TriggerFunction(GameObject sampleGO)
     {
         magnifiedDisplay.SetActive(true);
         bool isBloodDisplayedOnSampleGlass = glassDropperScript.IsBloodOnSample();
+
+        currentlyDisplayedSample = sampleGO;
+        string gameObjectName = sampleGO.name;
 
         if (gameObjectName == "Blood Sample D")
         {
@@ -42,6 +50,10 @@ public class BloodTestingPuzzleScript : MonoBehaviour
         else if (gameObjectName == "Sample Glass" && isBloodDisplayedOnSampleGlass)
         {
             sampleA.SetActive(true);
+
+            // Mark the puzzle as complete
+            LevelClueAndProgressionManager clueScript = universalLogicHandler.GetComponent<LevelClueAndProgressionManager>();
+            clueScript.IncrementPuzzleCounter();
         }
     }
 
@@ -54,5 +66,9 @@ public class BloodTestingPuzzleScript : MonoBehaviour
         sampleB.SetActive(false);
         sampleC.SetActive(false);
         sampleD.SetActive(false);
+
+        // Reset the sample position
+        Draggable3D sampleMovingScript = currentlyDisplayedSample.GetComponent<Draggable3D>();
+        sampleMovingScript.ReturnToOriginalPosition();
     }
 }
