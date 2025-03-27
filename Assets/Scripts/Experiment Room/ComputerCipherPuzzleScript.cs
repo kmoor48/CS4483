@@ -12,11 +12,16 @@ public class ComputerCipherPuzzleScript : MonoBehaviour
     public GameObject correctPasswordMsg;
     public GameObject passwordFolder;
 
-    private string folderPassword = "Konstyl";
+    private string folderPassword = "konstyl";
+    private GameObject universalLogicHandler;
+
+    void Start()
+    {
+        universalLogicHandler = GameObject.FindWithTag("UniversalLogicHandler");
+    }
 
     public void OpenFolder(string folderName)
     {
-        Debug.Log(folderName);
         headerText.text = folderName;
 
         // Populating file content
@@ -56,8 +61,7 @@ public class ComputerCipherPuzzleScript : MonoBehaviour
 
     public void CheckFolderPassword()
     {
-        Debug.Log("Entered Password: "+ folderPasswordInputField.text);
-        if (folderPasswordInputField.text == folderPassword)
+        if (folderPasswordInputField.text.ToLower() == folderPassword)
         {
             lockedFolderInput.SetActive(false);
             correctPasswordMsg.SetActive(true);
@@ -89,5 +93,9 @@ public class ComputerCipherPuzzleScript : MonoBehaviour
             "\nSubject_042_PostMortem_Report.pdf" +
             "\nMemory_Wipe_Protocol.docx" +
             "\nEmergency_Termination_Order.txt";
+
+        // Mark the puzzle as complete
+        LevelClueAndProgressionManager clueScript = universalLogicHandler.GetComponent<LevelClueAndProgressionManager>();
+        clueScript.IncrementPuzzleCounter();
     }
 }

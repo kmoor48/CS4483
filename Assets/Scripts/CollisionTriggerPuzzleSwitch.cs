@@ -5,21 +5,40 @@ public class CollisionTriggerPuzzleSwitch : MonoBehaviour
     public GameObject roomLogicHandler;
     public GameObject enterPuzzleText;
     public string puzzleToSwitchTo;
+    [SerializeField] private string tagOfGOPuzzleDependsOn = "";
 
     private bool playerInRange = false;
     private CameraSwitcherPuzzleView cameraSwitcherScript;
+    private GameObject gameObejectPuzzleDependsOn = null;
 
     void Start()
     {
         cameraSwitcherScript = roomLogicHandler.GetComponent<CameraSwitcherPuzzleView>();
+
+        // Check to see if there's a dependency in the puzzle activation
+        if (!string.IsNullOrEmpty(tagOfGOPuzzleDependsOn))
+        {
+            gameObejectPuzzleDependsOn = GameObject.FindWithTag(tagOfGOPuzzleDependsOn);
+            gameObejectPuzzleDependsOn.SetActive(false);
+        }
     }
 
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            enterPuzzleText.SetActive(true); // Show "Pick up object?" when near
-            playerInRange = true;
+            if (gameObejectPuzzleDependsOn)
+            {
+                if (gameObejectPuzzleDependsOn.activeSelf)
+                {
+                    enterPuzzleText.SetActive(true); // Show "Pick up object?" when near
+                    playerInRange = true;
+                }
+            }
+            else {
+                enterPuzzleText.SetActive(true); // Show "Pick up object?" when near
+                playerInRange = true;
+            }
         }
     }
 

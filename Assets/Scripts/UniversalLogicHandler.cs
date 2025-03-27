@@ -5,6 +5,8 @@ public class UniversalLogicHandler : MonoBehaviour
 {
     // Singleton pattern to ensure only one instance exists
     private static UniversalLogicHandler instance;
+    // Script reference to clue and level manager on this go
+    private LevelClueAndProgressionManager clueLevelManagerScript;
 
     // Index of the next scene to load
     private int nextSceneIndex;
@@ -28,15 +30,20 @@ public class UniversalLogicHandler : MonoBehaviour
     {
         // Initialize the next scene index to the current scene's build index + 1
         nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
+
+        clueLevelManagerScript = gameObject.GetComponent<LevelClueAndProgressionManager>();
+        /* testing purposes */
+        clueLevelManagerScript.SetCurrentLevel(3);
     }
 
     public void LoadNextScene()
     {
-        Debug.Log(nextSceneIndex);
         // Check if the next scene index is valid
         if (nextSceneIndex < SceneManager.sceneCountInBuildSettings)
         {
             SceneManager.LoadScene(nextSceneIndex);
+            /* Uncommend the line below for continuity between scenes*/
+            // clueLevelManagerScript.SetCurrentLevel(nextSceneIndex);
             nextSceneIndex += 1;
         }
         else
