@@ -9,6 +9,9 @@ public class ConnectionLine : MonoBehaviour
     private ProvinceButton startProvince;
     private ProvinceButton endProvince;
 
+    // Optional: Add a public variable to control line thickness
+    public float lineThickness = 5f; // Adjust this value to control line width
+
     public void Initialize(ProvinceButton start, ProvinceButton end, string number)
     {
         // Store references to the provinces
@@ -31,13 +34,15 @@ public class ConnectionLine : MonoBehaviour
         transform.rotation = Quaternion.Euler(0, 0, angle - 90);
 
         // Scale the line to cover the distance
-        lineRect.sizeDelta = new Vector2(lineRect.sizeDelta.x, distance);
+        // Set the line width to a smaller value (lineThickness)
+        lineRect.sizeDelta = new Vector2(lineThickness, distance);
 
         // Set the number label
         if (numberLabel != null)
         {
             numberLabel.text = number;
             numberLabel.transform.position = startPos + direction / 2;
+
             // Make sure label faces the right way
             numberLabel.transform.rotation = Quaternion.identity;
         }

@@ -9,8 +9,7 @@ public class ProvinceButton : MonoBehaviour, IPointerClickHandler
 
     private Image provinceImage;
     private Color defaultColor;
-    private Color highlightColor = new Color(1f, 0.8f, 0.2f); // Yellow highlight
-
+    private Color highlightColor = new Color(1f, 0.8f, 0.2f, 0.5f); // Yellow highlight with 50% opacity
     void Awake()
     {
         provinceImage = GetComponent<Image>();

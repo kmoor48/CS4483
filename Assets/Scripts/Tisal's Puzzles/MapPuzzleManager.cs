@@ -19,7 +19,7 @@ public class MapPuzzleManager : MonoBehaviour
     public List<ProvinceButton> provinceButtons;
     public GameObject linePrefab;
     public GameObject lineContainer;
-    //public Transform safeObject;
+    public Transform safeObject;
     public Transform paintingObject;
    // public AudioSource successSound;
 
@@ -106,30 +106,17 @@ public class MapPuzzleManager : MonoBehaviour
 
     private void CreateConnection(ProvinceButton from, ProvinceButton to)
     {
-        // Check if we already have 5 connections
-        if (connections.Count >= 5)
+        // Check if we already have 4 connections (since 5 provinces need 4 lines)
+        if (connections.Count >= 4)
         {
+            Debug.Log("Maximum number of connections reached");
             return;
         }
 
         Debug.Log("Creating connection between: " + from.provinceName + " and " + to.provinceName);
 
-        // Log the prefab we're trying to instantiate
-        Debug.Log("Line prefab being used: " + (linePrefab != null ? linePrefab.name : "NULL"));
-        Debug.Log("Line container: " + (lineContainer != null ? lineContainer.name : "NULL"));
-
         // Create the visual line between provinces
         GameObject lineObj = Instantiate(linePrefab, lineContainer.transform);
-
-        Debug.Log("Created line object: " + lineObj.name);
-
-        // List all components on the instantiated object
-        Component[] components = lineObj.GetComponents<Component>();
-        Debug.Log("Components on instantiated line:");
-        foreach (Component comp in components)
-        {
-            Debug.Log("- " + comp.GetType().Name);
-        }
 
         ConnectionLine connection = lineObj.GetComponent<ConnectionLine>();
 
@@ -144,8 +131,8 @@ public class MapPuzzleManager : MonoBehaviour
             // Increment line number
             currentLineNumber++;
 
-            // Check for puzzle completion after 5 connections
-            if (connections.Count >= 5)
+            // Check for puzzle completion after 4 connections
+            if (connections.Count == 4)
             {
                 CheckSolution();
             }
@@ -166,7 +153,7 @@ public class MapPuzzleManager : MonoBehaviour
         // We need at least 4 connections to connect 5 provinces
         if (connections.Count < 4)
         {
-            Debug.Log("Not enough connections to check solution");
+            Debug.LogWarning("Not enough connections to check solution. Needed: 4, Current: " + connections.Count);
             return;
         }
 
@@ -189,6 +176,7 @@ public class MapPuzzleManager : MonoBehaviour
         // Compare with correct order
         if (connectionOrder.Count != correctOrder.Count)
         {
+            Debug.LogWarning("Connection count doesn't match correct order");
             isCorrect = false;
         }
         else
@@ -197,74 +185,77 @@ public class MapPuzzleManager : MonoBehaviour
             {
                 if (connectionOrder[i] != correctOrder[i])
                 {
+                    Debug.LogWarning($"Mismatch at index {i}: Expected {correctOrder[i]}, Got {connectionOrder[i]}");
                     isCorrect = false;
                     break;
                 }
             }
         }
 
-        Debug.Log("Solution is " + (isCorrect ? "correct" : "incorrect"));
+        Debug.Log("Solution is " + (isCorrect ? "CORRECT" : "INCORRECT"));
 
         if (isCorrect)
         {
             // Success!
+            Debug.Log("Puzzle Solved Successfully!");
             completionText.SetActive(true);
             instructionsText.GetComponent<TMPro.TextMeshProUGUI>().text = "Correct! You've solved the puzzle.";
 
             // Uncomment when you're ready to implement the safe reveal
-            // StartCoroutine(RevealSafe());
+            StartCoroutine(RevealSafe());
         }
         else
         {
             // Show feedback for incorrect solution
+            Debug.LogWarning("Puzzle solution is incorrect");
             instructionsText.GetComponent<TMPro.TextMeshProUGUI>().text = "Incorrect sequence. Try again.";
         }
     }
 
-    //private System.Collections.IEnumerator RevealSafe()
-    //{
-    //    // Show completion text
-    //    completionText.SetActive(true);
+    private System.Collections.IEnumerator RevealSafe()
+    {
+        // Show completion text
+        completionText.SetActive(true);
 
-    //    // Play success sound
-    //    if (successSound != null)
-    //        successSound.Play();
+        // Play success sound if you have one
+        // if (successSound != null)
+        //     successSound.Play();
 
-    //    yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(1.5f);
 
-    //    // Animate the painting opening
-    //    if (paintingObject != null)
-    //    {
-    //        // Animation or transform change
-    //        Vector3 openRotation = new Vector3(0, -90, 0);
+        // Animate the painting moving up
+        if (paintingObject != null)
+        {
+            // Define the target position (move up)
+            Vector3 startPosition = paintingObject.position;
+            Vector3 endPosition = startPosition + Vector3.up * 2f; // Adjust the 2f to control how far up it moves
 
-    //        // Simple animation over time
-    //        float duration = 1.0f;
-    //        float elapsed = 0;
-    //        Quaternion startRotation = paintingObject.rotation;
-    //        Quaternion endRotation = Quaternion.Euler(openRotation);
+            // Simple smooth movement
+            float duration = 1.0f;
+            float elapsed = 0;
 
-    //        while (elapsed < duration)
-    //        {
-    //            paintingObject.rotation = Quaternion.Slerp(startRotation, endRotation, elapsed / duration);
-    //            elapsed += Time.deltaTime;
-    //            yield return null;
-    //        }
+            while (elapsed < duration)
+            {
+                paintingObject.position = Vector3.Lerp(startPosition, endPosition, elapsed / duration);
+                elapsed += Time.deltaTime;
+                yield return null;
+            }
 
-    //        paintingObject.rotation = endRotation;
-    //    }
+            // Ensure it reaches the exact end position
+            paintingObject.position = endPosition;
+        }
 
-    // Make safe visible/interactive
-    //    if (safeObject != null)
-    //    {
-    //        safeObject.gameObject.SetActive(true);
-    //    }
+        // Make safe visible
+        if (paintingObject != null)
+        {
+            safeObject.gameObject.SetActive(true);
+        }
 
-    //    yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(1.0f);
 
-    //    // Return to main view
-    //    ExitPuzzleView();
-    //}
+        // Return to main view
+        ExitPuzzleView();
+    }
 
     public void ResetPuzzle()
     {
