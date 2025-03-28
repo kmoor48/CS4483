@@ -164,8 +164,7 @@ public class LevelClueAndProgressionManager : MonoBehaviour
         level5Clues[1] = level5Puzzle2Clues;
 
         string[] level5Puzzle3Clues = {
-            "Five hangers, five sizes, five colors… Could their order mean something?",
-            "What is left to unlock in the room, what secrets must be kept 'safe'",
+            "Five hangers, five sizes, five colors… Could their order mean something? What is left to unlock in the room, what secrets must be kept 'safe'",
             "Each hanger has a size, and each bar has a color. Think about how they might fit together.",
             "Sizes go from XS to XL, small to big, the sliders have 5 slide settings. Maybe the sliders should follow the same pattern as the hanger sizes?"
         };

@@ -34,7 +34,6 @@ public class ThrowPowder : MonoBehaviour
             }
         }
 
-        // Press R to throw the item
         if (Input.GetKeyDown(KeyCode.R))
         {
             ThrowItem();
@@ -46,11 +45,9 @@ public class ThrowPowder : MonoBehaviour
     {
         if (playerHand.childCount > 0)
         {
-            Debug.Log("inside throw");
             heldItem = playerHand.GetChild(0).gameObject;
             heldItem.transform.SetParent(null);
 
-            // Ensure Rigidbody and Collider components are attached before throwing
             Rigidbody rb = heldItem.GetComponent<Rigidbody>();
             if (rb == null)
             {
@@ -64,10 +61,9 @@ public class ThrowPowder : MonoBehaviour
             Collider col = heldItem.GetComponent<Collider>();
             if (col == null)
             {
-                col = heldItem.AddComponent<BoxCollider>(); // Default to BoxCollider if no collider exists
+                col = heldItem.AddComponent<BoxCollider>(); 
             }
 
-            // Add collision handler for the thrown powder
             ThrowPowderCollision powderCollision = heldItem.AddComponent<ThrowPowderCollision>();
             powderCollision.Setup(messageOnWall);
 
@@ -83,22 +79,23 @@ public class ThrowPowder : MonoBehaviour
 public class ThrowPowderCollision : MonoBehaviour
 {
     private GameObject messageOnWall;
+    private GameObject universalLogicHandler;
 
     public void Setup(GameObject message)
     {
-        Debug.Log("message" + message);
+        universalLogicHandler = GameObject.FindWithTag("UniversalLogicHandler");
         messageOnWall = message;
         messageOnWall.SetActive(true);
+        LevelClueAndProgressionManager clueScript = universalLogicHandler.GetComponent<LevelClueAndProgressionManager>();
+        clueScript.IncrementPuzzleCounter();
     }
 
     void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("inside collisionnnnnnn");
         if (collision.gameObject.CompareTag("Wall"))
         {
-            Debug.Log("Powder hit the wall!");
             messageOnWall.SetActive(true);
-            Destroy(gameObject, 0.5f); // Destroy the thrown item after 0.5 seconds
+            Destroy(gameObject, 0.5f); 
         }
     }
 }
