@@ -10,10 +10,16 @@ public class PINPuzzleScript : MonoBehaviour
     public TMP_InputField pinInputField;
 
     private string correctPIN = "brain";
+    private GameObject universalLogicHandler;
 
-    public void CheckPIN()
+    void Start()
     {
-        Debug.Log(pinInputField.text);
+        pinInputField.onSubmit.AddListener(OnSubmit);
+        universalLogicHandler = GameObject.FindWithTag("UniversalLogicHandler");
+    }
+
+    void OnSubmit(string text)
+    {
         if (pinInputField.text == correctPIN )
         {
             pinPuzzleDisplay.SetActive(false);
@@ -36,5 +42,9 @@ public class PINPuzzleScript : MonoBehaviour
     {
         correctPINMsg.SetActive(false);
         audioTrackDisplay.SetActive(true);
+
+        // Mark the puzzle as complete
+        LevelClueAndProgressionManager clueScript = universalLogicHandler.GetComponent<LevelClueAndProgressionManager>();
+        clueScript.IncrementPuzzleCounter();
     }
 }

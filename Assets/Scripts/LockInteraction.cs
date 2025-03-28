@@ -1,5 +1,5 @@
 using UnityEngine;
-using TMPro; // For TextMesh Pro
+using TMPro;
 
 public class LockInteraction : MonoBehaviour
 {
