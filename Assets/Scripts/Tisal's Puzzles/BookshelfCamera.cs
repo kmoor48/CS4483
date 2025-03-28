@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class TisalcamerControl : MonoBehaviour
+public class BookshelfCamera : MonoBehaviour
 {
     public GameObject openText; // UI text for interaction
     public Camera mainCamera; // The player's main camera

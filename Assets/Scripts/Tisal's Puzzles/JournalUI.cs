@@ -17,7 +17,7 @@ public class JournalUI : MonoBehaviour
         "May 23rd, 2006: I write to you from the lowlands of Novascotia.",
         "June 10th, 2006: This heat in Ontario is unbearable.",
         "July 23rd, 2006: I write to you from the Alberta Rockies.",
-        "August 2nd, 2006: Trapped in the endless days of Yellowknifr",
+        "August 2nd, 2006: Trapped in the endless days of Yukon",
         "September 8th, 2006: Finally made it to the Pacific Ocean, BC is stunning.",
         "October 5th, 2006: They’ll regret taking Lucy from me. I will prove them wrong."
     };
