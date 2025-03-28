@@ -1566,8 +1566,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   provinceName: BritishColumbia
   puzzleManager: {fileID: 20990688}
---- !u!61 &86863578
-BoxCollider2D:
+--- !u!60 &86863578
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1600,7 +1600,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 14.502563, y: 6.8511314}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -1610,8 +1610,21 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 129.00513, y: 113.70226}
-  m_EdgeRadius: 0
+  m_Points:
+    m_Paths:
+    - - {x: 94.2292, y: 52.359486}
+      - {x: 67.365776, y: -9.359346}
+      - {x: 90.18169, y: -44.86264}
+      - {x: 112.38743, y: -80.597336}
+      - {x: 11.381523, y: -71.42349}
+      - {x: -12.7928505, y: -76.13813}
+      - {x: -33.839214, y: -56.807446}
+      - {x: -41.32107, y: -39.366707}
+      - {x: -49.575165, y: -25.553568}
+      - {x: -52.07297, y: -10.093723}
+      - {x: -55.050713, y: 15.873722}
+      - {x: -91.54156, y: 92.55871}
+  m_UseDelaunayMesh: 0
 --- !u!1 &96507939
 GameObject:
   m_ObjectHideFlags: 0
@@ -5566,7 +5579,7 @@ GameObject:
   - component: {fileID: 278430088}
   - component: {fileID: 278430087}
   - component: {fileID: 278430090}
-  - component: {fileID: 278430089}
+  - component: {fileID: 278430091}
   m_Layer: 0
   m_Name: Yukon
   m_TagString: Untagged
@@ -5631,8 +5644,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 278430085}
   m_CullTransparentMesh: 1
---- !u!61 &278430089
-BoxCollider2D:
+--- !u!114 &278430090
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 278430085}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5e3a1f9d234ae74ca27e16d6d31b444, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  provinceName: Yukon
+  puzzleManager: {fileID: 20990688}
+--- !u!60 &278430091
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -5665,7 +5692,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.62620544, y: 21.10047}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -5675,22 +5702,19 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 146.98529, y: 125.115585}
-  m_EdgeRadius: 0
---- !u!114 &278430090
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 278430085}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5e3a1f9d234ae74ca27e16d6d31b444, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  provinceName: Yukon
-  puzzleManager: {fileID: 20990688}
+  m_Points:
+    m_Paths:
+    - - {x: 1.8531475, y: 64.406456}
+      - {x: -13.114467, y: 51.320892}
+      - {x: -40.66896, y: 24.652493}
+      - {x: -95.3137, y: -24.02249}
+      - {x: 80.50408, y: -64.64873}
+      - {x: 41.91643, y: -6.95877}
+      - {x: 55.538517, y: 23.503603}
+      - {x: 33.109684, y: 40.24727}
+      - {x: 48.24231, y: 61.43542}
+      - {x: 22.264114, y: 82.72366}
+  m_UseDelaunayMesh: 0
 --- !u!1 &278581339
 GameObject:
   m_ObjectHideFlags: 0
@@ -9927,7 +9951,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 4717b199010ca4cb3a8a7a465ec457d2, type: 2}
+  - {fileID: 2100000, guid: 01c427a8f11144a43bd24b80e056bdb9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -10591,7 +10615,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7408104653197781002, guid: de73a68374813224d9a0717c5b75fc05, type: 3}
       propertyPath: m_Size.y
-      value: 2.8448458
+      value: 2.7278526
       objectReference: {fileID: 0}
     - target: {fileID: 7408104653197781002, guid: de73a68374813224d9a0717c5b75fc05, type: 3}
       propertyPath: m_Size.z
@@ -10603,11 +10627,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7408104653197781002, guid: de73a68374813224d9a0717c5b75fc05, type: 3}
       propertyPath: m_Center.y
-      value: 1.8143629
+      value: 1.7558663
       objectReference: {fileID: 0}
     - target: {fileID: 7408104653197781002, guid: de73a68374813224d9a0717c5b75fc05, type: 3}
       propertyPath: m_Center.z
-      value: -0.5823699
+      value: -0.58237004
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3551056803046506368, guid: de73a68374813224d9a0717c5b75fc05, type: 3}
@@ -12235,8 +12259,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 601440405}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -18.08142, y: 4.570686, z: -24.542406}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 5.5085793, y: -1.4273143, z: -7.3174057}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -12244,7 +12268,7 @@ Transform:
   - {fileID: 1151721617}
   - {fileID: 2101465823}
   - {fileID: 20990687}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1671578619}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &608171060
 GameObject:
@@ -13211,7 +13235,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 4717b199010ca4cb3a8a7a465ec457d2, type: 2}
+  - {fileID: 2100000, guid: db04223a549631846be377bb1d6de073, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -21209,7 +21233,7 @@ GameObject:
   - component: {fileID: 1105540377}
   - component: {fileID: 1105540378}
   m_Layer: 0
-  m_Name: Bookpuzzle
+  m_Name: Book Interaction
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -21847,7 +21871,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 4717b199010ca4cb3a8a7a465ec457d2, type: 2}
+  - {fileID: 2100000, guid: 6007b41e60a581c4e908e8190c850e65, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -22260,7 +22284,7 @@ GameObject:
   - component: {fileID: 1160967107}
   - component: {fileID: 1160967106}
   - component: {fileID: 1160967109}
-  - component: {fileID: 1160967108}
+  - component: {fileID: 1160967110}
   m_Layer: 0
   m_Name: Alberta
   m_TagString: Untagged
@@ -22325,8 +22349,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1160967104}
   m_CullTransparentMesh: 1
---- !u!61 &1160967108
-BoxCollider2D:
+--- !u!114 &1160967109
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1160967104}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5e3a1f9d234ae74ca27e16d6d31b444, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  provinceName: Alberta
+  puzzleManager: {fileID: 20990688}
+--- !u!60 &1160967110
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -22359,7 +22397,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: -9.949194}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -22369,22 +22407,17 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 100, y: 132.14369}
-  m_EdgeRadius: 0
---- !u!114 &1160967109
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1160967104}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5e3a1f9d234ae74ca27e16d6d31b444, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  provinceName: Alberta
-  puzzleManager: {fileID: 20990688}
+  m_Points:
+    m_Paths:
+    - - {x: 27.446674, y: -79.5587}
+      - {x: -27.104065, y: -71.19789}
+      - {x: -79.27059, y: -9.9265785}
+      - {x: -78.80632, y: -3.1208935}
+      - {x: -73.16083, y: 5.1387835}
+      - {x: -71.37657, y: 9.945992}
+      - {x: -51.522133, y: 59.590977}
+      - {x: 59.04233, y: 52.909306}
+  m_UseDelaunayMesh: 0
 --- !u!1 &1170493174
 GameObject:
   m_ObjectHideFlags: 0
@@ -29351,7 +29384,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1671578619}
   m_Layer: 0
-  m_Name: Puzzles
+  m_Name: Level Puzzles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29371,6 +29404,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1258305751}
+  - {fileID: 601440406}
+  - {fileID: 1983344619}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1672664267
@@ -30093,78 +30128,6 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 0
---- !u!1 &1685232147
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1685232148}
-  - component: {fileID: 1685232150}
-  - component: {fileID: 1685232149}
-  m_Layer: 5
-  m_Name: Crosshair
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1685232148
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1685232147}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1829676233}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 60, y: 60}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1685232149
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1685232147}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Texture: {fileID: 10912, guid: 0000000000000000f000000000000000, type: 0}
-  m_UVRect:
-    serializedVersion: 2
-    x: 0
-    y: 0
-    width: 1
-    height: 1
---- !u!222 &1685232150
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1685232147}
-  m_CullTransparentMesh: 1
 --- !u!1001 &1691200135
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -33079,7 +33042,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1652566035}
-  - {fileID: 1685232148}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -33235,7 +33197,7 @@ GameObject:
   - component: {fileID: 1844381478}
   - component: {fileID: 1844381477}
   - component: {fileID: 1844381480}
-  - component: {fileID: 1844381479}
+  - component: {fileID: 1844381481}
   m_Layer: 0
   m_Name: NovaScotia
   m_TagString: Untagged
@@ -33259,8 +33221,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 275.9, y: -69.1}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: 275.9135, y: -75.62293}
+  m_SizeDelta: {x: 156.5131, y: 139.7351}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1844381477
 MonoBehaviour:
@@ -33300,8 +33262,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1844381475}
   m_CullTransparentMesh: 1
---- !u!61 &1844381479
-BoxCollider2D:
+--- !u!114 &1844381480
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1844381475}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5e3a1f9d234ae74ca27e16d6d31b444, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  provinceName: NovaScotia
+  puzzleManager: {fileID: 20990688}
+--- !u!60 &1844381481
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -33334,7 +33310,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -3.6620178, y: -5.4148254}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -33344,22 +33320,17 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 193.0375, y: 158.59213}
-  m_EdgeRadius: 0
---- !u!114 &1844381480
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1844381475}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5e3a1f9d234ae74ca27e16d6d31b444, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  provinceName: NovaScotia
-  puzzleManager: {fileID: 20990688}
+  m_Points:
+    m_Paths:
+    - - {x: 13.721505, y: 68.73231}
+      - {x: -7.2630043, y: 46.352386}
+      - {x: -26.63828, y: 36.09126}
+      - {x: -61.185715, y: 6.665224}
+      - {x: -95.88686, y: -32.213448}
+      - {x: -28.758709, y: -76.785965}
+      - {x: 82.34732, y: 37.8414}
+      - {x: 18.093723, y: 66.37228}
+  m_UseDelaunayMesh: 0
 --- !u!1 &1846746665
 GameObject:
   m_ObjectHideFlags: 0
@@ -33727,7 +33698,7 @@ GameObject:
   - component: {fileID: 1873075661}
   - component: {fileID: 1873075660}
   - component: {fileID: 1873075663}
-  - component: {fileID: 1873075662}
+  - component: {fileID: 1873075664}
   m_Layer: 0
   m_Name: Ontario
   m_TagString: Untagged
@@ -33751,8 +33722,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 50.79853, y: -73.88047}
-  m_SizeDelta: {x: 163.5859, y: 137.2185}
+  m_AnchoredPosition: {x: 40.948032, y: -72.25467}
+  m_SizeDelta: {x: 105.1729, y: 94.063}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1873075660
 MonoBehaviour:
@@ -33792,8 +33763,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1873075658}
   m_CullTransparentMesh: 1
---- !u!61 &1873075662
-BoxCollider2D:
+--- !u!114 &1873075663
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1873075658}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5e3a1f9d234ae74ca27e16d6d31b444, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  provinceName: Ontario
+  puzzleManager: {fileID: 20990688}
+--- !u!60 &1873075664
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -33826,7 +33811,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -24.446259, y: 12.619801}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -33836,22 +33821,24 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 220.72192, y: 125.23962}
-  m_EdgeRadius: 0
---- !u!114 &1873075663
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1873075658}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5e3a1f9d234ae74ca27e16d6d31b444, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  provinceName: Ontario
-  puzzleManager: {fileID: 20990688}
+  m_Points:
+    m_Paths:
+    - - {x: 7.4254265, y: 54.893173}
+      - {x: -2.2725844, y: 53.46684}
+      - {x: -46.602142, y: 65.675644}
+      - {x: -102.28937, y: 15.694103}
+      - {x: -99.54142, y: -29.828892}
+      - {x: 6.786152, y: -23.56011}
+      - {x: 103.14836, y: -49.78955}
+      - {x: 102.40579, y: -61.80875}
+      - {x: 97.34396, y: -98.84919}
+      - {x: 141.71442, y: -66.513916}
+      - {x: 173.05971, y: -61.783394}
+      - {x: 183.56104, y: -43.371525}
+      - {x: 122.01162, y: -40.656067}
+      - {x: 88.73521, y: 2.973526}
+      - {x: 29.767555, y: 54.665092}
+  m_UseDelaunayMesh: 0
 --- !u!1001 &1876645622
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -35000,6 +34987,38 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4013151085889374, guid: 0a304947e269c4d4baf50f19725555aa, type: 3}
   m_PrefabInstance: {fileID: 1977036041}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1983344618
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1983344619}
+  m_Layer: 0
+  m_Name: SafePuzzle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1983344619
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1983344618}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -1.155077, y: -0.39175463, z: -2.7777195}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 515978675}
+  m_Father: {fileID: 1671578619}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1990166565
 GameObject:
   m_ObjectHideFlags: 0
@@ -37074,7 +37093,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1983344619}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 318ebdbd5a41aff479864a93977633e1, type: 3}
       propertyPath: m_LocalScale.x
@@ -37086,19 +37105,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 318ebdbd5a41aff479864a93977633e1, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.81652
+      value: 0.81652004
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 318ebdbd5a41aff479864a93977633e1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -20.126
+      value: 4.6190777
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 318ebdbd5a41aff479864a93977633e1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.632
+      value: -0.97424555
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 318ebdbd5a41aff479864a93977633e1, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -25.07
+      value: -5.06728
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 318ebdbd5a41aff479864a93977633e1, type: 3}
       propertyPath: m_LocalRotation.w
@@ -37106,7 +37125,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 318ebdbd5a41aff479864a93977633e1, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 318ebdbd5a41aff479864a93977633e1, type: 3}
       propertyPath: m_LocalRotation.y
@@ -37114,7 +37133,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 318ebdbd5a41aff479864a93977633e1, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 318ebdbd5a41aff479864a93977633e1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -38189,16 +38208,14 @@ SceneRoots:
   m_Roots:
   - {fileID: 1684604791}
   - {fileID: 959393029}
-  - {fileID: 1612521186}
   - {fileID: 2030872719}
-  - {fileID: 1105540377}
-  - {fileID: 1568039824}
+  - {fileID: 1612521186}
   - {fileID: 371495850}
+  - {fileID: 1568039824}
   - {fileID: 106605175}
-  - {fileID: 244431720}
   - {fileID: 582793616}
-  - {fileID: 1671578619}
+  - {fileID: 1105540377}
+  - {fileID: 244431720}
   - {fileID: 141796685}
   - {fileID: 1829676233}
-  - {fileID: 601440406}
-  - {fileID: 2099440484}
+  - {fileID: 1671578619}
