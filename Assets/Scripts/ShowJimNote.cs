@@ -44,7 +44,6 @@ public class ShowJimNote : MonoBehaviour
 
         if (isPlayerInTrigger && isHoldingNote)
         {
-            Debug.Log("R pressed with note in hand");
             noteText.gameObject.SetActive(true);
             pannel.SetActive(true);
         }
