@@ -153,30 +153,27 @@ public class LevelClueAndProgressionManager : MonoBehaviour
         /* Clues for Level 5 */
         Dictionary<int, string[]> level5Clues = new Dictionary<int, string[]>();
         string[] level5Puzzle1Clues = {
-            "FILL IN - Clue 1 for Level 5 Puzzle 1",
-            "FILL IN - Clue 2 for Level 5 Puzzle 1",
-            "FILL IN - Clue 3 for Level 5 Puzzle 1",
+            "Amidst the clutter of beauty, one essential piece stands apart. The powder on the desk’s edge might just be what you need.",
+            "A simple toss can reveal what’s hidden. Try using the powder on the wall with the 2 antlers between the cabinet, shelf, and behind the bed."
         };
         level5Clues[0] = level5Puzzle1Clues;
 
         string[] level5Puzzle2Clues = {
-            "FILL IN - Clue 1 for Level 5 Puzzle 2",
-            "FILL IN - Clue 2 for Level 5 Puzzle 2",
-            "FILL IN - Clue 3 for Level 5 Puzzle 2",
+            "The code from before unlocks more than just a closet door—it reveals the key to the next puzzle. Take a close look at what’s hanging inside."
         };
         level5Clues[1] = level5Puzzle2Clues;
 
         string[] level5Puzzle3Clues = {
-            "FILL IN - Clue 1 for Level 5 Puzzle 3",
-            "FILL IN - Clue 2 for Level 5 Puzzle 3",
-            "FILL IN - Clue 3 for Level 5 Puzzle 3",
+            "Five hangers, five sizes, five colors… Could their order mean something?",
+            "What is left to unlock in the room, what secrets must be kept 'safe'",
+            "Each hanger has a size, and each bar has a color. Think about how they might fit together.",
+            "Sizes go from XS to XL, small to big, the sliders have 5 slide settings. Maybe the sliders should follow the same pattern as the hanger sizes?"
         };
         level5Clues[2] = level5Puzzle3Clues;
 
         string[] level5Puzzle4Clues = {
-            "FILL IN - Clue 1 for Level 5 Puzzle 4",
-            "FILL IN - Clue 2 for Level 5 Puzzle 4",
-            "FILL IN - Clue 3 for Level 5 Puzzle 4",
+            "A note was picked up from the doctor's safe. Try placing it in your hand to view it.",
+            "With the note in your hand, take a step back."
         };
         level5Clues[2] = level5Puzzle4Clues;
 
