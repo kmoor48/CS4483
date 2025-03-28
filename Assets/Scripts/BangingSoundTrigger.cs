@@ -2,10 +2,10 @@ using UnityEngine;
 
 public class BangSoundTrigger : MonoBehaviour
 {
-    public AudioSource bangSound;  // Assign in Inspector
-    public Transform playerHand;  // Assign the player's hand object
+    public AudioSource bangSound; 
+    public Transform playerHand;  
 
-    private bool hasPlayed = false;  // Ensure it plays only once
+    private bool hasPlayed = false;  
 
     private void OnTriggerEnter(Collider other)
     {
