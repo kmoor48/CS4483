@@ -69,23 +69,23 @@ public class LevelClueAndProgressionManager : MonoBehaviour
         /* Clues for Level 3 */
         Dictionary<int, string[]> level3Clues = new Dictionary<int, string[]>();
         string[] level3Puzzle1Clues = {
-            "FILL IN - Clue 1 for Level 3 Puzzle 1",
-            "FILL IN - Clue 2 for Level 3 Puzzle 1",
-            "FILL IN - Clue 3 for Level 3 Puzzle 1",
+            "The answer to your next step may already be written—where would someone record their knowledge?",
+            "Some stories are timeless, but their colors hold the key. A poem from the past will guide your way.",
+            "Find the correct order the book's should be places, the colours give the slots.",
         };
         level3Clues[0] = level3Puzzle1Clues;
 
         string[] level3Puzzle2Clues = {
-            "FILL IN - Clue 1 for Level 3 Puzzle 2",
-            "FILL IN - Clue 2 for Level 3 Puzzle 2",
-            "FILL IN - Clue 3 for Level 3 Puzzle 2",
+            "The journal is more than just thoughts—it tracks movement. Where has Dr. Pale been?",
+            "A journey across the country is hidden in his words. Perhaps the map can help connect the dots.",
+            "Click on the first province and then the next, conecting them represeting the travel.",
         };
         level3Clues[1] = level3Puzzle2Clues;
 
         string[] level3Puzzle3Clues = {
-            "FILL IN - Clue 1 for Level 3 Puzzle 3",
-            "FILL IN - Clue 2 for Level 3 Puzzle 3",
-            "FILL IN - Clue 3 for Level 3 Puzzle 3",
+            "The safe has appeared, but how do you open it? Something important is still missing.",
+            "A note left behind may hold the key—check the desk for something that stands out.",
+            "Use the code on the desk to, open safe on the wall.",
         };
         level3Clues[2] = level3Puzzle3Clues;
 
