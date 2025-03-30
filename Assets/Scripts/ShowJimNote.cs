@@ -9,11 +9,13 @@ public class ShowJimNote : MonoBehaviour
 
     private bool isPlayerInTrigger = false; 
     private bool isHoldingNote = false;
+    private GameObject universalLogicHandler;
 
     private void Start()
     {
         pannel.SetActive(false);
         noteText.gameObject.SetActive(false);
+        universalLogicHandler = GameObject.FindWithTag("UniversalLogicHandler");
     }
     void OnTriggerEnter(Collider other)
     {
@@ -46,6 +48,8 @@ public class ShowJimNote : MonoBehaviour
         {
             noteText.gameObject.SetActive(true);
             pannel.SetActive(true);
+            LevelClueAndProgressionManager clueScript = universalLogicHandler.GetComponent<LevelClueAndProgressionManager>();
+            clueScript.IncrementPuzzleCounter();
         }
     }
 
