@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PickupItem : MonoBehaviour
 {
-    public string itemName; 
+    public string itemName;
     public Sprite image; // The associated png image of the object that will be displayed in the inventory bar
 
     private InventoryBar inventoryScript;
@@ -12,27 +12,42 @@ public class PickupItem : MonoBehaviour
 
     void Start()
     {
+        // Initialize openText reference
         GameObject HUD = GameObject.FindWithTag("HUD");
-        openText = HUD.transform.GetChild(0).gameObject;
-        if (openText == null){
-            Debug.LogError("OpenText not found in hierarchy");
+
+        if (HUD != null)
+        {
+            openText = HUD.transform.GetChild(0).gameObject;
         }
-        openText.SetActive(false);
+        else
+        {
+            Debug.LogError("HUD object not found! Check that your HUD has the correct tag.");
+        }
+
+        if (openText != null)
+        {
+            openText.SetActive(false); // Make sure it's initially hidden
+        }
+        else
+        {
+            Debug.LogError("OpenText is not assigned in PickupItem!");
+        }
 
         universalLogicHandler = GameObject.FindWithTag("UniversalLogicHandler");
 
         if (universalLogicHandler == null)
         {
-            Debug.LogError("No GameObject with tag of UniversalLogicHandler");
+            Debug.LogError("No GameObject with tag UniversalLogicHandler found.");
         }
-
-        // Get the inventory bar script from the logic handler game object 
-        inventoryScript = universalLogicHandler.GetComponent<InventoryBar>();
+        else
+        {
+            inventoryScript = universalLogicHandler.GetComponent<InventoryBar>();
+        }
     }
 
     void OnTriggerEnter(Collider other)
-    { 
-        if (other.CompareTag("Player"))
+    {
+        if (other.CompareTag("Player") && openText != null)
         {
             openText.SetActive(true); // Show "Pick up object?" when near
             playerInRange = true;
@@ -41,7 +56,7 @@ public class PickupItem : MonoBehaviour
 
     void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && openText != null)
         {
             openText.SetActive(false); // Hide the text when player moves away
             playerInRange = false;
@@ -60,7 +75,10 @@ public class PickupItem : MonoBehaviour
                 inventoryScript.AddItem(gameObject, itemName, image);
 
                 // Hide the text and remove the object
-                openText.SetActive(false);
+                if (openText != null)
+                {
+                    openText.SetActive(false);
+                }
                 Destroy(gameObject);
             }
             else
@@ -69,7 +87,13 @@ public class PickupItem : MonoBehaviour
             }
         }
     }
+
+    // You can now use this function to set openText to false when an item is removed from inventory
+    public void SetOpenTextFalse()
+    {
+        if (openText != null)
+        {
+            openText.SetActive(false); // Set openText to false
+        }
+    }
 }
-
-
-

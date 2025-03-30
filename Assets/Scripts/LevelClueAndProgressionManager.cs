@@ -69,23 +69,23 @@ public class LevelClueAndProgressionManager : MonoBehaviour
         /* Clues for Level 3 */
         Dictionary<int, string[]> level3Clues = new Dictionary<int, string[]>();
         string[] level3Puzzle1Clues = {
-            "FILL IN - Clue 1 for Level 3 Puzzle 1",
-            "FILL IN - Clue 2 for Level 3 Puzzle 1",
-            "FILL IN - Clue 3 for Level 3 Puzzle 1",
+            "The answer to your next step may already be written—where would someone record their knowledge?",
+            "Some stories are timeless, but their colors hold the key. A poem from the past will guide your way.",
+            "Find the correct order the book's should be places, the colours give the slots.",
         };
         level3Clues[0] = level3Puzzle1Clues;
 
         string[] level3Puzzle2Clues = {
-            "FILL IN - Clue 1 for Level 3 Puzzle 2",
-            "FILL IN - Clue 2 for Level 3 Puzzle 2",
-            "FILL IN - Clue 3 for Level 3 Puzzle 2",
+            "The journal is more than just thoughts—it tracks movement. Where has Dr. Pale been?",
+            "A journey across the country is hidden in his words. Perhaps the map can help connect the dots.",
+            "Click on the first province and then the next, conecting them represeting the travel.",
         };
         level3Clues[1] = level3Puzzle2Clues;
 
         string[] level3Puzzle3Clues = {
-            "FILL IN - Clue 1 for Level 3 Puzzle 3",
-            "FILL IN - Clue 2 for Level 3 Puzzle 3",
-            "FILL IN - Clue 3 for Level 3 Puzzle 3",
+            "The safe has appeared, but how do you open it? Something important is still missing.",
+            "A note left behind may hold the key—check the desk for something that stands out.",
+            "Use the code on the desk to, open safe on the wall.",
         };
         level3Clues[2] = level3Puzzle3Clues;
 
@@ -153,30 +153,27 @@ public class LevelClueAndProgressionManager : MonoBehaviour
         /* Clues for Level 5 */
         Dictionary<int, string[]> level5Clues = new Dictionary<int, string[]>();
         string[] level5Puzzle1Clues = {
-            "FILL IN - Clue 1 for Level 5 Puzzle 1",
-            "FILL IN - Clue 2 for Level 5 Puzzle 1",
-            "FILL IN - Clue 3 for Level 5 Puzzle 1",
+            "Amidst the clutter of beauty, one essential piece stands apart. The powder on the desk’s edge might just be what you need.",
+            "A simple toss can reveal what’s hidden. Try using the powder on the wall with the 2 antlers between the cabinet, shelf, and behind the bed."
         };
         level5Clues[0] = level5Puzzle1Clues;
 
         string[] level5Puzzle2Clues = {
-            "FILL IN - Clue 1 for Level 5 Puzzle 2",
-            "FILL IN - Clue 2 for Level 5 Puzzle 2",
-            "FILL IN - Clue 3 for Level 5 Puzzle 2",
+            "The code from before unlocks more than just a closet door—it reveals the key to the next puzzle. Take a close look at what’s hanging inside."
         };
         level5Clues[1] = level5Puzzle2Clues;
 
         string[] level5Puzzle3Clues = {
-            "FILL IN - Clue 1 for Level 5 Puzzle 3",
-            "FILL IN - Clue 2 for Level 5 Puzzle 3",
-            "FILL IN - Clue 3 for Level 5 Puzzle 3",
+            "Five hangers, five sizes, five colors… Could their order mean something?",
+            "What is left to unlock in the room, what secrets must be kept 'safe'",
+            "Each hanger has a size, and each bar has a color. Think about how they might fit together.",
+            "Sizes go from XS to XL, small to big, the sliders have 5 slide settings. Maybe the sliders should follow the same pattern as the hanger sizes?"
         };
         level5Clues[2] = level5Puzzle3Clues;
 
         string[] level5Puzzle4Clues = {
-            "FILL IN - Clue 1 for Level 5 Puzzle 4",
-            "FILL IN - Clue 2 for Level 5 Puzzle 4",
-            "FILL IN - Clue 3 for Level 5 Puzzle 4",
+            "A note was picked up from the doctor's safe. Try placing it in your hand to view it.",
+            "With the note in your hand, take a step back."
         };
         level5Clues[2] = level5Puzzle4Clues;
 
