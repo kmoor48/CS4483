@@ -10,12 +10,13 @@ public class SafeUnlock : MonoBehaviour
     public GameObject safeDoor;
     public GameObject safeCanvas;
 
-    private int[] correctCombination = { 2, 1, 3, 5, 4 }; 
+    private int[] correctCombination = { 2, 1, 3, 5, 4 };
+    private GameObject universalLogicHandler;
 
 
     void Start()
     {
-
+        universalLogicHandler = GameObject.FindWithTag("UniversalLogicHandler");
         slider1.wholeNumbers = true;
         slider2.wholeNumbers = true;
         slider3.wholeNumbers = true;
@@ -93,6 +94,8 @@ public class SafeUnlock : MonoBehaviour
 
         playerCamera.gameObject.SetActive(true);
         safeCamera.gameObject.SetActive(false);
+        LevelClueAndProgressionManager clueScript = universalLogicHandler.GetComponent<LevelClueAndProgressionManager>();
+        clueScript.IncrementPuzzleCounter();
     }
 
 
