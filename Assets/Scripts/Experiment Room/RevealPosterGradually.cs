@@ -103,7 +103,7 @@ public class RevealPosterGradually : MonoBehaviour
         // Set the computer screen text on
         computerPowerOnText.SetActive(true);
 
-        // Mark the puzzle as complete
+        // Clue and Progression code
         LevelClueAndProgressionManager clueScript = universalLogicHandler.GetComponent<LevelClueAndProgressionManager>();
         clueScript.IncrementPuzzleCounter();
     }

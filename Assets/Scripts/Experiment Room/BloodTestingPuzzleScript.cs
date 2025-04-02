@@ -17,6 +17,9 @@ public class BloodTestingPuzzleScript : MonoBehaviour
 
     private GameObject universalLogicHandler;
 
+    // For puzzle progression
+    public GameObject flashlight;
+
     void Start()
     {
         glassDropperScript = glassDropper.GetComponent<GlassDropperScript>();
@@ -54,6 +57,9 @@ public class BloodTestingPuzzleScript : MonoBehaviour
             // Mark the puzzle as complete
             LevelClueAndProgressionManager clueScript = universalLogicHandler.GetComponent<LevelClueAndProgressionManager>();
             clueScript.IncrementPuzzleCounter();
+            
+            // Make flashlight available for next puzzle 
+            flashlight.SetActive(true);
         }
     }
 
