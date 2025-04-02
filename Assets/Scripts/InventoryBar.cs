@@ -116,6 +116,7 @@ public class InventoryBar : MonoBehaviour
                 Debug.Log("No item in the selected slot.");
             }
         }*/
+
     }
 
     public void SetHoverState(GameObject itemLabelText)

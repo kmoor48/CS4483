@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Unity.VisualScripting;
+using UnityEditorInternal.Profiling.Memory.Experimental;
 
 public class InventoryDisplay : MonoBehaviour
 {
@@ -13,6 +15,11 @@ public class InventoryDisplay : MonoBehaviour
 
     private bool isInventoryOpen = false;
     private int selectedSlotIndex = -1;
+    private bool isClockInteracting = false; // Track clock interaction state
+
+
+    public ClockInteraction clockInteraction; // Reference to ClockInteraction script
+
 
     private void Start()
     {
@@ -38,6 +45,17 @@ public class InventoryDisplay : MonoBehaviour
 
     private void Update()
     {
+
+        if (clockInteraction != null)
+        {
+            isClockInteracting = clockInteraction.IsEditingClock();
+        }
+
+        if (isClockInteracting)
+        {
+            return; // Block inventory actions if clock is being interacted with
+        }
+
         for (int i = 0; i < 9; i++)
         {
             if (Input.GetKeyDown(KeyCode.Alpha1 + i))
@@ -54,6 +72,11 @@ public class InventoryDisplay : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             HideItemDisplay();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            ReturnToInventory();
         }
 
         if (isInventoryOpen)
@@ -108,6 +131,44 @@ public class InventoryDisplay : MonoBehaviour
         }
     }
 
+    private void ReturnToInventory()
+    {
+        if (playerHand.childCount == 0)
+        {
+            return;
+        }
+
+        Transform itemInHand = playerHand.GetChild(0);
+        //itemInHand.GetComponent<PickupItem>().enabled = true;
+        PickupItem pickupItem = itemInHand.GetComponent<PickupItem>();
+
+        if (pickupItem == null)
+        {
+            Debug.LogError("Item in hand does not have a PickupItem component!");
+            return;
+        }
+        pickupItem.enabled = true;
+        string itemName = pickupItem.itemName; 
+        Sprite itemSprite = pickupItem.image;
+        
+
+        if (itemSprite == null)
+        {
+            Debug.LogError("Item does not have a valid sprite!");
+            return;
+        }
+
+        GameObject universalLogicHandler = GameObject.FindWithTag("UniversalLogicHandler");
+        InventoryBar inventoryBarScript = universalLogicHandler.GetComponent<InventoryBar>();
+
+        inventoryBarScript.AddItem(itemInHand.gameObject, itemName, itemSprite);
+
+        Destroy(itemInHand.gameObject); 
+
+        HideItemDisplay();
+    }
+
+
 
     private void RemoveItemFromInventory()
     {
@@ -135,7 +196,6 @@ public class InventoryDisplay : MonoBehaviour
             {
                 GameObject newItem = Instantiate(itemPrefab, playerHand.position, Quaternion.identity);
                 newItem.transform.SetParent(playerHand);
-                
                 // Placing the object in the hand
                 if (itemName == "Flashlight"){
                     newItem.transform.localScale = playerHand.localScale * 6f; 
@@ -149,14 +209,22 @@ public class InventoryDisplay : MonoBehaviour
                     newItem.AddComponent<Flashlight>();
                     itemInstructionsText.SetActive(true);
                 }
-                else {
+
+                else
+                {
                     newItem.transform.localScale = playerHand.localScale * 0.2f; 
                     Vector3 offset = new Vector3(0.005f, 0.2f, 0.2f); 
                     newItem.transform.localPosition += offset;
                 }
 
                 // Removing the pickup item script from the item in the hand
-                Destroy(newItem.GetComponent<PickupItem>());
+                //Destroy(newItem.GetComponent<PickupItem>());
+                PickupItem pickupItemScript = newItem.GetComponent<PickupItem>();
+                if (pickupItemScript != null)
+                {
+                    pickupItemScript.enabled = false; // Disable so it doesn't interact again
+                    pickupItemScript.SetOpenTextFalse();
+                }
             }
             else
             {

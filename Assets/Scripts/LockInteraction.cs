@@ -1,5 +1,6 @@
 using UnityEngine;
-using TMPro; // For TextMesh Pro
+using TMPro;
+using System.Diagnostics.Tracing;
 
 public class LockInteraction : MonoBehaviour
 {
@@ -18,13 +19,15 @@ public class LockInteraction : MonoBehaviour
 
     private string enteredCode = ""; 
     private bool isInteracting = false;
-    private bool isNearLock = false; 
+    private bool isNearLock = false;
+    private GameObject universalLogicHandler;
 
     void Start()
     {
         lockCanvas.SetActive(false);
         successMessage.SetActive(false); 
-        interactionPrompt.SetActive(false); 
+        interactionPrompt.SetActive(false);
+        universalLogicHandler = GameObject.FindWithTag("UniversalLogicHandler");
     }
 
     void Update()
@@ -108,10 +111,17 @@ public class LockInteraction : MonoBehaviour
     void UnlockLock()
     {
         successMessage.SetActive(false); 
-        ExitLock(); 
+        ExitLock();
         lockPrefab.SetActive(false); 
         closetDoorLeft.SetActive(false);
         closetDoorRight.SetActive(false);
+        IncrementCounter();
+    }
+
+    void IncrementCounter()
+    {
+        LevelClueAndProgressionManager clueScript = universalLogicHandler.GetComponent<LevelClueAndProgressionManager>();
+        clueScript.IncrementPuzzleCounter();
     }
 
     void ClearDisplay()

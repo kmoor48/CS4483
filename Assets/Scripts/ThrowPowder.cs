@@ -34,7 +34,6 @@ public class ThrowPowder : MonoBehaviour
             }
         }
 
-        // Press R to throw the item
         if (Input.GetKeyDown(KeyCode.R))
         {
             ThrowItem();
@@ -62,10 +61,11 @@ public class ThrowPowder : MonoBehaviour
             Collider col = heldItem.GetComponent<Collider>();
             if (col == null)
             {
-                col = heldItem.AddComponent<BoxCollider>();
+                col = heldItem.AddComponent<BoxCollider>(); 
             }
 
-            heldItem.AddComponent<ThrowPowderCollision>().Setup(messageOnWall);
+            ThrowPowderCollision powderCollision = heldItem.AddComponent<ThrowPowderCollision>();
+            powderCollision.Setup(messageOnWall);
 
             heldItem = null;
         }
@@ -79,19 +79,24 @@ public class ThrowPowder : MonoBehaviour
 public class ThrowPowderCollision : MonoBehaviour
 {
     private GameObject messageOnWall;
+    private GameObject universalLogicHandler;
 
     public void Setup(GameObject message)
     {
+        universalLogicHandler = GameObject.FindWithTag("UniversalLogicHandler");
         messageOnWall = message;
+        messageOnWall.SetActive(true);
+        LevelClueAndProgressionManager clueScript = universalLogicHandler.GetComponent<LevelClueAndProgressionManager>();
+        clueScript.IncrementPuzzleCounter();
     }
 
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Wall")) 
+        if (collision.gameObject.CompareTag("Wall"))
         {
-            Debug.Log("Powder hit the wall!");
-            messageOnWall.SetActive(true); 
-            Destroy(gameObject, 0.5f);
+            messageOnWall.SetActive(true);
+            Destroy(gameObject, 0.5f); 
         }
     }
 }
+
