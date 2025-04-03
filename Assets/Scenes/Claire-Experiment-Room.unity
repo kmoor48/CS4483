@@ -37504,6 +37504,10 @@ PrefabInstance:
       propertyPath: m_fontColor.r
       value: 0.008172274
       objectReference: {fileID: 0}
+    - target: {fileID: 5916258817763327604, guid: a60cd3619df27884ebb6f416050124c1, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -12.891602
+      objectReference: {fileID: 0}
     - target: {fileID: 6322389219218602556, guid: a60cd3619df27884ebb6f416050124c1, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -65
@@ -37743,6 +37747,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5181435147484352429, guid: 80c63745b6e9d154c8b2d12db8733b6d, type: 3}
+      propertyPath: m_TagString
+      value: Level4
+      objectReference: {fileID: 0}
     - target: {fileID: 5522529683963843863, guid: 80c63745b6e9d154c8b2d12db8733b6d, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -37819,6 +37827,10 @@ PrefabInstance:
     - target: {fileID: 8532297815098868041, guid: b8f137f07582e844c94bf754f4b44643, type: 3}
       propertyPath: m_Name
       value: Cipher Key
+      objectReference: {fileID: 0}
+    - target: {fileID: 8532297815098868041, guid: b8f137f07582e844c94bf754f4b44643, type: 3}
+      propertyPath: m_TagString
+      value: Level5
       objectReference: {fileID: 0}
     - target: {fileID: 8711891879405342506, guid: b8f137f07582e844c94bf754f4b44643, type: 3}
       propertyPath: m_Pivot.x
@@ -37996,6 +38008,10 @@ PrefabInstance:
     - target: {fileID: 3608741204462300430, guid: 0438cd045bf39404d860c98f12dccb15, type: 3}
       propertyPath: m_Name
       value: AngelaMissingPoster
+      objectReference: {fileID: 0}
+    - target: {fileID: 3608741204462300430, guid: 0438cd045bf39404d860c98f12dccb15, type: 3}
+      propertyPath: m_TagString
+      value: Level4
       objectReference: {fileID: 0}
     - target: {fileID: 5376007880491328903, guid: 0438cd045bf39404d860c98f12dccb15, type: 3}
       propertyPath: openText
