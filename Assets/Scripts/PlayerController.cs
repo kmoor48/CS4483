@@ -39,21 +39,19 @@ public class PlayerController : MonoBehaviour
         float moveX = Input.GetAxis("Horizontal");
         float moveZ = Input.GetAxis("Vertical");
 
-        // Calculate movement direction
+       
         Vector3 move = transform.right * moveX + transform.forward * moveZ;
         move *= moveSpeed;
 
-        // Apply very strong gravity for instant falling
         if (!controller.isGrounded)
         {
-            move.y -= 100f * Time.deltaTime; // Extreme gravity for fast descent
+            move.y -= 100f * Time.deltaTime; 
         }
         else
         {
-            move.y = -20f; // Force player down immediately after stepping off objects
+            move.y = -20f; 
         }
 
-        // Move the player
         controller.Move(move * Time.deltaTime);
     }
 
