@@ -10,6 +10,7 @@ public class InventoryBar : MonoBehaviour
     private GameObject[] inventorySlots; // Array referencing the gameobjects for each slot on the inventory bar
     private string[] itemNames;
     private int[] itemCounts; // Tracks what items slots are currently full (=1) and empty (=0)
+    private string[] itemTags; // Tracks items tag names for between level clear out inventory purposes
 
     private int selectedSlot = -1; // Tracks the currently selected slot
 
@@ -26,12 +27,14 @@ public class InventoryBar : MonoBehaviour
         int childCount = inventoryBar.transform.childCount;
         inventorySlots = new GameObject[childCount];
         itemNames = new string[childCount];
+        itemTags = new string[childCount];
         itemCounts = new int[childCount];
 
         for (int i = 0; i < childCount; i++)
         {
             inventorySlots[i] = inventoryBar.transform.GetChild(i).gameObject;
             itemNames[i] = null;
+            itemTags[i] = null;
             itemCounts[i] = 0;
         }
     }
@@ -47,6 +50,7 @@ public class InventoryBar : MonoBehaviour
 
         GameObject openSlot = inventorySlots[index];
         itemNames[index] = passedInItemName;
+        itemTags[index] = item.tag;
         itemCounts[index] = 1; // Marking the item as full
 
         if (openSlot.transform.childCount > 0)
@@ -73,6 +77,7 @@ public class InventoryBar : MonoBehaviour
         if (index != -1)
         {
             itemNames[index] = null;
+            itemTags[index] = null;
             itemCounts[index] = 0;
 
             GameObject slot = inventorySlots[index];
@@ -84,8 +89,6 @@ public class InventoryBar : MonoBehaviour
             Transform textTransform = slot.transform.GetChild(1).GetChild(0);
             TextMeshProUGUI itemText = textTransform.GetComponent<TextMeshProUGUI>();
             itemText.text = "";
-
-            Debug.Log(itemName + " removed from inventory.");
         }
     }
 
@@ -97,7 +100,6 @@ public class InventoryBar : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Alpha1 + i))
             {
                 selectedSlot = i;
-                Debug.Log("Selected Slot: " + (selectedSlot + 1));
             }
         }
 
@@ -132,6 +134,19 @@ public class InventoryBar : MonoBehaviour
     public GameObject CheckHoverState()
     {
         return hoveredInventoryItem;
+    }
+    
+    public void ClearInventoryBetweenLevels(int levelJustFinishedIndex)
+    {
+        string levelName = "Level" + (levelJustFinishedIndex + 1).ToString();
+        
+        for (int i = 0; i < itemTags.Length ; i++)
+        {
+            if (itemTags[i] == levelName)
+            {
+                RemoveItem(itemNames[i]); // remove if the item is only needed in the previous level
+            }
+        }
     }
 }
 

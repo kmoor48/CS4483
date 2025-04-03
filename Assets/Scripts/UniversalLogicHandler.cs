@@ -7,6 +7,8 @@ public class UniversalLogicHandler : MonoBehaviour
     private static UniversalLogicHandler instance;
     // Script reference to clue and level manager on this go
     private LevelClueAndProgressionManager clueLevelManagerScript;
+    // Script reference to Inventory Bar to clear out inventory with unecessairy items
+    private InventoryBar inventoryBarScript;
 
     // Index of the next scene to load
     private int nextSceneIndex;
@@ -32,8 +34,9 @@ public class UniversalLogicHandler : MonoBehaviour
         nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
 
         clueLevelManagerScript = gameObject.GetComponent<LevelClueAndProgressionManager>();
-        
         clueLevelManagerScript.SetCurrentLevel(0);
+
+        inventoryBarScript = gameObject.GetComponent<InventoryBar>();
     }
 
     public void LoadNextScene()
@@ -44,6 +47,7 @@ public class UniversalLogicHandler : MonoBehaviour
             SceneManager.LoadScene(nextSceneIndex);
         
             clueLevelManagerScript.SetCurrentLevel(nextSceneIndex);
+            inventoryBarScript.ClearInventoryBetweenLevels(nextSceneIndex-1); // Send the previous level's index to clear inventory
             nextSceneIndex += 1;
         }
         else
