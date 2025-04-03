@@ -30,14 +30,10 @@ public class UniversalLogicHandler : MonoBehaviour
     {
         // Initialize the next scene index to the current scene's build index + 1
         nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
-        Debug.Log("nextSceneIndex:");
-
-        Debug.Log(nextSceneIndex);
-
 
         clueLevelManagerScript = gameObject.GetComponent<LevelClueAndProgressionManager>();
-        
-        clueLevelManagerScript.SetCurrentLevel(2);
+
+        clueLevelManagerScript.SetCurrentLevel(0);
     }
 
     public void LoadNextScene()
