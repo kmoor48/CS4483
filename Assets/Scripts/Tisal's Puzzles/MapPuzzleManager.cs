@@ -34,6 +34,8 @@ public class MapPuzzleManager : MonoBehaviour
     private ProvinceButton selectedProvince = null;
     private List<ConnectionLine> connections = new List<ConnectionLine>();
     private int currentLineNumber = 1;
+    private GameObject universalLogicHandler;
+
 
     void Start()
     {
@@ -43,6 +45,8 @@ public class MapPuzzleManager : MonoBehaviour
         instructionsText.SetActive(false);
         completionText.SetActive(false);
         puzzleCamera.gameObject.SetActive(false);
+        universalLogicHandler = GameObject.FindWithTag("UniversalLogicHandler");
+
 
         // Setup reset button
         resetButton.onClick.AddListener(ResetPuzzle);
@@ -203,6 +207,8 @@ public class MapPuzzleManager : MonoBehaviour
 
             // Uncomment when you're ready to implement the safe reveal
             StartCoroutine(RevealSafe());
+            LevelClueAndProgressionManager clueScript = universalLogicHandler.GetComponent<LevelClueAndProgressionManager>();
+            clueScript.IncrementPuzzleCounter();
         }
         else
         {

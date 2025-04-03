@@ -12,7 +12,7 @@ namespace NavKeypad
         [SerializeField] private UnityEvent onAccessGranted;
         [SerializeField] private UnityEvent onAccessDenied;
         [Header("Combination Code (9 Numbers Max)")]
-        [SerializeField] private int keypadCombo = 0417;
+        [SerializeField] private int keypadCombo = 12345;
 
         public UnityEvent OnAccessGranted => onAccessGranted;
         public UnityEvent OnAccessDenied => onAccessDenied;
@@ -38,6 +38,9 @@ namespace NavKeypad
         [SerializeField] private TMP_Text keypadDisplayText;
         [SerializeField] private AudioSource audioSource;
 
+        [Header("Door Exit")]
+        [SerializeField] private Collider doorExitCollider; // Reference to the collider near the door
+
 
         private string currentInput;
         private bool displayingResult = false;
@@ -47,6 +50,12 @@ namespace NavKeypad
         {
             ClearInput();
             panelMesh.material.SetVector("_EmissionColor", screenNormalColor * screenIntensity);
+
+            // Make sure the door exit collider is disabled at start
+            if (doorExitCollider != null)
+            {
+                doorExitCollider.enabled = false;
+            }
         }
 
 
@@ -125,7 +134,17 @@ namespace NavKeypad
             onAccessGranted?.Invoke();
             panelMesh.material.SetVector("_EmissionColor", screenGrantedColor * screenIntensity);
             audioSource.PlayOneShot(accessGrantedSfx);
-        }
 
+            // Activate the door exit collider when access is granted
+            if (doorExitCollider != null)
+            {
+                doorExitCollider.enabled = true;
+                Debug.Log("Door exit collider has been activated");
+            }
+            else
+            {
+                Debug.LogWarning("Door exit collider is not assigned!");
+            }
+        }
     }
 }
