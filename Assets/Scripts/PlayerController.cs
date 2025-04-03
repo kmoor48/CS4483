@@ -41,10 +41,22 @@ public class PlayerController : MonoBehaviour
 
         // Calculate movement direction
         Vector3 move = transform.right * moveX + transform.forward * moveZ;
+        move *= moveSpeed;
+
+        // Apply very strong gravity for instant falling
+        if (!controller.isGrounded)
+        {
+            move.y -= 100f * Time.deltaTime; // Extreme gravity for fast descent
+        }
+        else
+        {
+            move.y = -20f; // Force player down immediately after stepping off objects
+        }
 
         // Move the player
-        controller.Move(move * moveSpeed * Time.deltaTime);
+        controller.Move(move * Time.deltaTime);
     }
+
 
     void LookAround()
     {
