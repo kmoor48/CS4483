@@ -6,6 +6,8 @@ public class BookSwapManager : MonoBehaviour
     private Book firstSelectedBook = null;
     private Book secondSelectedBook = null;
     private Dictionary<Book, Vector3> bookPositions = new Dictionary<Book, Vector3>();
+    private GameObject universalLogicHandler;
+
 
     // Define correct positions for books
     private Dictionary<Vector3, string> correctPositions = new Dictionary<Vector3, string>
@@ -26,6 +28,8 @@ public class BookSwapManager : MonoBehaviour
         {
             bookPositions[book] = book.transform.position;
         }
+        universalLogicHandler = GameObject.FindWithTag("UniversalLogicHandler");
+
     }
 
     // Select a book when clicked
@@ -89,6 +93,9 @@ public class BookSwapManager : MonoBehaviour
         {
             Debug.Log("Puzzle Solved! Middle book is now clickable.");
             specialBook.MakeSpecialBook();
+            // Mark the puzzle as complete
+            LevelClueAndProgressionManager clueScript = universalLogicHandler.GetComponent<LevelClueAndProgressionManager>();
+            clueScript.IncrementPuzzleCounter();
         }
         else
         {

@@ -30,6 +30,9 @@ public class OpenClueDisplayButtonManager : MonoBehaviour
     {
         settingsDisplayManagerScript.CloseSettingsDisplay();
         LevelClueAndProgressionManager clueManagerScript = universalLogicHandler.GetComponent<LevelClueAndProgressionManager>();
+        Debug.Log(universalLogicHandler);
+        Debug.Log(clueManagerScript);
+
         clueManagerScript.OpenClueDisplay();
     }
 }
