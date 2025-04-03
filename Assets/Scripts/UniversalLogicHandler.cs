@@ -34,6 +34,7 @@ public class UniversalLogicHandler : MonoBehaviour
         nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
 
         clueLevelManagerScript = gameObject.GetComponent<LevelClueAndProgressionManager>();
+
         clueLevelManagerScript.SetCurrentLevel(0);
 
         inventoryBarScript = gameObject.GetComponent<InventoryBar>();
