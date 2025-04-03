@@ -163,6 +163,9 @@ public class InventoryDisplay : MonoBehaviour
 
         inventoryBarScript.AddItem(itemInHand.gameObject, itemName, itemSprite);
 
+        // Closing item instruction text
+        itemInstructionsText.SetActive(false);
+
         Destroy(itemInHand.gameObject); 
 
         HideItemDisplay();
