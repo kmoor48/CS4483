@@ -20975,6 +20975,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Foundation_Powder
       objectReference: {fileID: 0}
+    - target: {fileID: 6327653773582093353, guid: 610eba02f72f9c045b52b2e300417402, type: 3}
+      propertyPath: m_TagString
+      value: Level5
+      objectReference: {fileID: 0}
     - target: {fileID: 6673075949459019411, guid: 610eba02f72f9c045b52b2e300417402, type: 3}
       propertyPath: m_LocalPosition.x
       value: 39.32
