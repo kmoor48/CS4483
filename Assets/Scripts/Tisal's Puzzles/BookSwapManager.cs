@@ -12,12 +12,11 @@ public class BookSwapManager : MonoBehaviour
     // Define correct positions for books
     private Dictionary<Vector3, string> correctPositions = new Dictionary<Vector3, string>
 {
-    { new Vector3(-38.49f, 8.82f, -19.73f), "Book-2" },
-    { new Vector3(-38.33f, 8.82f, -19.73f), "Book-1" },
+    { new Vector3(-38.33f, 8.82f, -19.73f), "Book-4" },
     { new Vector3(-38.16f, 8.82f, -19.73f), "Book-3" },
-    { new Vector3(-38.01f, 8.82f, -19.73f), "Book-4" },
-    { new Vector3(-37.86f, 8.82f, -19.73f), "Book-5" },
-    { new Vector3(-37.70f, 8.82f, -19.73f), "Book-6" }
+    { new Vector3(-38.01f, 8.82f, -19.73f), "Book-1" },
+    { new Vector3(-37.86f, 8.82f, -19.73f), "Book-2" },
+    { new Vector3(-37.70f, 8.82f, -19.73f), "Book-5" }
 };
 
 
