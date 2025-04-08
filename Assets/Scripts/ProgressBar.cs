@@ -38,6 +38,10 @@ public class ProgressBar : MonoBehaviour
 
     public void ResetProgressBar(int numOfPuzzlesInLevel)
     {
+        if (fill == null)
+        {
+            fill = transform.GetChild(0).GetChild(0).GetComponent<Image>();
+        }
         fillAmountPerPuzzle = 1f / numOfPuzzlesInLevel;
         fill.fillAmount = 0f;
     }

@@ -10,6 +10,8 @@ public class SettingsDisplayManager : MonoBehaviour
     void Start()
     {
         clueManagerScript = GameObject.FindWithTag("ClueDisplayPanel").GetComponent<ClueDisplayManager>();
+        clueManagerScript.ReadyToSetInactiveSettingsDisplayScript();
+
         // Get the Button component attached to this GameObject
         buttonComponent = GetComponent<Button>();
 
