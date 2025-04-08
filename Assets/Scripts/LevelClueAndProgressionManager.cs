@@ -34,7 +34,7 @@ public class LevelClueAndProgressionManager : MonoBehaviour
 
         if (clueDisplay != null)
         {
-            clueDisplay.SetActive(false);
+            clueDisplay.GetComponent<ClueDisplayManager>().ReadyToSetInactiveLevelScript();
         }
         else 
         {
