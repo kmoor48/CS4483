@@ -6,16 +6,17 @@ public class BookSwapManager : MonoBehaviour
     private Book firstSelectedBook = null;
     private Book secondSelectedBook = null;
     private Dictionary<Book, Vector3> bookPositions = new Dictionary<Book, Vector3>();
+    private GameObject universalLogicHandler;
+
 
     // Define correct positions for books
     private Dictionary<Vector3, string> correctPositions = new Dictionary<Vector3, string>
 {
-    { new Vector3(-38.49f, 8.82f, -19.73f), "Book-2" },
-    { new Vector3(-38.33f, 8.82f, -19.73f), "Book-1" },
+    { new Vector3(-38.33f, 8.82f, -19.73f), "Book-4" },
     { new Vector3(-38.16f, 8.82f, -19.73f), "Book-3" },
-    { new Vector3(-38.01f, 8.82f, -19.73f), "Book-4" },
-    { new Vector3(-37.86f, 8.82f, -19.73f), "Book-5" },
-    { new Vector3(-37.70f, 8.82f, -19.73f), "Book-6" }
+    { new Vector3(-38.01f, 8.82f, -19.73f), "Book-1" },
+    { new Vector3(-37.86f, 8.82f, -19.73f), "Book-2" },
+    { new Vector3(-37.70f, 8.82f, -19.73f), "Book-5" }
 };
 
 
@@ -26,6 +27,8 @@ public class BookSwapManager : MonoBehaviour
         {
             bookPositions[book] = book.transform.position;
         }
+        universalLogicHandler = GameObject.FindWithTag("UniversalLogicHandler");
+
     }
 
     // Select a book when clicked
@@ -89,6 +92,9 @@ public class BookSwapManager : MonoBehaviour
         {
             Debug.Log("Puzzle Solved! Middle book is now clickable.");
             specialBook.MakeSpecialBook();
+            // Mark the puzzle as complete
+            LevelClueAndProgressionManager clueScript = universalLogicHandler.GetComponent<LevelClueAndProgressionManager>();
+            clueScript.IncrementPuzzleCounter();
         }
         else
         {

@@ -5,9 +5,12 @@ public class OpenClueDisplayButtonManager : MonoBehaviour
 {
     private GameObject universalLogicHandler;
     private Button buttonComponent;
+    private SettingsDisplayManager settingsDisplayManagerScript;
 
     void Start()
     {
+        settingsDisplayManagerScript = GameObject.FindWithTag("SettingsBtn").GetComponent<SettingsDisplayManager>();
+
         // Get the Button component attached to this GameObject
         buttonComponent = GetComponent<Button>();
 
@@ -25,9 +28,8 @@ public class OpenClueDisplayButtonManager : MonoBehaviour
 
     public void OnButtonClickOpenClueDisplay()
     {
+        settingsDisplayManagerScript.CloseSettingsDisplay();
         LevelClueAndProgressionManager clueManagerScript = universalLogicHandler.GetComponent<LevelClueAndProgressionManager>();
         clueManagerScript.OpenClueDisplay();
     }
-
-
 }

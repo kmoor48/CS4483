@@ -8,6 +8,11 @@ public class ClueDisplayManager : MonoBehaviour
     private Button requestNewClueButton;
     private LevelClueAndProgressionManager clueScript;
 
+    // Bools for managing when to set inactive the clue display but only after all components have their references
+    private bool startIsDone = false;
+    private bool levelClueScriptIsDone = false;
+    private bool settingsDisplayScriptIsDone = false;
+
     void Start()
     {
         universalLogicHandler = GameObject.FindWithTag("UniversalLogicHandler");
@@ -26,6 +31,42 @@ public class ClueDisplayManager : MonoBehaviour
         {
             closeClueDisplayImage.raycastTarget = true;
             requestNewClueImage.raycastTarget = true;
+        }
+
+        // If the other 2 are done, set the object inactive
+        if (levelClueScriptIsDone && settingsDisplayScriptIsDone)
+        {
+            gameObject.SetActive(false);
+        }
+        else
+        {
+            startIsDone = true; // Else set the flag this script is done
+        }
+    }
+
+    public void ReadyToSetInactiveLevelScript()
+    {
+        // If the other 2 are done, set the object inactive
+        if (startIsDone && settingsDisplayScriptIsDone)
+        {
+            gameObject.SetActive(false);
+        }
+        else
+        {
+            levelClueScriptIsDone = true; // Else set the flag this script is done
+        }
+    }
+
+    public void ReadyToSetInactiveSettingsDisplayScript()
+    {
+        // If the other 2 are done, set the object inactive
+        if (startIsDone && levelClueScriptIsDone)
+        {
+            gameObject.SetActive(false);
+        }
+        else
+        {
+            settingsDisplayScriptIsDone = true; // Else set the flag this script is done
         }
     }
 

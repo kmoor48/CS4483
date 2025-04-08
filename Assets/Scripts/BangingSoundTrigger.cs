@@ -1,18 +1,33 @@
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BangSoundTrigger : MonoBehaviour
 {
-    public AudioSource bangSound; 
-    public Transform playerHand;  
+    public AudioSource bangSound;
+    public Transform playerHand;
+    public TextMeshProUGUI noteText;
+    public GameObject pannel;
+    public TextMeshProUGUI GameOverText;
+    public GameObject blackscreenpannel;
 
-    private bool hasPlayed = false;  
+    private bool hasPlayed = false;
 
+    private void Start()
+    {
+        pannel.SetActive(false);
+        noteText.gameObject.SetActive(false);
+        GameOverText.gameObject.SetActive(false);
+        blackscreenpannel.SetActive(false);
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (!hasPlayed && other.CompareTag("Player") && IsHoldingNote())
         {
             bangSound.Play();
             hasPlayed = true;
+            GameOverText.gameObject.SetActive(true);
+            blackscreenpannel.SetActive(true);
         }
     }
 
@@ -26,4 +41,3 @@ public class BangSoundTrigger : MonoBehaviour
         return false;
     }
 }
-

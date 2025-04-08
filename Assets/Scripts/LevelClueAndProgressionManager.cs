@@ -34,7 +34,7 @@ public class LevelClueAndProgressionManager : MonoBehaviour
 
         if (clueDisplay != null)
         {
-            clueDisplay.SetActive(false);
+            clueDisplay.GetComponent<ClueDisplayManager>().ReadyToSetInactiveLevelScript();
         }
         else 
         {
@@ -190,6 +190,10 @@ public class LevelClueAndProgressionManager : MonoBehaviour
         progressionBar = GameObject.FindWithTag("ProgressionBar");
         progressionBarScript = progressionBar.GetComponent<ProgressBar>();
         progressionBarScript.ResetProgressBar(numOfPuzzlesInCurrentLevel);
+
+        // Reset display text
+        clueTextField.text = "Click the button below to request a clue!";
+        clueNumTextField.text = "";
     }
 
     public void IncrementPuzzleCounter()
