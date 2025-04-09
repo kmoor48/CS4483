@@ -46,9 +46,9 @@ public class UniversalLogicHandler : MonoBehaviour
         if (nextSceneIndex < SceneManager.sceneCountInBuildSettings)
         {
             SceneManager.LoadScene(nextSceneIndex);
-        
+
             clueLevelManagerScript.SetCurrentLevel(nextSceneIndex);
-            inventoryBarScript.ClearInventoryBetweenLevels(nextSceneIndex-1); // Send the previous level's index to clear inventory
+            inventoryBarScript.ClearInventoryBetweenLevels(nextSceneIndex - 1); // Send the previous level's index to clear inventory
             nextSceneIndex += 1;
         }
         else

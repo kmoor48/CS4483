@@ -16,8 +16,26 @@ public class InventoryBar : MonoBehaviour
 
     private GameObject hoveredInventoryItem = null; // Tracks what button is being hovered over for 2D puzzles
 
+    // Singleton pattern to ensure only one instance exists
+    private static InventoryBar instance;
+
+    public static InventoryBar Instance
+    {
+        get { return instance; }
+    }
+
     void Start()
     {
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject); // This will prevent the inventory bar from being destroyed on scene load
+        }
+        else
+        {
+            Destroy(gameObject); // Destroy this object if there is already an instance
+        }
+
         inventoryBar = GameObject.FindWithTag("InventoryBar");
         if (inventoryBar == null)
         {
@@ -102,23 +120,6 @@ public class InventoryBar : MonoBehaviour
                 selectedSlot = i;
             }
         }
-
-        // Remove item only if a slot is selected and 'T' is pressed
-        /*if (selectedSlot != -1 && Input.GetKeyDown(KeyCode.T))
-        {
-            if (itemNames[selectedSlot] != null)
-            {
-                Debug.Log("clearing inventory");
-                RemoveItem(itemNames[selectedSlot]);
-                itemCounts[selectedSlot] = 0; // Mark the inventory slot as empty again
-                selectedSlot = -1; // Reset selection after removal
-            }
-            else
-            {
-                Debug.Log("No item in the selected slot.");
-            }
-        }*/
-
     }
 
     public void SetHoverState(GameObject itemLabelText)
@@ -135,12 +136,17 @@ public class InventoryBar : MonoBehaviour
     {
         return hoveredInventoryItem;
     }
-    
+
+    public string[] GetItemNames()
+    {
+        return itemNames;
+    }
+
     public void ClearInventoryBetweenLevels(int levelJustFinishedIndex)
     {
         string levelName = "Level" + (levelJustFinishedIndex + 1).ToString();
-        
-        for (int i = 0; i < itemTags.Length ; i++)
+
+        for (int i = 0; i < itemTags.Length; i++)
         {
             if (itemTags[i] == levelName)
             {
@@ -149,4 +155,3 @@ public class InventoryBar : MonoBehaviour
         }
     }
 }
-
