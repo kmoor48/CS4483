@@ -10,6 +10,7 @@ public class ClockInteraction : MonoBehaviour
     public Transform playerTransform;
     public float interactionDistance = 3f;
     public GameObject[] batteries;
+    public ExitDoor exitDoor; // Reference to the ExitDoor script
 
     private bool isEditing = false;
     private bool puzzleSolved = false;
@@ -79,6 +80,12 @@ public class ClockInteraction : MonoBehaviour
         }
     }
 
+    private void OnPuzzleSolved()
+    {
+        // Call the PuzzleSolved method from ExitDoor when the puzzle is completed
+        exitDoor.PuzzleSolved();
+    }
+
     void HandleClockAdjustment()
     {
         if (puzzleSolved) return; // Prevent hand adjustments after solving the puzzle
@@ -121,6 +128,8 @@ public class ClockInteraction : MonoBehaviour
             // Mark the puzzle as complete
             LevelClueAndProgressionManager clueScript = universalLogicHandler.GetComponent<LevelClueAndProgressionManager>();
             clueScript.IncrementPuzzleCounter();
+
+            OnPuzzleSolved();
         }
 
     }
@@ -141,4 +150,6 @@ public class ClockInteraction : MonoBehaviour
         playerCamera.gameObject.SetActive(true);
         if (player != null) player.SetActive(true);
     }
+
+    
 }

@@ -45,4 +45,11 @@ public class ProgressBar : MonoBehaviour
         fillAmountPerPuzzle = 1f / numOfPuzzlesInLevel;
         fill.fillAmount = 0f;
     }
+
+    // Method to get the current fill amount (0 to 1)
+    public float GetFillAmount()
+    {
+        return fill.fillAmount;
+    }
+
 }

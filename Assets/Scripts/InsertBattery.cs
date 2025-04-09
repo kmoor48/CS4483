@@ -8,6 +8,7 @@ public class InsertBattery : MonoBehaviour
     public AudioSource voicemailAudio; // Audio source for voicemail
     public Animator drawerAnimator; // Animator to open drawer
     public int requiredBatteries = 2;
+    public ExitDoor exitDoor; // Reference to the ExitDoor script
 
     private GameObject universalLogicHandler;
     private bool isNearVoicemail = false; // Track if the player is near the voicemail machine
@@ -68,6 +69,12 @@ public class InsertBattery : MonoBehaviour
         }
     }
 
+    private void OnPuzzleSolved()
+    {
+        // Call the PuzzleSolved method from ExitDoor when the puzzle is completed
+        exitDoor.PuzzleSolved();
+    }
+
     void AttemptToInsertBattery()
     {
         // Reference the persistent InventoryBar instance
@@ -102,6 +109,8 @@ public class InsertBattery : MonoBehaviour
             // Mark the puzzle as complete
             LevelClueAndProgressionManager clueScript = universalLogicHandler.GetComponent<LevelClueAndProgressionManager>();
             clueScript.IncrementPuzzleCounter();
+
+            OnPuzzleSolved();
         }
     }
 

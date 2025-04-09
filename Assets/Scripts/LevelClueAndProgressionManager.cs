@@ -242,4 +242,5 @@ public class LevelClueAndProgressionManager : MonoBehaviour
     {
         clueDisplay.SetActive(false);
     }
+
 }
