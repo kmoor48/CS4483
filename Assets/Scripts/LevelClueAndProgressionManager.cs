@@ -17,7 +17,7 @@ public class LevelClueAndProgressionManager : MonoBehaviour
     private ProgressBar progressionBarScript;
 
     // Tracking number of puzzles per level. index 0 -> level 1, index 1 -> level 2, index 2 -> level 3...etc.
-    private int[] numOfPuzzlesPerLevel = {1, 1, 3, 5, 4};
+    private int[] numOfPuzzlesPerLevel = {1, 2, 3, 5, 4};
     private int numOfPuzzlesInCurrentLevel;
     private int currentLevelInt = 0;
     private int currentPuzzleInt = 0;
@@ -49,9 +49,9 @@ public class LevelClueAndProgressionManager : MonoBehaviour
         /* Clues for Level 1 */
         Dictionary<int, string[]> level1Clues = new Dictionary<int, string[]>();
         string[] level1Puzzle1Clues = {
-            "FILL IN - Clue 1 for Level 1 Puzzle 1",
-            "FILL IN - Clue 2 for Level 1 Puzzle 1",
-            "FILL IN - Clue 3 for Level 1 Puzzle 1",
+            "Check the papers on the table, there might be useful information there!",
+            "Pick up everything you need, there will be important later!",
+            "Unlock the drawer with the information you have!",
         };
         level1Clues[0] = level1Puzzle1Clues;
         cluesForLevel[0] = level1Clues;
@@ -59,11 +59,16 @@ public class LevelClueAndProgressionManager : MonoBehaviour
         /* Clues for Level 2 */
         Dictionary<int, string[]> level2Clues = new Dictionary<int, string[]>();
         string[] level2Puzzle1Clues = {
-            "FILL IN - Clue 1 for Level 2 Puzzle 1",
-            "FILL IN - Clue 2 for Level 2 Puzzle 1",
-            "FILL IN - Clue 3 for Level 2 Puzzle 1",
+            "Poster is trying to tell you something, check the back of the clock.",
+            "Make sure you find the right time to open the clock and get the batteries, check the table for information!",
         };
         level2Clues[0] = level2Puzzle1Clues;
+
+        string[] level2Puzzle2Clues = {
+            "Insert the batteries to listen Dr. Pale's message",
+        };
+        level2Clues[1] = level2Puzzle2Clues;
+
         cluesForLevel[1] = level2Clues;
 
         /* Clues for Level 3 */

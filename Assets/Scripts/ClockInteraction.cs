@@ -15,6 +15,7 @@ public class ClockInteraction : MonoBehaviour
     private bool puzzleSolved = false;
     private int selectedHand = 1; // 1 = Hour, 2 = Minute
     private float hourRotation, minuteRotation;
+    private GameObject universalLogicHandler;
 
     // Target rotations for puzzle completion
     private float targetHourRotation = 57f;
@@ -23,6 +24,7 @@ public class ClockInteraction : MonoBehaviour
 
     void Start()
     {
+        universalLogicHandler = GameObject.FindWithTag("UniversalLogicHandler");
         hourRotation = hourHand.localRotation.eulerAngles.z;
         minuteRotation = minuteHand.localRotation.eulerAngles.z;
 
@@ -115,7 +117,12 @@ public class ClockInteraction : MonoBehaviour
             {
                 battery.SetActive(true);
             }
+
+            // Mark the puzzle as complete
+            LevelClueAndProgressionManager clueScript = universalLogicHandler.GetComponent<LevelClueAndProgressionManager>();
+            clueScript.IncrementPuzzleCounter();
         }
+
     }
 
     // Normalize angles to be between -180° and 180°
