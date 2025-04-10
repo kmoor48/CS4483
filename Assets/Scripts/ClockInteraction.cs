@@ -1,4 +1,6 @@
 using UnityEngine;
+using TMPro;
+
 
 public class ClockInteraction : MonoBehaviour
 {
@@ -11,6 +13,8 @@ public class ClockInteraction : MonoBehaviour
     public float interactionDistance = 3f;
     public GameObject[] batteries;
     public ExitDoor exitDoor; // Reference to the ExitDoor script
+    public GameObject interactionText;
+
 
     private bool isEditing = false;
     private bool puzzleSolved = false;
@@ -40,21 +44,44 @@ public class ClockInteraction : MonoBehaviour
 
     void Update()
     {
-        if (puzzleSolved) return; // Ignore all interactions after solving the puzzle
-
-        float distance = Vector3.Distance(playerTransform.position, transform.position);
-
-        if (distance <= interactionDistance && Input.GetKeyDown(KeyCode.E))
+        if (puzzleSolved)
         {
-            ToggleClockEditing();
+            interactionText.gameObject.SetActive(false);
+            return;
         }
 
         if (isEditing)
         {
+            interactionText.gameObject.SetActive(false); // Hide text during clock interaction
+
+            if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Escape))
+            {
+                ToggleClockEditing(); // Exit clock view with E or Esc
+                return;
+            }
+
             HandleClockAdjustment();
-            CheckPuzzleSolved(); // Check if the puzzle is solved after each adjustment
+            CheckPuzzleSolved();
+            return;
+        }
+
+        float distance = Vector3.Distance(playerTransform.position, transform.position);
+
+        if (distance <= interactionDistance)
+        {
+            interactionText.gameObject.SetActive(true);
+
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                ToggleClockEditing(); // Enter clock view
+            }
+        }
+        else
+        {
+            interactionText.gameObject.SetActive(false);
         }
     }
+
 
     public bool IsEditingClock()
     {
@@ -64,12 +91,15 @@ public class ClockInteraction : MonoBehaviour
 
     void ToggleClockEditing()
     {
-        if (puzzleSolved) return; // Prevent interaction after solving the puzzle
+        if (puzzleSolved) return;
 
         isEditing = !isEditing;
 
+        Debug.Log("Toggling Clock Editing. Editing: " + isEditing); // ← Check this in Console
+
         if (isEditing)
         {
+            interactionText.gameObject.SetActive(false); // ← Make sure this runs
             clockCamera.gameObject.SetActive(true);
             playerCamera.gameObject.SetActive(false);
             if (player != null) player.SetActive(false);
@@ -79,6 +109,7 @@ public class ClockInteraction : MonoBehaviour
             ReturnToPlayerView();
         }
     }
+
 
     private void OnPuzzleSolved()
     {
