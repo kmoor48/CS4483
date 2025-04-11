@@ -960,6 +960,30 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8752887647069449688, guid: 9824c42e6a50548abb7cc635e35229c5, type: 3}
+      propertyPath: m_Size.x
+      value: 0.89
+      objectReference: {fileID: 0}
+    - target: {fileID: 8752887647069449688, guid: 9824c42e6a50548abb7cc635e35229c5, type: 3}
+      propertyPath: m_Size.y
+      value: 1.4748558
+      objectReference: {fileID: 0}
+    - target: {fileID: 8752887647069449688, guid: 9824c42e6a50548abb7cc635e35229c5, type: 3}
+      propertyPath: m_Size.z
+      value: 0.5855841
+      objectReference: {fileID: 0}
+    - target: {fileID: 8752887647069449688, guid: 9824c42e6a50548abb7cc635e35229c5, type: 3}
+      propertyPath: m_Center.x
+      value: 0.009999981
+      objectReference: {fileID: 0}
+    - target: {fileID: 8752887647069449688, guid: 9824c42e6a50548abb7cc635e35229c5, type: 3}
+      propertyPath: m_Center.y
+      value: -0.62218684
+      objectReference: {fileID: 0}
+    - target: {fileID: 8752887647069449688, guid: 9824c42e6a50548abb7cc635e35229c5, type: 3}
+      propertyPath: m_Center.z
+      value: -0.1334375
+      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ce5f5d2fe5375c2459d245aac4542e03, type: 3}
       propertyPath: m_LocalPosition.x
       value: 28.726
@@ -1011,30 +1035,6 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ce5f5d2fe5375c2459d245aac4542e03, type: 3}
       propertyPath: m_TagString
       value: Battery
-      objectReference: {fileID: 0}
-    - target: {fileID: 8752887647069449688, guid: 9824c42e6a50548abb7cc635e35229c5, type: 3}
-      propertyPath: m_Size.x
-      value: 0.89
-      objectReference: {fileID: 0}
-    - target: {fileID: 8752887647069449688, guid: 9824c42e6a50548abb7cc635e35229c5, type: 3}
-      propertyPath: m_Size.y
-      value: 1.4748558
-      objectReference: {fileID: 0}
-    - target: {fileID: 8752887647069449688, guid: 9824c42e6a50548abb7cc635e35229c5, type: 3}
-      propertyPath: m_Size.z
-      value: 0.5855841
-      objectReference: {fileID: 0}
-    - target: {fileID: 8752887647069449688, guid: 9824c42e6a50548abb7cc635e35229c5, type: 3}
-      propertyPath: m_Center.x
-      value: 0.009999981
-      objectReference: {fileID: 0}
-    - target: {fileID: 8752887647069449688, guid: 9824c42e6a50548abb7cc635e35229c5, type: 3}
-      propertyPath: m_Center.y
-      value: -0.62218684
-      objectReference: {fileID: 0}
-    - target: {fileID: 8752887647069449688, guid: 9824c42e6a50548abb7cc635e35229c5, type: 3}
-      propertyPath: m_Center.z
-      value: -0.1334375
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1719,6 +1719,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8752887647069449688, guid: 9824c42e6a50548abb7cc635e35229c5, type: 3}
+      propertyPath: m_Size.y
+      value: 1.5267045
+      objectReference: {fileID: 0}
+    - target: {fileID: 8752887647069449688, guid: 9824c42e6a50548abb7cc635e35229c5, type: 3}
+      propertyPath: m_Size.z
+      value: 0.6750721
+      objectReference: {fileID: 0}
+    - target: {fileID: 8752887647069449688, guid: 9824c42e6a50548abb7cc635e35229c5, type: 3}
+      propertyPath: m_Center.x
+      value: 0.009999981
+      objectReference: {fileID: 0}
+    - target: {fileID: 8752887647069449688, guid: 9824c42e6a50548abb7cc635e35229c5, type: 3}
+      propertyPath: m_Center.y
+      value: -0.675344
+      objectReference: {fileID: 0}
+    - target: {fileID: 8752887647069449688, guid: 9824c42e6a50548abb7cc635e35229c5, type: 3}
+      propertyPath: m_Center.z
+      value: 0.1864271
+      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ce5f5d2fe5375c2459d245aac4542e03, type: 3}
       propertyPath: m_LocalPosition.x
       value: 28.726
@@ -1770,26 +1790,6 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ce5f5d2fe5375c2459d245aac4542e03, type: 3}
       propertyPath: m_TagString
       value: Battery
-      objectReference: {fileID: 0}
-    - target: {fileID: 8752887647069449688, guid: 9824c42e6a50548abb7cc635e35229c5, type: 3}
-      propertyPath: m_Size.y
-      value: 1.5267045
-      objectReference: {fileID: 0}
-    - target: {fileID: 8752887647069449688, guid: 9824c42e6a50548abb7cc635e35229c5, type: 3}
-      propertyPath: m_Size.z
-      value: 0.6750721
-      objectReference: {fileID: 0}
-    - target: {fileID: 8752887647069449688, guid: 9824c42e6a50548abb7cc635e35229c5, type: 3}
-      propertyPath: m_Center.x
-      value: 0.009999981
-      objectReference: {fileID: 0}
-    - target: {fileID: 8752887647069449688, guid: 9824c42e6a50548abb7cc635e35229c5, type: 3}
-      propertyPath: m_Center.y
-      value: -0.675344
-      objectReference: {fileID: 0}
-    - target: {fileID: 8752887647069449688, guid: 9824c42e6a50548abb7cc635e35229c5, type: 3}
-      propertyPath: m_Center.z
-      value: 0.1864271
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3319,7 +3319,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
+  near clip plane: 0.2
   far clip plane: 1000
   field of view: 60
   orthographic: 0
@@ -9136,7 +9136,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
+  near clip plane: 0.23
   far clip plane: 1000
   field of view: 60
   orthographic: 0
