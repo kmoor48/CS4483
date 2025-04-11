@@ -67,8 +67,6 @@ public class PickupItem : MonoBehaviour
     {
         if (playerInRange && Input.GetKeyDown(KeyCode.E)) // Pickup when pressing "E"
         {
-            Debug.Log(itemName + " picked up!");
-
             if (inventoryScript != null)
             {
                 // Add the item to the inventory

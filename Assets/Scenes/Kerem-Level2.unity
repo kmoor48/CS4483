@@ -960,6 +960,30 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8752887647069449688, guid: 9824c42e6a50548abb7cc635e35229c5, type: 3}
+      propertyPath: m_Size.x
+      value: 0.89
+      objectReference: {fileID: 0}
+    - target: {fileID: 8752887647069449688, guid: 9824c42e6a50548abb7cc635e35229c5, type: 3}
+      propertyPath: m_Size.y
+      value: 1.4748558
+      objectReference: {fileID: 0}
+    - target: {fileID: 8752887647069449688, guid: 9824c42e6a50548abb7cc635e35229c5, type: 3}
+      propertyPath: m_Size.z
+      value: 0.5855841
+      objectReference: {fileID: 0}
+    - target: {fileID: 8752887647069449688, guid: 9824c42e6a50548abb7cc635e35229c5, type: 3}
+      propertyPath: m_Center.x
+      value: 0.009999981
+      objectReference: {fileID: 0}
+    - target: {fileID: 8752887647069449688, guid: 9824c42e6a50548abb7cc635e35229c5, type: 3}
+      propertyPath: m_Center.y
+      value: -0.62218684
+      objectReference: {fileID: 0}
+    - target: {fileID: 8752887647069449688, guid: 9824c42e6a50548abb7cc635e35229c5, type: 3}
+      propertyPath: m_Center.z
+      value: -0.1334375
+      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ce5f5d2fe5375c2459d245aac4542e03, type: 3}
       propertyPath: m_LocalPosition.x
       value: 28.726
@@ -1011,30 +1035,6 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ce5f5d2fe5375c2459d245aac4542e03, type: 3}
       propertyPath: m_TagString
       value: Battery
-      objectReference: {fileID: 0}
-    - target: {fileID: 8752887647069449688, guid: 9824c42e6a50548abb7cc635e35229c5, type: 3}
-      propertyPath: m_Size.x
-      value: 0.89
-      objectReference: {fileID: 0}
-    - target: {fileID: 8752887647069449688, guid: 9824c42e6a50548abb7cc635e35229c5, type: 3}
-      propertyPath: m_Size.y
-      value: 1.4748558
-      objectReference: {fileID: 0}
-    - target: {fileID: 8752887647069449688, guid: 9824c42e6a50548abb7cc635e35229c5, type: 3}
-      propertyPath: m_Size.z
-      value: 0.5855841
-      objectReference: {fileID: 0}
-    - target: {fileID: 8752887647069449688, guid: 9824c42e6a50548abb7cc635e35229c5, type: 3}
-      propertyPath: m_Center.x
-      value: 0.009999981
-      objectReference: {fileID: 0}
-    - target: {fileID: 8752887647069449688, guid: 9824c42e6a50548abb7cc635e35229c5, type: 3}
-      propertyPath: m_Center.y
-      value: -0.62218684
-      objectReference: {fileID: 0}
-    - target: {fileID: 8752887647069449688, guid: 9824c42e6a50548abb7cc635e35229c5, type: 3}
-      propertyPath: m_Center.z
-      value: -0.1334375
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1719,6 +1719,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8752887647069449688, guid: 9824c42e6a50548abb7cc635e35229c5, type: 3}
+      propertyPath: m_Size.y
+      value: 1.5267045
+      objectReference: {fileID: 0}
+    - target: {fileID: 8752887647069449688, guid: 9824c42e6a50548abb7cc635e35229c5, type: 3}
+      propertyPath: m_Size.z
+      value: 0.6750721
+      objectReference: {fileID: 0}
+    - target: {fileID: 8752887647069449688, guid: 9824c42e6a50548abb7cc635e35229c5, type: 3}
+      propertyPath: m_Center.x
+      value: 0.009999981
+      objectReference: {fileID: 0}
+    - target: {fileID: 8752887647069449688, guid: 9824c42e6a50548abb7cc635e35229c5, type: 3}
+      propertyPath: m_Center.y
+      value: -0.675344
+      objectReference: {fileID: 0}
+    - target: {fileID: 8752887647069449688, guid: 9824c42e6a50548abb7cc635e35229c5, type: 3}
+      propertyPath: m_Center.z
+      value: 0.1864271
+      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ce5f5d2fe5375c2459d245aac4542e03, type: 3}
       propertyPath: m_LocalPosition.x
       value: 28.726
@@ -1770,26 +1790,6 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ce5f5d2fe5375c2459d245aac4542e03, type: 3}
       propertyPath: m_TagString
       value: Battery
-      objectReference: {fileID: 0}
-    - target: {fileID: 8752887647069449688, guid: 9824c42e6a50548abb7cc635e35229c5, type: 3}
-      propertyPath: m_Size.y
-      value: 1.5267045
-      objectReference: {fileID: 0}
-    - target: {fileID: 8752887647069449688, guid: 9824c42e6a50548abb7cc635e35229c5, type: 3}
-      propertyPath: m_Size.z
-      value: 0.6750721
-      objectReference: {fileID: 0}
-    - target: {fileID: 8752887647069449688, guid: 9824c42e6a50548abb7cc635e35229c5, type: 3}
-      propertyPath: m_Center.x
-      value: 0.009999981
-      objectReference: {fileID: 0}
-    - target: {fileID: 8752887647069449688, guid: 9824c42e6a50548abb7cc635e35229c5, type: 3}
-      propertyPath: m_Center.y
-      value: -0.675344
-      objectReference: {fileID: 0}
-    - target: {fileID: 8752887647069449688, guid: 9824c42e6a50548abb7cc635e35229c5, type: 3}
-      propertyPath: m_Center.z
-      value: 0.1864271
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2089,7 +2089,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: ddee8629142e846bdace4361678a18cb, type: 3}
       propertyPath: m_TagString
-      value: Interactable
+      value: Level2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5811,7 +5811,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 8fa7deb79d061f04f9fdf3c0091cade4, type: 3}
       propertyPath: m_TagString
-      value: Interactable
+      value: Level3
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 8fa7deb79d061f04f9fdf3c0091cade4, type: 3}
       propertyPath: m_LocalScale.x
