@@ -1283,7 +1283,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   puzzlesRequiredForLevel: 1
-  exitDoor: {fileID: 0}
+  exitDoor: {fileID: 295212667}
+  doorIndex: 2
 --- !u!1 &303751299
 GameObject:
   m_ObjectHideFlags: 0
