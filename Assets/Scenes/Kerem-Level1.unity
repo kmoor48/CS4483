@@ -1283,7 +1283,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   puzzlesRequiredForLevel: 1
-  exitDoor: {fileID: 295212667}
+  exitDoor: {fileID: 0}
 --- !u!1 &303751299
 GameObject:
   m_ObjectHideFlags: 0
@@ -3000,7 +3000,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1461968656226156, guid: de73a68374813224d9a0717c5b75fc05, type: 3}
       propertyPath: m_TagString
-      value: Interactable
+      value: Level4
       objectReference: {fileID: 0}
     - target: {fileID: 4811584749951484, guid: de73a68374813224d9a0717c5b75fc05, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5520,7 +5520,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1801278519735074, guid: 0b7451c289c0d9547a21ba7eb3340776, type: 3}
       propertyPath: m_TagString
-      value: Interactable
+      value: Level1
       objectReference: {fileID: 0}
     - target: {fileID: 4413510086684120, guid: 0b7451c289c0d9547a21ba7eb3340776, type: 3}
       propertyPath: m_LocalScale.x
@@ -7696,6 +7696,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1576718514462007039, guid: a60cd3619df27884ebb6f416050124c1, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -12.891541
+      objectReference: {fileID: 0}
     - target: {fileID: 2234411945283207906, guid: a60cd3619df27884ebb6f416050124c1, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -7983,6 +7987,10 @@ PrefabInstance:
     - target: {fileID: 5627976574218679008, guid: a60cd3619df27884ebb6f416050124c1, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5916258817763327604, guid: a60cd3619df27884ebb6f416050124c1, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -12.891541
       objectReference: {fileID: 0}
     - target: {fileID: 6430225441510919192, guid: a60cd3619df27884ebb6f416050124c1, type: 3}
       propertyPath: m_Pivot.x

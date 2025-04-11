@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/IntroCutscene.unity
+    guid: 6de38d66754b5d94d94a901bf0ead0aa
+  - enabled: 1
     path: Assets/Scenes/Kerem-Level1.unity
     guid: 94e7ea3fc22bc4bf4bf245b499b9eaed
   - enabled: 1

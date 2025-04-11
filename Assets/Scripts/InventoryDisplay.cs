@@ -189,16 +189,19 @@ public class InventoryDisplay : MonoBehaviour
 
             Sprite itemSprite = imageTransform.GetComponent<Image>().sprite;
 
-            // Clearing the inventory bar of the item
-            GameObject universalLogicHandler = GameObject.FindWithTag("UniversalLogicHandler");
-            InventoryBar inventoryBarScript = universalLogicHandler.GetComponent<InventoryBar>();
-            inventoryBarScript.RemoveItem(itemName);
-
             GameObject itemPrefab = Resources.Load<GameObject>("Items/" + itemName);
+
             if (itemPrefab != null)
             {
+                // Clearing the inventory bar of the item
+                GameObject universalLogicHandler = GameObject.FindWithTag("UniversalLogicHandler");
+                InventoryBar inventoryBarScript = universalLogicHandler.GetComponent<InventoryBar>();
+                inventoryBarScript.RemoveItem(itemName);
+
+                // Adding the object to the hand
                 GameObject newItem = Instantiate(itemPrefab, playerHand.position, Quaternion.identity);
                 newItem.transform.SetParent(playerHand);
+                
                 // Placing the object in the hand
                 if (itemName == "Flashlight"){
                     newItem.transform.localScale = playerHand.localScale * 6f; 
