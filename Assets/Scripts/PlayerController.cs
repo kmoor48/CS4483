@@ -36,6 +36,10 @@ public class PlayerController : MonoBehaviour
 
     void ProcessInput()
     {
+        if (controller == null || !controller.enabled) {
+            return;
+        }
+
         float moveX = Input.GetAxis("Horizontal");
         float moveZ = Input.GetAxis("Vertical");
 
