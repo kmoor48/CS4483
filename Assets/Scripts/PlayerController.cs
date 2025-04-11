@@ -14,6 +14,9 @@ public class PlayerController : MonoBehaviour
     private GameObject universalLogicHandler;
     private UniversalLogicHandler universalLogicHandlerScript;
 
+    // For the walking audio source
+    AudioSource walkingAudio;
+
     void Start()
     {
         controller = GetComponent<CharacterController>();
@@ -26,6 +29,9 @@ public class PlayerController : MonoBehaviour
         // For loading the next scene
         universalLogicHandler = GameObject.FindWithTag("UniversalLogicHandler");
         universalLogicHandlerScript = universalLogicHandler.GetComponent<UniversalLogicHandler>();
+
+        // For the walking audio source attached to the player
+        walkingAudio = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -37,6 +43,7 @@ public class PlayerController : MonoBehaviour
     void ProcessInput()
     {
         if (controller == null || !controller.enabled) {
+            walkingAudio.Pause();
             return;
         }
 
@@ -54,6 +61,20 @@ public class PlayerController : MonoBehaviour
         else
         {
             move.y = -20f; 
+        }
+
+        // Check movement and control walking audio
+        Vector2 inputVector = new Vector2(moveX, moveZ);
+        bool isMoving = inputVector.magnitude > 0.1f;
+        if (isMoving)
+        {
+            if (!walkingAudio.isPlaying)
+                walkingAudio.Play();
+        }
+        else
+        {
+            if (walkingAudio.isPlaying)
+                walkingAudio.Pause();
         }
 
         controller.Move(move * Time.deltaTime);
