@@ -43,6 +43,7 @@ public class PlayerController : MonoBehaviour
     void ProcessInput()
     {
         if (controller == null || !controller.enabled) {
+            walkingAudio.Pause();
             return;
         }
 
