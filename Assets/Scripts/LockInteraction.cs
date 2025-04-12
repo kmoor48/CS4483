@@ -5,7 +5,7 @@ using System.Diagnostics.Tracing;
 public class LockInteraction : MonoBehaviour
 {
     public GameObject lockCanvas; 
-    public Camera playerCamera;
+    private Camera playerCamera;
     public Camera lockCamera;
     public GameObject lockPrefab;
     public GameObject successMessage; 
@@ -24,6 +24,7 @@ public class LockInteraction : MonoBehaviour
 
     void Start()
     {
+        playerCamera = GameObject.FindWithTag("Player").transform.GetChild(0).GetComponent<Camera>();
         lockCanvas.SetActive(false);
         successMessage.SetActive(false); 
         interactionPrompt.SetActive(false);

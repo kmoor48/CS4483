@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class CameraSwitcherPuzzleView : MonoBehaviour
 {
-    public Camera playerCamera;
+    private Camera playerCamera;
     public Camera computerPuzzleCamera;
     public Camera recordPlayerPuzzleCamera;
     public Camera bloodTestPuzzleCamera;
@@ -10,6 +10,8 @@ public class CameraSwitcherPuzzleView : MonoBehaviour
 
     void Start()
     {
+        playerCamera = GameObject.FindWithTag("Player").transform.GetChild(0).GetComponent<Camera>();
+        
         // Ensure only the main camera is active at the start
         playerCamera.enabled = true;
         computerPuzzleCamera.enabled = false;

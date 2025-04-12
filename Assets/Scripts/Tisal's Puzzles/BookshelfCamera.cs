@@ -3,7 +3,7 @@ using UnityEngine;
 public class BookshelfCamera : MonoBehaviour
 {
     public GameObject openText; // UI text for interaction
-    public Camera mainCamera; // The player's main camera
+    private Camera mainCamera; // The player's main camera
     public Camera puzzleCamera; // Camera to view the puzzle
     public CameraMouseMovemnet bookshelfCameraMovement; // Reference to the camera movement script
 
@@ -12,6 +12,8 @@ public class BookshelfCamera : MonoBehaviour
 
     void Start()
     {
+        mainCamera = GameObject.FindWithTag("Player").transform.GetChild(0).GetComponent<Camera>();
+        
         openText.SetActive(false);
 
         if (puzzleCamera != null)

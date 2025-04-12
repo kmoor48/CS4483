@@ -2699,7 +2699,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerCamera: {fileID: 3321965959275545310}
-  moveSpeed: 8
+  moveSpeed: 5
   lookSpeedX: 2
   lookSpeedY: 2
 --- !u!143 &7122713733727162329
@@ -2749,11 +2749,11 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 0
+  m_UseGravity: 1
   m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 80
-  m_CollisionDetection: 1
+  m_CollisionDetection: 0
 --- !u!136 &2072884113670139160
 CapsuleCollider:
   m_ObjectHideFlags: 0

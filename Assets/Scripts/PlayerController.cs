@@ -14,7 +14,10 @@ public class PlayerController : MonoBehaviour
     private GameObject universalLogicHandler;
     private UniversalLogicHandler universalLogicHandlerScript;
     private static Vector3[] defaultPlayerPositions = new Vector3[] {
-        new Vector3(24.15f, 7.03f, -33.617f)
+        new Vector3(24.15f, 7.3f, -33.617f), // Level 2
+        new Vector3(-21.07f, 8.23f, -15.44f), // Level 3
+        new Vector3(-4.163f, 4.35f, -1.4f), // Level 4
+        new Vector3(5.944682f, 7f, -8.056301f) // Level 5
     };
 
     // For the walking audio source

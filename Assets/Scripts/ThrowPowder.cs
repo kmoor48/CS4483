@@ -3,15 +3,21 @@ using UnityEngine;
 public class ThrowPowder : MonoBehaviour
 {
     public GameObject messageOnWall;
-    public Transform player;
+    private Transform player;
     public Transform wallPosition;
-    public Transform playerHand;
+    private Transform playerHand;
     public GameObject throwText;
     public float throwDistance = 2.0f;
     public float throwForce = 5f;
 
     private bool isNearWall = false;
     private GameObject heldItem;
+
+    void Start()
+    {
+        player = GameObject.FindWithTag("Player").transform;
+        playerHand = GameObject.FindWithTag("PlayerRightHandTarget").transform;
+    }
 
     void Update()
     {
