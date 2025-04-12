@@ -2,7 +2,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using Unity.VisualScripting;
-using UnityEditorInternal.Profiling.Memory.Experimental;
 
 public class InventoryDisplay : MonoBehaviour
 {
