@@ -91,6 +91,7 @@ public class ThrowPowderCollision : MonoBehaviour
     {
         universalLogicHandler = GameObject.FindWithTag("UniversalLogicHandler");
         messageOnWall = message;
+        Debug.Log(messageOnWall);
         messageOnWall.SetActive(true);
         LevelClueAndProgressionManager clueScript = universalLogicHandler.GetComponent<LevelClueAndProgressionManager>();
         clueScript.IncrementPuzzleCounter();

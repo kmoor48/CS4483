@@ -3,11 +3,12 @@ using UnityEngine;
 
 public class ShowJimNote : MonoBehaviour
 {
-    public TextMeshProUGUI noteText;   
-    public Transform playerHand;  
+    public TextMeshProUGUI noteText;
     public GameObject pannel;
 
-    private bool isPlayerInTrigger = false; 
+    private Transform playerHand;
+    private Transform player;
+    private bool isPlayerInTrigger = false;
     private bool isHoldingNote = false;
     private GameObject universalLogicHandler;
 
@@ -15,11 +16,24 @@ public class ShowJimNote : MonoBehaviour
     {
         pannel.SetActive(false);
         noteText.gameObject.SetActive(false);
+
         universalLogicHandler = GameObject.FindWithTag("UniversalLogicHandler");
+        player = GameObject.FindWithTag("Player")?.transform;
+
+        GameObject handObj = GameObject.FindWithTag("PlayerRightHandTarget");
+        if (handObj != null)
+        {
+            playerHand = handObj.transform;
+        }
+        else
+        {
+            Debug.LogError("PlayerRightHandTarget tag not found in scene.");
+        }
     }
+
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player")) 
+        if (other.CompareTag("Player"))
         {
             isPlayerInTrigger = true;
             CheckIfHoldingNote();
@@ -28,7 +42,7 @@ public class ShowJimNote : MonoBehaviour
 
     void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Player")) 
+        if (other.CompareTag("Player"))
         {
             isPlayerInTrigger = false;
             isHoldingNote = false;
@@ -41,24 +55,28 @@ public class ShowJimNote : MonoBehaviour
     {
         if (isPlayerInTrigger)
         {
-            CheckIfHoldingNote(); 
+            CheckIfHoldingNote();
         }
 
         if (isPlayerInTrigger && isHoldingNote)
         {
             noteText.gameObject.SetActive(true);
             pannel.SetActive(true);
-            LevelClueAndProgressionManager clueScript = universalLogicHandler.GetComponent<LevelClueAndProgressionManager>();
-            clueScript.IncrementPuzzleCounter();
+
+            if (universalLogicHandler != null)
+            {
+                LevelClueAndProgressionManager clueScript = universalLogicHandler.GetComponent<LevelClueAndProgressionManager>();
+                clueScript?.IncrementPuzzleCounter();
+            }
         }
     }
 
     void CheckIfHoldingNote()
     {
-        if (playerHand.childCount > 0) 
+        if (playerHand != null && playerHand.childCount > 0)
         {
             GameObject heldItem = playerHand.GetChild(0).gameObject;
-            if (heldItem.CompareTag("jim_note")) 
+            if (heldItem.CompareTag("jim_note"))
             {
                 isHoldingNote = true;
                 return;
