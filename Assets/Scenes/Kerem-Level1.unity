@@ -1224,7 +1224,6 @@ GameObject:
   m_Component:
   - component: {fileID: 295212668}
   - component: {fileID: 295212669}
-  - component: {fileID: 295212670}
   m_Layer: 0
   m_Name: Door_V1 (4)
   m_TagString: ExitDoor
@@ -1266,25 +1265,10 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 1.6568812, y: 2.9779687, z: 1.1680604}
   m_Center: {x: 0.0028418305, y: 0.98898476, z: -0.08403065}
---- !u!114 &295212670
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 295212667}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed97824875e5d46f88cc13a13a34deb5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  puzzlesRequiredForLevel: 1
-  exitDoor: {fileID: 295212667}
-  doorIndex: 2
 --- !u!1 &303751299
 GameObject:
   m_ObjectHideFlags: 0
@@ -5385,7 +5369,7 @@ PrefabInstance:
     - target: {fileID: 3404402356410622242, guid: 852a11fecc1877149be52139ea40a3be, type: 3}
       propertyPath: exitDoor
       value: 
-      objectReference: {fileID: 295212670}
+      objectReference: {fileID: 0}
     - target: {fileID: 6999187157091227812, guid: 852a11fecc1877149be52139ea40a3be, type: 3}
       propertyPath: m_Size.z
       value: 0.58986276

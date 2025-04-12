@@ -8,15 +8,15 @@ public class InsertBattery : MonoBehaviour
     public AudioSource voicemailAudio; // Audio source for voicemail
     public Animator drawerAnimator; // Animator to open drawer
     public int requiredBatteries = 2;
-    public ExitDoor exitDoor; // Reference to the ExitDoor script
 
+    private GameObject exitDoor; // ← Changed from ExitDoor script to GameObject
     private GameObject universalLogicHandler;
-    private bool isNearVoicemail = false; // Track if the player is near the voicemail machine
-    private int insertedBatteries = 0; // Track number of inserted batteries
-    private bool hasInsertedBatteries = false; // Flag to track if the required batteries are inserted
-    private InventoryBar inventory; // Reference to inventory system
+    private bool isNearVoicemail = false;
+    private int insertedBatteries = 0;
+    private bool hasInsertedBatteries = false;
+    private InventoryBar inventory;
 
-    private bool audioPlayed = false; // Flag to track if the voicemail is playing
+    private bool audioPlayed = false;
 
     void Awake()
     {
@@ -34,21 +34,21 @@ public class InsertBattery : MonoBehaviour
             return;
         }
 
-        universalLogicHandler = GameObject.FindWithTag("UniversalLogicHandler");
-        voicemailAudio.loop = false; // just in case
-        insertText.SetActive(false); // Start with the prompt hidden
+        voicemailAudio.loop = false;
+        insertText.SetActive(false);
+
+        exitDoor = GameObject.FindWithTag("ExitDoor"); // ← Find exit door by tag
     }
 
     void Update()
     {
         float distance = Vector3.Distance(player.transform.position, voicemailMachine.position);
 
-        // Only show the "Insert Batteries" prompt if player is near and hasn't inserted all batteries
         if (distance <= 2.0f && !hasInsertedBatteries)
         {
             if (!isNearVoicemail)
             {
-                insertText.SetActive(true); // Show the prompt
+                insertText.SetActive(true);
                 isNearVoicemail = true;
             }
 
@@ -61,28 +61,33 @@ public class InsertBattery : MonoBehaviour
         {
             if (isNearVoicemail)
             {
-                insertText.SetActive(false); // Hide the prompt when player moves away
+                insertText.SetActive(false);
                 isNearVoicemail = false;
             }
         }
 
-        // Check if audio has finished
         if (audioPlayed && !voicemailAudio.isPlaying)
         {
-            drawerAnimator.SetBool("open", true); // Open the drawer after voicemail ends
-            audioPlayed = false; // Prevent it from firing again
+            drawerAnimator.SetBool("open", true);
+            audioPlayed = false;
         }
     }
 
     private void OnPuzzleSolved()
     {
-        // Call the PuzzleSolved method from ExitDoor when the puzzle is completed
-        exitDoor.PuzzleSolved();
+        if (exitDoor != null)
+        {
+            BoxCollider collider = exitDoor.GetComponent<BoxCollider>();
+            if (collider != null)
+            {
+                collider.enabled = true; // ← Enable the exit door collider
+                Debug.Log("Exit door collider enabled from battery puzzle!");
+            }
+        }
     }
 
     void AttemptToInsertBattery()
     {
-        // Reference the persistent InventoryBar instance
         InventoryBar inventory = InventoryBar.Instance;
 
         if (inventory != null && inventory.HasItem("BatteryAA"))
@@ -96,7 +101,6 @@ public class InsertBattery : MonoBehaviour
         }
     }
 
-
     void InsertBatteryIntoMachine()
     {
         insertedBatteries++;
@@ -105,13 +109,11 @@ public class InsertBattery : MonoBehaviour
         if (insertedBatteries >= requiredBatteries)
         {
             Debug.Log("All batteries inserted. Playing voicemail and opening drawer!");
-            insertText.SetActive(false); // Hide the "Insert Batteries" text
+            insertText.SetActive(false);
+            voicemailAudio.Play();
+            drawerAnimator.SetBool("open", true);
+            hasInsertedBatteries = true;
 
-            voicemailAudio.Play(); // Play the voicemail
-            drawerAnimator.SetBool("open", true); // Open the drawer immediately after voicemail plays
-            hasInsertedBatteries = true; // Mark that batteries have been inserted
-
-            // Mark the puzzle as complete
             LevelClueAndProgressionManager clueScript = universalLogicHandler.GetComponent<LevelClueAndProgressionManager>();
             clueScript.IncrementPuzzleCounter();
 
@@ -119,24 +121,19 @@ public class InsertBattery : MonoBehaviour
         }
     }
 
-    // Helper function to copy items from the current inventory (level 1) to the new inventory (level 2)
     void CopyItemsToNewInventory(InventoryBar newInventory)
     {
-        // Get current inventory items
         if (inventory == null) return;
 
-        // Check if there is already an inventory for the new level
         if (newInventory != null)
         {
-            // Copy items from the old inventory to the new inventory
-            string[] currentItems = inventory.GetItemNames(); // You can replace this with whatever method you use to get item names from the inventory
+            string[] currentItems = inventory.GetItemNames();
 
             foreach (var itemName in currentItems)
             {
                 if (!string.IsNullOrEmpty(itemName))
                 {
-                    // Add each item to the new inventory (this assumes you have a method to add items to your new inventory)
-                    newInventory.AddItem(null, itemName, null); // Adjust this part if needed to match your AddItem method
+                    newInventory.AddItem(null, itemName, null);
                 }
             }
 
