@@ -6013,7 +6013,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   noteText: {fileID: 482622080}
-  playerHand: {fileID: 0}
   pannel: {fileID: 1985523467}
 --- !u!65 &877536851
 BoxCollider:
@@ -7999,11 +7998,6 @@ PrefabInstance:
 --- !u!4 &1080524993 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2112154772560646671, guid: ea3d1e25d2b6e24429435a24aae4da90, type: 3}
-  m_PrefabInstance: {fileID: 1080524992}
-  m_PrefabAsset: {fileID: 0}
---- !u!20 &1080524994 stripped
-Camera:
-  m_CorrespondingSourceObject: {fileID: 3321965959275545310, guid: ea3d1e25d2b6e24429435a24aae4da90, type: 3}
   m_PrefabInstance: {fileID: 1080524992}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1119781573
@@ -13940,7 +13934,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 532a1ee04f7b94d489e8051eaa420629, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerCamera: {fileID: 1080524994}
+  playerCamera: {fileID: 0}
   safeCamera: {fileID: 1935199494}
   slider1: {fileID: 1302219804}
   slider2: {fileID: 1258797795}
