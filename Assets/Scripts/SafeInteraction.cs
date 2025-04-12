@@ -4,7 +4,7 @@ using UnityEngine.EventSystems;
 public class SafeInteraction : MonoBehaviour
 {
     public GameObject safeCanvas; 
-    public Camera playerCamera;
+    private Camera playerCamera;
     public Camera safeCamera;
     public GameObject safePrefab; 
     public float interactionDistance = 3f;
@@ -15,6 +15,7 @@ public class SafeInteraction : MonoBehaviour
 
     void Start()
     {
+        playerCamera = GameObject.FindWithTag("Player").transform.GetChild(0).GetComponent<Camera>();
         safeCanvas.SetActive(false);
         interactionPrompt.SetActive(false);
     }

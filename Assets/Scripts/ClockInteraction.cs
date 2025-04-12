@@ -25,6 +25,7 @@ public class ClockInteraction : MonoBehaviour
     {
         universalLogicHandler = GameObject.FindWithTag("UniversalLogicHandler");
         player = GameObject.FindWithTag("Player");
+        playerCamera = player.transform.GetChild(0).GetComponent<Camera>();
 
         hourRotation = hourHand.localRotation.eulerAngles.z;
         minuteRotation = minuteHand.localRotation.eulerAngles.z;

@@ -2,7 +2,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using Unity.VisualScripting;
-using UnityEditorInternal.Profiling.Memory.Experimental;
 
 public class InventoryDisplay : MonoBehaviour
 {
@@ -158,9 +157,7 @@ public class InventoryDisplay : MonoBehaviour
             return;
         }
 
-        GameObject universalLogicHandler = GameObject.FindWithTag("UniversalLogicHandler");
-        InventoryBar inventoryBarScript = universalLogicHandler.GetComponent<InventoryBar>();
-
+        InventoryBar inventoryBarScript = InventoryBar.Instance;
         inventoryBarScript.AddItem(itemInHand.gameObject, itemName, itemSprite);
 
         // Closing item instruction text
@@ -175,6 +172,7 @@ public class InventoryDisplay : MonoBehaviour
 
     private void RemoveItemFromInventory()
     {
+        Debug.Log("In remove item from inventory");
         if (selectedSlotIndex == -1) return; 
 
         Transform selectedSlot = inventoryBar.transform.GetChild(selectedSlotIndex);
@@ -194,8 +192,7 @@ public class InventoryDisplay : MonoBehaviour
             if (itemPrefab != null)
             {
                 // Clearing the inventory bar of the item
-                GameObject universalLogicHandler = GameObject.FindWithTag("UniversalLogicHandler");
-                InventoryBar inventoryBarScript = universalLogicHandler.GetComponent<InventoryBar>();
+                InventoryBar inventoryBarScript = InventoryBar.Instance;
                 inventoryBarScript.RemoveItem(itemName);
 
                 // Adding the object to the hand

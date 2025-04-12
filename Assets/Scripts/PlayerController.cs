@@ -13,6 +13,12 @@ public class PlayerController : MonoBehaviour
     // For loading the next scene
     private GameObject universalLogicHandler;
     private UniversalLogicHandler universalLogicHandlerScript;
+    private static Vector3[] defaultPlayerPositions = new Vector3[] {
+        new Vector3(24.15f, 7.3f, -33.617f), // Level 2
+        new Vector3(-21.07f, 8.23f, -15.44f), // Level 3
+        new Vector3(-4.163f, 4.35f, -1.4f), // Level 4
+        new Vector3(5.944682f, 7f, -8.056301f) // Level 5
+    };
 
     // For the walking audio source
     AudioSource walkingAudio;
@@ -105,5 +111,11 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-
+    public void ResetPlayerPositionBetweenScenes(int levelIndex)
+    {
+        Vector3 newPos = defaultPlayerPositions[levelIndex];
+        controller.enabled = false; // Disable temporarily to manually set position
+        transform.position = newPos;
+        controller.enabled = true;
+    }
 }

@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class BangSoundTrigger : MonoBehaviour
 {
     public AudioSource bangSound;
-    public Transform playerHand;
+    private Transform playerHand;
     public TextMeshProUGUI noteText;
     public GameObject pannel;
     public TextMeshProUGUI GameOverText;
@@ -15,6 +15,8 @@ public class BangSoundTrigger : MonoBehaviour
 
     private void Start()
     {
+        playerHand = GameObject.FindWithTag("PlayerRightHandTarget").transform;
+        
         pannel.SetActive(false);
         noteText.gameObject.SetActive(false);
         GameOverText.gameObject.SetActive(false);

@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class MapPuzzleManager : MonoBehaviour
 {
     [Header("Camera References")]
-    public Camera mainCamera;
+    private Camera mainCamera;
     public Camera puzzleCamera;
 
     [Header("UI Elements")]
@@ -39,6 +39,8 @@ public class MapPuzzleManager : MonoBehaviour
 
     void Start()
     {
+        mainCamera = GameObject.FindWithTag("Player").transform.GetChild(0).GetComponent<Camera>();
+
         // Initialize UI elements
         interactText.SetActive(false);
         mapPuzzleUI.SetActive(false);
@@ -54,10 +56,8 @@ public class MapPuzzleManager : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Trigger entered by: " + other.gameObject.name);
         if (other.CompareTag("Player"))
         {
-            Debug.Log("Player entered trigger");
             inReach = true;
             interactText.SetActive(true);
         }

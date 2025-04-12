@@ -50,6 +50,8 @@ public class UniversalLogicHandler : MonoBehaviour
             int nextLevelIndex = nextSceneIndex - 1; // Level indexing starts at 0 (Level 1 = index 0), but Level 1 is scene index 1 w/ cutscene
             clueLevelManagerScript.SetCurrentLevel(nextLevelIndex);
             inventoryBarScript.ClearInventoryBetweenLevels(nextLevelIndex - 1); // Send the previous level's index to clear inventory
+            PlayerController playerControllerScript = PlayerPersistAcrossAllScenes.Instance.gameObject.GetComponent<PlayerController>();
+            playerControllerScript.ResetPlayerPositionBetweenScenes(nextLevelIndex - 1);
             nextSceneIndex += 1;
         }
         else
