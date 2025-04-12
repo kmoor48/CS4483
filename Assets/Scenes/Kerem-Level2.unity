@@ -371,7 +371,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7cc4e3c2651645bbbbc694e05a1f1fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
   voicemailMachine: {fileID: 93486246}
   insertText: {fileID: 433165708}
   voicemailAudio: {fileID: 2086403932}
@@ -2834,9 +2833,8 @@ Transform:
   m_LocalPosition: {x: -0.00000008106232, y: 0.06138872, z: -0.000000019547297}
   m_LocalScale: {x: 1.0000002, y: 0.9999999, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 161506559}
-  m_Father: {fileID: 648960842}
+  m_Children: []
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1034672370
 GameObject:
@@ -2866,9 +2864,8 @@ Transform:
   m_LocalPosition: {x: -0.17, y: 0.11, z: -0.12}
   m_LocalScale: {x: 1.0000001, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1884065405}
-  m_Father: {fileID: 1666058784}
+  m_Children: []
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 21.947, y: -17.04, z: -38.833}
 --- !u!1001 &1037449927
 PrefabInstance:
@@ -3159,8 +3156,6 @@ MonoBehaviour:
   minuteHand: {fileID: 282888599}
   clockCamera: {fileID: 421749272}
   playerCamera: {fileID: 0}
-  player: {fileID: 0}
-  playerTransform: {fileID: 0}
   interactionDistance: 2
   batteries:
   - {fileID: 610601034}
@@ -4304,15 +4299,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2112154772560646671, guid: ea3d1e25d2b6e24429435a24aae4da90, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 27.917158
+      value: 1.18
       objectReference: {fileID: 0}
     - target: {fileID: 2112154772560646671, guid: ea3d1e25d2b6e24429435a24aae4da90, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 24.26
+      value: 5.04
       objectReference: {fileID: 0}
     - target: {fileID: 2112154772560646671, guid: ea3d1e25d2b6e24429435a24aae4da90, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -47.3
+      value: 0.17
       objectReference: {fileID: 0}
     - target: {fileID: 2112154772560646671, guid: ea3d1e25d2b6e24429435a24aae4da90, type: 3}
       propertyPath: m_LocalRotation.w
@@ -5920,3 +5915,5 @@ SceneRoots:
   - {fileID: 1445317878}
   - {fileID: 2086403933}
   - {fileID: 1010919625}
+  - {fileID: 1033914702}
+  - {fileID: 1034672371}
