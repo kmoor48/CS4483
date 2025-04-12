@@ -2805,6 +2805,71 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   puzzlesRequiredForLevel: 2
   exitDoor: {fileID: 1010919626}
+  doorIndex: 3
+--- !u!1 &1033914701
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1033914702}
+  m_Layer: 0
+  m_Name: mixamorig:RightHandThumb4
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1033914702
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1033914701}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0000021294034, y: -0.0000005580786, z: -0.0000010114162, w: 1}
+  m_LocalPosition: {x: -0.00000008106232, y: 0.06138872, z: -0.000000019547297}
+  m_LocalScale: {x: 1.0000002, y: 0.9999999, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 161506559}
+  m_Father: {fileID: 648960842}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1034672370
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1034672371}
+  m_Layer: 0
+  m_Name: mixamorig:LeftArm
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1034672371
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1034672370}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.22590366, y: -0.07459223, z: -0.29615656, w: 0.92503774}
+  m_LocalPosition: {x: -0.17, y: 0.11, z: -0.12}
+  m_LocalScale: {x: 1.0000001, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1884065405}
+  m_Father: {fileID: 1666058784}
+  m_LocalEulerAnglesHint: {x: 21.947, y: -17.04, z: -38.833}
 --- !u!1001 &1037449927
 PrefabInstance:
   m_ObjectHideFlags: 0

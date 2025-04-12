@@ -9,6 +9,8 @@ public class ExitDoor : MonoBehaviour
     public GameObject exitDoor; // The door GameObject to unlock
     private BoxCollider doorCollider; // The BoxCollider on the door
 
+    public int doorIndex; // Index or identifier for where the door leads
+
     private void Start()
     {
         // Initially, we make sure the collider is disabled until the puzzles are solved
@@ -21,6 +23,9 @@ public class ExitDoor : MonoBehaviour
         {
             Debug.LogWarning("No BoxCollider attached to the exit door.");
         }
+
+        // Optional: log the destination index for debugging
+        Debug.Log("ExitDoor initialized with destination index: " + doorIndex);
     }
 
     // This method should be called when a puzzle is solved
@@ -50,6 +55,6 @@ public class ExitDoor : MonoBehaviour
 
         // Optionally, you can change the appearance of the door to indicate it's unlocked
         exitDoor.SetActive(true); // Keep this active or change appearance to indicate it's ready to interact with
-        Debug.Log("Exit Door Unlocked! You can now exit.");
+        Debug.Log("Exit Door Unlocked! Leads to index: " + doorIndex);
     }
 }

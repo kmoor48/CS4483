@@ -10,7 +10,7 @@ public class OpenDrawer : MonoBehaviour
     public GameObject lockText; // UI text for locked state
     public GameObject padlock; // Reference to the lock GameObject (not the script)
     public bool isLocked = true; // Set to false when lock is solved
-    public GameObject player; // Reference to the player
+    private GameObject player; // Now private and found by tag
     public Camera mainCamera; // The player's main camera
     public Camera lockCamera; // Camera to view the lock
 
@@ -20,6 +20,8 @@ public class OpenDrawer : MonoBehaviour
 
     void Start()
     {
+        player = GameObject.FindWithTag("Player"); // Find the player by tag
+
         drawerText.SetActive(false);
         closedText.SetActive(false);
         lockText.SetActive(false); // Ensure the lock text is hidden initially
