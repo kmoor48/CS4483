@@ -17,7 +17,8 @@ public class PlayerController : MonoBehaviour
         new Vector3(24.15f, 7.3f, -33.617f), // Level 2
         new Vector3(-21.07f, 8.23f, -15.44f), // Level 3
         new Vector3(-9.375f, 2f, -2.686f), // Level 4
-        new Vector3(5.944682f, 7f, -8.056301f) // Level 5
+        new Vector3(12.243f, 10f, -15.869f) // Level 5
+        //new Vector3(5.944682f, 7f, -8.056301f) // Level 5
     };
 
     // For the walking audio source
