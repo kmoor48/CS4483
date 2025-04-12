@@ -6,8 +6,8 @@ public class PadLockPassword : MonoBehaviour
     private GameObject universalLogicHandler;
     MoveRuller _moveRull;
     OpenDrawer _drawer;
+    private GameObject exitDoor;
 
-    public ExitDoor exitDoor; // Reference to the ExitDoor script
 
     public int[] _numberPassword = { 0, 0, 0, 0 };
 
@@ -20,13 +20,24 @@ public class PadLockPassword : MonoBehaviour
     void Start()
     {
         universalLogicHandler = GameObject.FindWithTag("UniversalLogicHandler");
+        exitDoor = GameObject.FindWithTag("ExitDoor"); // Find the door by tag
     }
+
 
     private void OnPuzzleSolved()
     {
-        // Call the PuzzleSolved method from ExitDoor when the puzzle is completed
-        exitDoor.PuzzleSolved();
+        if (exitDoor != null)
+        {
+            BoxCollider collider = exitDoor.GetComponent<BoxCollider>();
+            if (collider != null)
+            {
+                collider.enabled = true;
+                Debug.Log("Exit door collider enabled!");
+            }
+        }
     }
+
+
 
     public void Password()
     {

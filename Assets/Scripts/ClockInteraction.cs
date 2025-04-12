@@ -1,5 +1,4 @@
 using UnityEngine;
-using TMPro;
 
 public class ClockInteraction : MonoBehaviour
 {
@@ -10,7 +9,6 @@ public class ClockInteraction : MonoBehaviour
     private GameObject player;
     [SerializeField] private float interactionDistance = 3f;
     [SerializeField] private GameObject[] batteries;
-    [SerializeField] private ExitDoor exitDoor;
     [SerializeField] private GameObject interactionText;
 
     private bool isEditing = false;
@@ -109,11 +107,6 @@ public class ClockInteraction : MonoBehaviour
         }
     }
 
-    private void OnPuzzleSolved()
-    {
-        exitDoor.PuzzleSolved();
-    }
-
     void HandleClockAdjustment()
     {
         if (puzzleSolved) return;
@@ -154,8 +147,6 @@ public class ClockInteraction : MonoBehaviour
 
             LevelClueAndProgressionManager clueScript = universalLogicHandler.GetComponent<LevelClueAndProgressionManager>();
             clueScript.IncrementPuzzleCounter();
-
-            OnPuzzleSolved();
         }
     }
 

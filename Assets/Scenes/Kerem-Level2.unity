@@ -376,7 +376,6 @@ MonoBehaviour:
   voicemailAudio: {fileID: 2086403932}
   drawerAnimator: {fileID: 1445317880}
   requiredBatteries: 2
-  exitDoor: {fileID: 1010919628}
 --- !u!1001 &116232630
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2760,9 +2759,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1135421221249044, guid: 0f2f9c5303aac26479fc10d223f34183, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1010919627}
-    - targetCorrespondingSourceObject: {fileID: 1135421221249044, guid: 0f2f9c5303aac26479fc10d223f34183, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1010919628}
   m_SourcePrefab: {fileID: 100100000, guid: 0f2f9c5303aac26479fc10d223f34183, type: 3}
 --- !u!1 &1010919626 stripped
 GameObject:
@@ -2786,25 +2782,10 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 2.0178375, y: 2.650988, z: 1.1871529}
   m_Center: {x: -0.09369278, y: 0.82549405, z: 0.09357643}
---- !u!114 &1010919628
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1010919626}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed97824875e5d46f88cc13a13a34deb5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  puzzlesRequiredForLevel: 2
-  exitDoor: {fileID: 1010919626}
-  doorIndex: 3
 --- !u!1 &1033914701
 GameObject:
   m_ObjectHideFlags: 0
@@ -3155,12 +3136,12 @@ MonoBehaviour:
   hourHand: {fileID: 309220710}
   minuteHand: {fileID: 282888599}
   clockCamera: {fileID: 421749272}
-  playerCamera: {fileID: 0}
+  playerCamera: {fileID: 2135908090}
   interactionDistance: 2
   batteries:
   - {fileID: 610601034}
   - {fileID: 427383954}
-  exitDoor: {fileID: 1010919628}
+  exitDoor: {fileID: 0}
   interactionText: {fileID: 646012018}
 --- !u!4 &1100574563 stripped
 Transform:
