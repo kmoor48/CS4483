@@ -5,7 +5,6 @@ public class PickupItem : MonoBehaviour
     public string itemName;
     public Sprite image; // The associated png image of the object that will be displayed in the inventory bar
 
-    private InventoryBar inventoryScript;
     private bool playerInRange = false;
     private GameObject universalLogicHandler;
     private GameObject openText; // Display text for "Press [E] to PickUp"
@@ -32,17 +31,6 @@ public class PickupItem : MonoBehaviour
         {
             Debug.LogError("OpenText is not assigned in PickupItem!");
         }
-
-        universalLogicHandler = GameObject.FindWithTag("UniversalLogicHandler");
-
-        if (universalLogicHandler == null)
-        {
-            Debug.LogError("No GameObject with tag UniversalLogicHandler found.");
-        }
-        else
-        {
-            inventoryScript = universalLogicHandler.GetComponent<InventoryBar>();
-        }
     }
 
     void OnTriggerEnter(Collider other)
@@ -67,10 +55,12 @@ public class PickupItem : MonoBehaviour
     {
         if (playerInRange && Input.GetKeyDown(KeyCode.E)) // Pickup when pressing "E"
         {
-            if (inventoryScript != null)
+            InventoryBar inventoryBarScript = InventoryBar.Instance;
+            if (inventoryBarScript != null)
             {
+
                 // Add the item to the inventory
-                inventoryScript.AddItem(gameObject, itemName, image);
+                inventoryBarScript.AddItem(gameObject, itemName, image);
 
                 // Hide the text and remove the object
                 if (openText != null)

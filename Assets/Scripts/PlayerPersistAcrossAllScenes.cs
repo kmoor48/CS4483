@@ -1,9 +1,9 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class PersistAcrossAllScenes : MonoBehaviour
+public class PlayerPersistAcrossAllScenes : MonoBehaviour
 {
-    public static PersistAcrossAllScenes Instance { get; private set; }
+    public static PlayerPersistAcrossAllScenes Instance { get; private set; }
     
     void Awake()
     {
@@ -18,5 +18,4 @@ public class PersistAcrossAllScenes : MonoBehaviour
             Destroy(gameObject); // Destroy duplicates if a canvas already exists
         }
     }
-
 }

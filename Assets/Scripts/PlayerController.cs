@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     // For loading the next scene
     private GameObject universalLogicHandler;
     private UniversalLogicHandler universalLogicHandlerScript;
+    private static Vector3 defaultPlayerPosition = new Vector3(27.91716f, 24.26f, -47.3f);
 
     // For the walking audio source
     AudioSource walkingAudio;
@@ -105,5 +106,8 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-
+    public void ResetPlayerPositionBetweenScenes()
+    {
+        controller.Move(defaultPlayerPosition);
+    }
 }

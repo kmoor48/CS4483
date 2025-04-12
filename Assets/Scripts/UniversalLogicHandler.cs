@@ -51,6 +51,10 @@ public class UniversalLogicHandler : MonoBehaviour
             clueLevelManagerScript.SetCurrentLevel(nextLevelIndex);
             inventoryBarScript.ClearInventoryBetweenLevels(nextLevelIndex - 1); // Send the previous level's index to clear inventory
             nextSceneIndex += 1;
+
+            PlayerController playerControllerScript = PlayerPersistAcrossAllScenes.Instance.gameObject.GetComponent<PlayerController>();
+            Debug.Log(playerControllerScript);
+            playerControllerScript.ResetPlayerPositionBetweenScenes();
         }
         else
         {
