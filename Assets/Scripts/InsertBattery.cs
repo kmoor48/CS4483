@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class InsertBattery : MonoBehaviour
 {
-    public Transform player;
+    private GameObject player;
     public Transform voicemailMachine;
     public GameObject insertText; // Text prompt to insert batteries
     public AudioSource voicemailAudio; // Audio source for voicemail
@@ -17,6 +17,11 @@ public class InsertBattery : MonoBehaviour
     private InventoryBar inventory; // Reference to inventory system
 
     private bool audioPlayed = false; // Flag to track if the voicemail is playing
+
+    void Awake()
+    {
+        player = GameObject.FindWithTag("Player");
+    }
 
     void Start()
     {
@@ -36,7 +41,7 @@ public class InsertBattery : MonoBehaviour
 
     void Update()
     {
-        float distance = Vector3.Distance(player.position, voicemailMachine.position);
+        float distance = Vector3.Distance(player.transform.position, voicemailMachine.position);
 
         // Only show the "Insert Batteries" prompt if player is near and hasn't inserted all batteries
         if (distance <= 2.0f && !hasInsertedBatteries)
