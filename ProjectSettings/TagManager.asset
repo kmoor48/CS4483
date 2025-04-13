@@ -37,6 +37,7 @@ TagManager:
   - SettingsDisplayPanel
   - SettingsBtn
   - Battery
+  - PlayerSpawn
   layers:
   - Default
   - TransparentFX
