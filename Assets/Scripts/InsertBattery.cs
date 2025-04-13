@@ -81,7 +81,7 @@ public class InsertBattery : MonoBehaviour
             if (collider != null)
             {
                 collider.enabled = true; // ← Enable the exit door collider
-                Debug.Log("Exit door collider enabled from battery puzzle!");
+                exitDoor.GetComponent<AudioSource>().Play(); // Opening door sound
             }
         }
     }
@@ -104,11 +104,9 @@ public class InsertBattery : MonoBehaviour
     void InsertBatteryIntoMachine()
     {
         insertedBatteries++;
-        Debug.Log("Inserted battery: " + insertedBatteries);
 
         if (insertedBatteries >= requiredBatteries)
         {
-            Debug.Log("All batteries inserted. Playing voicemail and opening drawer!");
             insertText.SetActive(false);
             voicemailAudio.Play();
             drawerAnimator.SetBool("open", true);
@@ -136,8 +134,6 @@ public class InsertBattery : MonoBehaviour
                     newInventory.AddItem(null, itemName, null);
                 }
             }
-
-            Debug.Log("Items copied to new inventory.");
         }
         else
         {
