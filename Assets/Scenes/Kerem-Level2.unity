@@ -376,6 +376,7 @@ MonoBehaviour:
   voicemailAudio: {fileID: 2086403932}
   drawerAnimator: {fileID: 1445317880}
   requiredBatteries: 2
+  drawerOpenSound: {fileID: 8300000, guid: abe2688f7a0d24dfca26bc2a9fd4aece, type: 3}
 --- !u!1001 &116232630
 PrefabInstance:
   m_ObjectHideFlags: 0
