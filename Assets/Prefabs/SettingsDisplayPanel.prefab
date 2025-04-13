@@ -295,15 +295,22 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'W, D, S, A : Navigation (Foreward, Right, Back, Left)
+  m_text: 'W, D, S, A : Navigation (Foreward, Right, Back, Left).
 
     1-9 : View
-    Inventory Item Slots
+    Inventory Item Slots.
 
     T : Put an Inventory Item Into Your Hand (Must Have
-    it in View First using 1-9)
+    it in View First using 1-9).
 
-    Q : Return an Item from Hand to Inventory
+    Q : Return an Item from Hand to Inventory.
+
+    For
+    Clock in Level 2: Press H to edit hour hand and M to edit the minute hand. Use
+    mouse scroll or trackpad swipe up/down to move the hands.
+
+    For Padlocks:
+    use W,D,S,A to turn the numbers.
 
 '
   m_isRightToLeft: 0
