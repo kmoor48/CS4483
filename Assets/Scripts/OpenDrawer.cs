@@ -102,7 +102,6 @@ public class OpenDrawer : MonoBehaviour
     public void UnlockDrawer()
     {
         isLocked = false; // Unlock the drawer
-        Debug.Log("Drawer Unlocked!");
         lockText.SetActive(false); // Hide the lock text after unlocking
 
         if (padlock != null)

@@ -32,7 +32,7 @@ public class PadLockPassword : MonoBehaviour
             if (collider != null)
             {
                 collider.enabled = true;
-                Debug.Log("Exit door collider enabled!");
+                exitDoor.GetComponent<AudioSource>().Play(); // Opening door sound
             }
         }
     }
@@ -43,8 +43,6 @@ public class PadLockPassword : MonoBehaviour
     {
         if (_moveRull._numberArray.SequenceEqual(_numberPassword))
         {
-            Debug.Log("Password correct");
-
             for (int i = 0; i < _moveRull._rullers.Count; i++)
             {
                 _moveRull._rullers[i].GetComponent<PadLockEmissionColor>()._isSelect = false;

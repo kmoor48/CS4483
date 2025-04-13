@@ -144,7 +144,7 @@ namespace NavKeypad
             if (doorExitCollider != null)
             {
                 doorExitCollider.enabled = true;
-                Debug.Log("Door exit collider has been activated");
+                doorExitCollider.gameObject.GetComponent<AudioSource>().Play(); // open door sound
             }
             else
             {
