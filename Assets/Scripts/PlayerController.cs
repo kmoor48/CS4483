@@ -61,15 +61,6 @@ public class PlayerController : MonoBehaviour
         Vector3 move = transform.right * moveX + transform.forward * moveZ;
         move *= moveSpeed;
 
-        //if (!controller.isGrounded)
-        //{
-        //    move.y -= 100f * Time.deltaTime; 
-        //}
-        //else
-        //{
-        //    move.y = -20f; 
-        //}
-
         // Check movement and control walking audio
         Vector2 inputVector = new Vector2(moveX, moveZ);
         bool isMoving = inputVector.magnitude > 0.1f;
