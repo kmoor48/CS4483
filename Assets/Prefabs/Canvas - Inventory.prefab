@@ -4821,19 +4821,22 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 863666078414242825, guid: 9f4961b067831db45a02828e4122d8e6, type: 3}
       propertyPath: m_text
-      value: 'W, D, S, A : Navigation (Foreward, Right, Back, Left)
+      value: 'W, D, S, A : Navigation (Foreward, Right, Back, Left).
 
         1-9
-        : View Inventory Item Slots
+        : View Inventory Item Slots.
 
         T : Put an Inventory Item Into Your
-        Hand (Must Have it in View First using 1-9)
+        Hand (Must Have it in View First using 1-9).
 
-        Q : Return an Item from
-        Hand to Inventory
+        Q : Return an Item
+        from Hand to Inventory.
 
-        Esc : Close the View Inventory Item Panel or to
-        Return to the Main Room from a Puzzle'
+        For Clock in Level 2: Press H to edit hour
+        hand and M to edit the minute hand. Use mouse scroll or trackpad swipe up/down
+        to move the hands.
+
+        For Padlocks: use W,D,S,A to turn the numbers.'
       objectReference: {fileID: 0}
     - target: {fileID: 863666078414242825, guid: 9f4961b067831db45a02828e4122d8e6, type: 3}
       propertyPath: m_fontStyle
