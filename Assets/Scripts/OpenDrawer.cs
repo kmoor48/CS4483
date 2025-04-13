@@ -7,12 +7,15 @@ public class OpenDrawer : MonoBehaviour
     public Animator ANI;
     public GameObject drawerText;
     public GameObject closedText;
-    public GameObject lockText; // UI text for locked state
-    public GameObject padlock; // Reference to the lock GameObject (not the script)
-    public bool isLocked = true; // Set to false when lock is solved
-    private GameObject player; // Now private and found by tag
-    public Camera mainCamera; // The player's main camera
-    public Camera lockCamera; // Camera to view the lock
+    public GameObject lockText;
+    public GameObject padlock;
+    public bool isLocked = true;
+    private GameObject player;
+    public Camera mainCamera;
+    public Camera lockCamera;
+
+    public AudioClip openSound; // 🔊 Add this
+    public AudioClip closeSound; // 🔊 And this
 
     private bool open;
     private bool inReach;
@@ -20,18 +23,18 @@ public class OpenDrawer : MonoBehaviour
 
     void Start()
     {
-        player = GameObject.FindWithTag("Player"); // Find the player by tag
+        player = GameObject.FindWithTag("Player");
 
         drawerText.SetActive(false);
         closedText.SetActive(false);
-        lockText.SetActive(false); // Ensure the lock text is hidden initially
+        lockText.SetActive(false);
 
         ANI.SetBool("open", false);
         ANI.SetBool("close", false);
         open = false;
 
         if (lockCamera != null)
-            lockCamera.gameObject.SetActive(false); // Hide lock camera initially
+            lockCamera.gameObject.SetActive(false);
     }
 
     void OnTriggerEnter(Collider other)
@@ -52,7 +55,7 @@ public class OpenDrawer : MonoBehaviour
             {
                 drawerText.SetActive(false);
                 closedText.SetActive(false);
-                lockText.SetActive(true); // Show lockText when in reach and locked
+                lockText.SetActive(true);
             }
         }
     }
@@ -64,7 +67,7 @@ public class OpenDrawer : MonoBehaviour
             inReach = false;
             drawerText.SetActive(false);
             closedText.SetActive(false);
-            lockText.SetActive(false); // Hide lockText when out of range
+            lockText.SetActive(false);
         }
     }
 
@@ -74,7 +77,7 @@ public class OpenDrawer : MonoBehaviour
         {
             if (isLocked)
             {
-                StartLockInteraction(); // Show lock interaction and camera
+                StartLockInteraction();
             }
             else if (!open)
             {
@@ -82,6 +85,10 @@ public class OpenDrawer : MonoBehaviour
                 ANI.SetBool("close", false);
                 open = true;
                 drawerText.SetActive(false);
+
+                // 🔊 Play opening sound
+                if (openSound != null)
+                    AudioSource.PlayClipAtPoint(openSound, transform.position);
             }
             else
             {
@@ -89,24 +96,27 @@ public class OpenDrawer : MonoBehaviour
                 ANI.SetBool("close", true);
                 open = false;
                 closedText.SetActive(false);
+
+                // 🔊 Play closing sound
+                if (closeSound != null)
+                    AudioSource.PlayClipAtPoint(closeSound, transform.position);
             }
         }
 
-        // Allow player to leave lock interaction
         if (interactingWithLock && Input.GetKeyDown(KeyCode.Escape))
         {
-            ExitLockInteraction(); // Exit lock interaction
+            ExitLockInteraction();
         }
     }
 
     public void UnlockDrawer()
     {
-        isLocked = false; // Unlock the drawer
-        lockText.SetActive(false); // Hide the lock text after unlocking
+        isLocked = false;
+        lockText.SetActive(false);
 
         if (padlock != null)
         {
-            padlock.SetActive(false); // Make the padlock disappear when unlocked
+            padlock.SetActive(false);
         }
     }
 
@@ -115,23 +125,20 @@ public class OpenDrawer : MonoBehaviour
         if (padlock != null)
         {
             interactingWithLock = true;
-            padlock.GetComponent<MoveRuller>().StartLockInteraction(); // Lock script handles rotation
+            padlock.GetComponent<MoveRuller>().StartLockInteraction();
 
-            // Disable player movement
             if (player != null)
             {
                 player.GetComponent<CharacterController>().enabled = false;
-                player.GetComponent<PlayerController>().enabled = false; // Replace with actual movement script
+                player.GetComponent<PlayerController>().enabled = false;
             }
 
-            // Switch to lock camera
             if (mainCamera != null && lockCamera != null)
             {
                 mainCamera.gameObject.SetActive(false);
                 lockCamera.gameObject.SetActive(true);
             }
 
-            // Hide lock UI text after interacting with the lock
             lockText.SetActive(false);
         }
     }
@@ -140,14 +147,12 @@ public class OpenDrawer : MonoBehaviour
     {
         interactingWithLock = false;
 
-        // Re-enable player movement
         if (player != null)
         {
             player.GetComponent<CharacterController>().enabled = true;
-            player.GetComponent<PlayerController>().enabled = true; // Replace with actual movement script
+            player.GetComponent<PlayerController>().enabled = true;
         }
 
-        // Switch back to main camera
         if (mainCamera != null && lockCamera != null)
         {
             mainCamera.gameObject.SetActive(true);

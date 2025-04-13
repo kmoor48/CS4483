@@ -8,6 +8,8 @@ public class InsertBattery : MonoBehaviour
     public AudioSource voicemailAudio; // Audio source for voicemail
     public Animator drawerAnimator; // Animator to open drawer
     public int requiredBatteries = 2;
+    public AudioClip drawerOpenSound; // The sound effect to play when drawer opens
+
 
     private GameObject exitDoor; // ← Changed from ExitDoor script to GameObject
     private GameObject universalLogicHandler;
@@ -110,6 +112,11 @@ public class InsertBattery : MonoBehaviour
             insertText.SetActive(false);
             voicemailAudio.Play();
             drawerAnimator.SetBool("open", true);
+            if (drawerOpenSound != null && voicemailAudio != null)
+            {
+                voicemailAudio.PlayOneShot(drawerOpenSound);
+            }
+
             hasInsertedBatteries = true;
 
             LevelClueAndProgressionManager clueScript = universalLogicHandler.GetComponent<LevelClueAndProgressionManager>();

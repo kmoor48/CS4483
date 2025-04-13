@@ -1892,6 +1892,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1406074928}
     m_Modifications:
+    - target: {fileID: 1436944102497898, guid: 72653085a6b827f48b10b434c7972f1c, type: 3}
+      propertyPath: m_TagString
+      value: Level1
+      objectReference: {fileID: 0}
     - target: {fileID: 1685343955664076, guid: 72653085a6b827f48b10b434c7972f1c, type: 3}
       propertyPath: m_Name
       value: Clipboard (1)
@@ -4121,6 +4125,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1406074928}
     m_Modifications:
+    - target: {fileID: 1436944102497898, guid: 72653085a6b827f48b10b434c7972f1c, type: 3}
+      propertyPath: m_TagString
+      value: Level1
+      objectReference: {fileID: 0}
     - target: {fileID: 1685343955664076, guid: 72653085a6b827f48b10b434c7972f1c, type: 3}
       propertyPath: m_Name
       value: Clipboard
@@ -4316,6 +4324,14 @@ PrefabInstance:
       propertyPath: openText
       value: 
       objectReference: {fileID: 62406369}
+    - target: {fileID: 6737989628191910984, guid: ff54c1fd4f4f84272917ac03b7c8c60e, type: 3}
+      propertyPath: openSound
+      value: 
+      objectReference: {fileID: 8300000, guid: abe2688f7a0d24dfca26bc2a9fd4aece, type: 3}
+    - target: {fileID: 6737989628191910984, guid: ff54c1fd4f4f84272917ac03b7c8c60e, type: 3}
+      propertyPath: closeSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 2d548ff6dfb2242d1b715a13c4125b27, type: 3}
     - target: {fileID: 6737989628191910984, guid: ff54c1fd4f4f84272917ac03b7c8c60e, type: 3}
       propertyPath: closedText
       value: 
