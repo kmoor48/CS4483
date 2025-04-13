@@ -617,7 +617,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 498803badffee2045887fc5858698a0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainCamera: {fileID: 0}
   puzzleCamera: {fileID: 1151721616}
   mapPuzzleUI: {fileID: 2101465822}
   interactText: {fileID: 1818853388}
@@ -3807,7 +3806,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   openText: {fileID: 1818853388}
-  mainCamera: {fileID: 0}
   puzzleCamera: {fileID: 581473206}
 --- !u!1 &184917677
 GameObject:
@@ -9803,7 +9801,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   openText: {fileID: 1818853388}
-  mainCamera: {fileID: 0}
   puzzleCamera: {fileID: 164143258}
   bookshelfCameraMovement: {fileID: 164143261}
 --- !u!65 &510099095
@@ -23422,6 +23419,37 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1357980057}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1359995364
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1359995365}
+  m_Layer: 0
+  m_Name: SpawnPoint
+  m_TagString: PlayerSpawn
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1359995365
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1359995364}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -20.92892, y: 4.67, z: -16.03}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1360545607
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -35413,3 +35441,4 @@ SceneRoots:
   - {fileID: 1829676233}
   - {fileID: 1671578619}
   - {fileID: 1218866039}
+  - {fileID: 1359995365}

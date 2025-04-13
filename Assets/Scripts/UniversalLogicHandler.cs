@@ -40,25 +40,49 @@ public class UniversalLogicHandler : MonoBehaviour
         inventoryBarScript = gameObject.GetComponent<InventoryBar>();
     }
 
+    //public void LoadNextScene()
+    //{
+    //    // Check if the next scene index is valid
+    //    if (nextSceneIndex < SceneManager.sceneCountInBuildSettings)
+    //    {
+    //        SceneManager.LoadScene(nextSceneIndex);
+
+    //        int nextLevelIndex = nextSceneIndex - 1; // Level indexing starts at 0 (Level 1 = index 0), but Level 1 is scene index 1 w/ cutscene
+    //        clueLevelManagerScript.SetCurrentLevel(nextLevelIndex);
+    //        inventoryBarScript.ClearInventoryBetweenLevels(nextLevelIndex - 1); // Send the previous level's index to clear inventory
+    //        PlayerController playerControllerScript = PlayerPersistAcrossAllScenes.Instance.gameObject.GetComponent<PlayerController>();
+    //        playerControllerScript.ResetPlayerPositionBetweenScenes(nextLevelIndex - 1);
+    //        nextSceneIndex += 1;
+    //    }
+    //    else
+    //    {
+    //        Debug.LogWarning("No more scenes to load. End of build settings.");
+    //        // Optionally, you can loop back to the first scene or show a game-over screen
+    //        // SceneManager.LoadScene(0); // Uncomment to loop back to the first scene
+    //    }
+    //}
+
     public void LoadNextScene()
     {
-        // Check if the next scene index is valid
+        // Recalculate the next scene index dynamically every time
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        int nextSceneIndex = currentSceneIndex + 1;
+
         if (nextSceneIndex < SceneManager.sceneCountInBuildSettings)
         {
             SceneManager.LoadScene(nextSceneIndex);
 
-            int nextLevelIndex = nextSceneIndex - 1; // Level indexing starts at 0 (Level 1 = index 0), but Level 1 is scene index 1 w/ cutscene
+            int nextLevelIndex = nextSceneIndex - 1; // Adjust for cutscene
             clueLevelManagerScript.SetCurrentLevel(nextLevelIndex);
-            inventoryBarScript.ClearInventoryBetweenLevels(nextLevelIndex - 1); // Send the previous level's index to clear inventory
+            inventoryBarScript.ClearInventoryBetweenLevels(nextLevelIndex - 1);
             PlayerController playerControllerScript = PlayerPersistAcrossAllScenes.Instance.gameObject.GetComponent<PlayerController>();
             playerControllerScript.ResetPlayerPositionBetweenScenes(nextLevelIndex - 1);
-            nextSceneIndex += 1;
         }
         else
         {
             Debug.LogWarning("No more scenes to load. End of build settings.");
-            // Optionally, you can loop back to the first scene or show a game-over screen
-            // SceneManager.LoadScene(0); // Uncomment to loop back to the first scene
+            // Optionally: SceneManager.LoadScene(0);
         }
     }
+
 }

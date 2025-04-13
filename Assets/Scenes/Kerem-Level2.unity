@@ -2202,6 +2202,37 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
+--- !u!1 &878337832
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 878337833}
+  m_Layer: 0
+  m_Name: SpawnPoint
+  m_TagString: PlayerSpawn
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &878337833
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 878337832}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 24.56, y: 6.242, z: -47.26}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &895856454
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2801,7 +2832,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1033914702
 Transform:
   m_ObjectHideFlags: 0
@@ -2832,7 +2863,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1034672371
 Transform:
   m_ObjectHideFlags: 0
@@ -3136,12 +3167,11 @@ MonoBehaviour:
   hourHand: {fileID: 309220710}
   minuteHand: {fileID: 282888599}
   clockCamera: {fileID: 421749272}
-  playerCamera: {fileID: 2135908090}
+  playerCamera: {fileID: 0}
   interactionDistance: 2
   batteries:
   - {fileID: 610601034}
   - {fileID: 427383954}
-  exitDoor: {fileID: 0}
   interactionText: {fileID: 646012018}
 --- !u!4 &1100574563 stripped
 Transform:
@@ -5898,3 +5928,4 @@ SceneRoots:
   - {fileID: 1010919625}
   - {fileID: 1033914702}
   - {fileID: 1034672371}
+  - {fileID: 878337833}
